@@ -368,6 +368,9 @@ limitations under the License.
 
     <string name="settings_reset_summary">Reset Settings to Default Values</string>
 
+    <string name="settings_user_profile_title">User Profile</string>
+    <string name="settings_user_profile_summary">Personalized digital identity</string>
+
     <!-- Settings Advanced -->
     <string name="settings_advanced">Advanced</string>
     <string name="settings_default_trackfileformat">Export/sharing file format</string>
