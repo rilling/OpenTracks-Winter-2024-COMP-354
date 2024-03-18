@@ -24,18 +24,36 @@ public class Rankings {
 
     static {
         // Add some sample Rankings, until we can get refresh working.
-        for (int i = 1; i <= 25; i++) {
-            addItem(createPlaceholderItem(i));
-        }
+        addItem(new Ranking(1, null, "Da bes", "Steamboat Springs",  25));
+        addItem(new Ranking(2, null, "Second place", "North California CA",  24));
+        addItem(new Ranking(3, null, "Tertiary", "Steamboat Springs, Color Red",  23));
+        addItem(new Ranking(4, null, "Quad Runner", "Montreal",  22));
+        addItem(new Ranking(5, null, "Quintuple champ", "Steamboat Springs",  21));
+        addItem(new Ranking(6, null, "Gang of Six", "Montreal",  20));
+        addItem(new Ranking(7, null, "Seven", "Steamboat Springs",  19));
+        addItem(new Ranking(8, null, "Eight", "Montreal",  18));
+        addItem(new Ranking(9, null, "Ninth", "Montreal",  17));
+        addItem(new Ranking(10, null, "DoubleDigits", "Steamboat Springs",  16));
+        addItem(new Ranking(11, null, "El e Ven", "Montreal",  15));
+        addItem(new Ranking(12, null, "Twelve", "Montreal",  14));
+        addItem(new Ranking(13, null, "XIII", "Montreal",  13));
+        addItem(new Ranking(14, null, "Four Teen", "Steamboat Springs",  12));
+        addItem(new Ranking(15, null, "Fif Teen", "Montreal",  11));
+        addItem(new Ranking(16, null, "Six Teen", "Steamboat Springs",  10));
+        addItem(new Ranking(17, null, "Seven+10", "Montreal",  9));
+        addItem(new Ranking(18, null, "Eight een", "Montreal",  8));
+        addItem(new Ranking(19, null, "Nineteen", "Steamboat Springs",  7));
+        addItem(new Ranking(20, null, "10+10", "Steamboat Springs",  6));
+        addItem(new Ranking(21, null, "Twenty-first", "Montreal",  5));
+        addItem(new Ranking(22, null, "TwoTwo", "Montreal",  4));
+        addItem(new Ranking(23, null, "TwoThree", "Steamboat Springs",  3));
+        addItem(new Ranking(24, null, "The day", "Montreal",  2));
+        addItem(new Ranking(25, null, "The saved day", "Montreal",  1));
     }
 
     private static void addItem(Ranking item) {
         RANKINGS.add(item);
         RANKING_MAP.put(item.rank, item);
-    }
-
-    private static Ranking createPlaceholderItem(int position) {
-        return new Ranking(1, null, null, null,  5);
     }
 
     /**
