@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.dennisguse.opentracks.R;
-import de.dennisguse.opentracks.ui.leaderboard.placeholder.PlaceholderContent;
+import de.dennisguse.opentracks.data.models.Rankings;
 
 /**
  * A fragment representing a list of Items.
@@ -65,7 +65,7 @@ public class LeaderboardListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new LeaderboardListViewAdapter(PlaceholderContent.ITEMS));
+            recyclerView.setAdapter(new LeaderboardListViewAdapter(Rankings.ITEMS));
         }
         return view;
     }

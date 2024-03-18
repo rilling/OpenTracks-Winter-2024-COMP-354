@@ -3,24 +3,23 @@ package de.dennisguse.opentracks.ui.leaderboard;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import de.dennisguse.opentracks.ui.leaderboard.placeholder.PlaceholderContent.PlaceholderItem;
+import de.dennisguse.opentracks.data.models.Rankings.Ranking;
 import de.dennisguse.opentracks.databinding.FragmentLeaderboardListBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link Ranking}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class LeaderboardListViewAdapter extends RecyclerView.Adapter<LeaderboardListViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<Ranking> mValues;
 
-    public LeaderboardListViewAdapter(List<PlaceholderItem> items) {
+    public LeaderboardListViewAdapter(List<Ranking> items) {
         mValues = items;
     }
 
@@ -46,7 +45,7 @@ public class LeaderboardListViewAdapter extends RecyclerView.Adapter<Leaderboard
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public Ranking mItem;
 
         public ViewHolder(FragmentLeaderboardListBinding binding) {
             super(binding.getRoot());
