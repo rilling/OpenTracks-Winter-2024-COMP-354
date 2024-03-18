@@ -35,7 +35,7 @@ public class Rankings {
     }
 
     private static Ranking createPlaceholderItem(int position) {
-        return new Ranking(1, null, null, null,  5, null);
+        return new Ranking(1, null, null, null,  5);
     }
 
     /**
@@ -47,15 +47,13 @@ public class Rankings {
         public final String username;
         public final String location;
         public final double score;
-        public final String unit;
 
-        public Ranking(int rank, Bitmap profilePicture, String username, String location, double score, String unit) {
+        public Ranking(int rank, Bitmap profilePicture, String username, String location, double score) {
             this.rank = rank;
             this.profilePicture = profilePicture;
             this.username = username;
             this.location = location;
             this.score = score;
-            this.unit = unit;
         }
     }
 }
