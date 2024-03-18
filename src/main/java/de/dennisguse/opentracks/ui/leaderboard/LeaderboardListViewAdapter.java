@@ -13,14 +13,13 @@ import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Ranking}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class LeaderboardListViewAdapter extends RecyclerView.Adapter<LeaderboardListViewAdapter.ViewHolder> {
 
     private final List<Ranking> mValues;
 
-    public LeaderboardListViewAdapter(List<Ranking> items) {
-        mValues = items;
+    public LeaderboardListViewAdapter(List<Ranking> rankings) {
+        mValues = rankings;
     }
 
     @Override

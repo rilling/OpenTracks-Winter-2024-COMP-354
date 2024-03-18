@@ -16,7 +16,7 @@ import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.models.Rankings;
 
 /**
- * A fragment representing a list of Items.
+ * A fragment representing a list of Rankings; a Leaderboard, in other words.
  */
 public class LeaderboardListFragment extends Fragment {
 
