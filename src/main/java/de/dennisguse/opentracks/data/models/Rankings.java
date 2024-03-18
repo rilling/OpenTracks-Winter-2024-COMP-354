@@ -1,72 +1,61 @@
 package de.dennisguse.opentracks.data.models;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
+ * Model class for the Rankings displayed on a Leaderboard.
  */
 public class Rankings {
 
     /**
-     * An array of sample (placeholder) items.
+     * An array of sample Rankings.
      */
-    public static final List<Ranking> ITEMS = new ArrayList<Ranking>();
+    public static final List<Ranking> RANKINGS = new ArrayList<Ranking>();
 
     /**
-     * A map of sample (placeholder) items, by ID.
+     * A map of sample Rankings, by rank.
      */
-    public static final Map<String, Ranking> ITEM_MAP = new HashMap<String, Ranking>();
-
-    private static final int COUNT = 25;
+    public static final Map<Integer, Ranking> RANKING_MAP = new HashMap<Integer, Ranking>();
 
     static {
-        // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
+        // Add some sample Rankings, until we can get refresh working.
+        for (int i = 1; i <= 25; i++) {
             addItem(createPlaceholderItem(i));
         }
     }
 
     private static void addItem(Ranking item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+        RANKINGS.add(item);
+        RANKING_MAP.put(item.rank, item);
     }
 
     private static Ranking createPlaceholderItem(int position) {
-        return new Ranking(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+        return new Ranking(1, null, null, null,  5, null);
     }
 
     /**
-     * A placeholder item representing a piece of content.
+     * An individual user's Ranking on a Leaderboard, designed to work with any type of Leaderboard.
      */
     public static class Ranking {
-        public final String id;
-        public final String content;
-        public final String details;
+        public final int rank;
+        public final Bitmap profilePicture;
+        public final String username;
+        public final String location;
+        public final double score;
+        public final String unit;
 
-        public Ranking(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
-        }
-
-        @Override
-        public String toString() {
-            return content;
+        public Ranking(int rank, Bitmap profilePicture, String username, String location, double score, String unit) {
+            this.rank = rank;
+            this.profilePicture = profilePicture;
+            this.username = username;
+            this.location = location;
+            this.score = score;
+            this.unit = unit;
         }
     }
 }
