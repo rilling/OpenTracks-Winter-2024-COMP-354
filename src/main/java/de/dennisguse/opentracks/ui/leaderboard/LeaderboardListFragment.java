@@ -65,7 +65,7 @@ public class LeaderboardListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new LeaderboardListViewAdapter(Rankings.RANKINGS));
+            recyclerView.setAdapter(new LeaderboardListAdapter(Rankings.RANKINGS));
         }
         return view;
     }
