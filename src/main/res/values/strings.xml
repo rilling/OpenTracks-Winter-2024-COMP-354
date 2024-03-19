@@ -404,6 +404,10 @@ limitations under the License.
     <string name="settings_night_mode_option_system">System</string>
     <string name="settings_night_mode_option_day">Day</string>
     <string name="settings_night_mode_option_night">Night</string>
+    <!-- Custom Names for Group 2 Setting Page -->
+
+    <string name="settings_maintenance_info_title">Maintenance Set Up and Information</string>
+    <string name="settings_maintenance_info">Set Up your Waxing and Sharpening Information</string>
 
     <string name="settings_announcements_totaltime_frequency">Time interval</string>
     <string name="settings_announcements_distance_frequency">Lap length</string>
