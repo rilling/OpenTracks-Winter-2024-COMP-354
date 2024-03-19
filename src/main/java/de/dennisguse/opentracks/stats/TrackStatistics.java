@@ -73,6 +73,7 @@ public class TrackStatistics {
     private boolean waiting;
     private boolean skiing;
     private boolean chairlift;
+
     //===========================================================================//
 
 
