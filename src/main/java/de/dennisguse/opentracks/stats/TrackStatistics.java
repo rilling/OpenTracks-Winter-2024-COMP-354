@@ -70,6 +70,63 @@ public class TrackStatistics {
     private Distance chairliftElevationGain;
     private Speed chairliftConstantSpeed;
 
+    private Duration skiingWaitingTime;
+    private Distance skiingDistance;
+    private Speed skiingSpeed;
+
+    public Duration getSkiingWaitingTime() {
+        return skiingWaitingTime;
+    }
+
+    public void setSkiingWaitingTime(Duration skiingWaitingTime) {
+        this.skiingWaitingTime = skiingWaitingTime;
+    }
+
+    public Distance getSkiingDistance() {
+        return skiingDistance;
+    }
+
+    public void setSkiingDistance(Distance skiingDistance) {
+        this.skiingDistance = skiingDistance;
+    }
+
+    public Speed getSkiingSpeed() {
+        return skiingSpeed;
+    }
+
+    public void setSkiingSpeed(Speed skiingSpeed) {
+        this.skiingSpeed = skiingSpeed;
+    }
+
+    public Durating getWaitingTime() {
+        return waitingTime;
+    }
+
+    public void setWaitingTime(Durating waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
+    public Distace getWaitingTimeDistance() {
+        return waitingTimeDistance;
+    }
+
+    public void setWaitingTimeDistance(Distace waitingTimeDistance) {
+        this.waitingTimeDistance = waitingTimeDistance;
+    }
+
+    public Speed getWaitingTimeSpeed() {
+        return waitingTimeSpeed;
+    }
+
+    public void setWaitingTimeSpeed(Speed waitingTimeSpeed) {
+        this.waitingTimeSpeed = waitingTimeSpeed;
+    }
+
+    private Durating waitingTime;
+    private Distace waitingTimeDistance;
+    private Speed waitingTimeSpeed;
+
+
     private boolean waiting;
     private boolean skiing;
     private boolean chairlift;
@@ -192,6 +249,8 @@ public class TrackStatistics {
         setTotalAltitudeLoss(null);
 
         isIdle = false;
+
+
     }
 
     public void reset(Instant startTime) {
