@@ -190,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="% of sharpening interval"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentStart="true" />
 
         <TextView
@@ -198,7 +198,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10%"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
@@ -216,7 +216,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="km since last sharpening"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentStart="true" />
 
         <TextView
@@ -224,7 +224,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
@@ -242,7 +242,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="% of waxing interval"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentStart="true" />
 
         <TextView
@@ -250,7 +250,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10%"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
@@ -268,7 +268,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="km since last waxing"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentStart="true" />
 
         <TextView
@@ -276,7 +276,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
