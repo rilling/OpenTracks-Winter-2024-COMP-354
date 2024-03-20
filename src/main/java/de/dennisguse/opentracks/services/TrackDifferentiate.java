@@ -2,6 +2,13 @@ package de.dennisguse.opentracks.services;
 
 import de.dennisguse.opentracks.data.models;
 
+/**
+ * The TrackDifferentiate class is responsible for differentiating ski lift and ski run segments from a track.
+ * It analyzes the altitude changes of track points to identify upward movements as ski lifts and downward movements as ski runs.
+ * It also utilizes the enum status of TrackPoint to determine if in idle status.
+ * The class maintains counts of ski lift and ski run segments, it keeps track of points of lift and run activity and provides method for
+ * differentiation of points into the two categories.
+ */
 public class TrackDifferentiate {
 
     private final ContentProviderUtils contentProviderUtils;
@@ -44,11 +51,11 @@ public class TrackDifferentiate {
                 } else if (trackpoint.getType() != Type.IDLE
                         && trackpoint.getaltitude() == (TrackPoint) tpi.next().getAltitude()) {
                     track.add(trackpoint);
-                    if (down = true) {
+                    if (down == true) {
                         // if it was marked down add to run list
                         runPoints.set(runCount, track);
                         runCount++;
-                    } else if (down = false) {
+                    } else if (down == false) {
                         // if marked up add to lift list
                         liftPoints.add(liftCount, track);
                         liftCount++;
