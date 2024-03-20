@@ -99,4 +99,6 @@ public record Speed(double speed_mps) {
             case NAUTICAL_IMPERIAL -> toKnots();
         };
     }
+
+
 }

@@ -98,19 +98,19 @@ public class TrackStatistics {
         this.skiingSpeed = skiingSpeed;
     }
 
-    public Durating getWaitingTime() {
+    public Duration getWaitingTime() {
         return waitingTime;
     }
 
-    public void setWaitingTime(Durating waitingTime) {
+    public void setWaitingTime(Duration waitingTime) {
         this.waitingTime = waitingTime;
     }
 
-    public Distace getWaitingTimeDistance() {
+    public Distance getWaitingTimeDistance() {
         return waitingTimeDistance;
     }
 
-    public void setWaitingTimeDistance(Distace waitingTimeDistance) {
+    public void setWaitingTimeDistance(Distance waitingTimeDistance) {
         this.waitingTimeDistance = waitingTimeDistance;
     }
 
@@ -122,8 +122,8 @@ public class TrackStatistics {
         this.waitingTimeSpeed = waitingTimeSpeed;
     }
 
-    private Durating waitingTime;
-    private Distace waitingTimeDistance;
+    private Duration waitingTime;
+    private Distance waitingTimeDistance;
     private Speed waitingTimeSpeed;
 
 
