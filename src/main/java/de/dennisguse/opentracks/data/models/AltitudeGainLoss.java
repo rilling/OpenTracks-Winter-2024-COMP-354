@@ -43,7 +43,6 @@ public record AltitudeGainLoss(float gain_m, float loss_m) {
         isChairlift = false;
         isSkiing = false;
         return false;
-
     }
 
 
