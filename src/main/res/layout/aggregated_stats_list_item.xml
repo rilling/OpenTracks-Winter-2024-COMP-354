@@ -174,4 +174,44 @@
         app:layout_constraintEnd_toStartOf="@id/guideline3"
         app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
 
+<!--    <TextView-->
+<!--        android:id="@+id/testing_text_view"-->
+<!--        android:textSize="23sp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="% of Sharpening Interval"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_horizontal_line"-->
+<!--        app:layout_constraintStart_toStartOf="@id/guideline1"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/guideline3"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_horizontal_line"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline3">
+
+        <TextView
+            android:id="@+id/left_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% of sharpening interval"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/right_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
