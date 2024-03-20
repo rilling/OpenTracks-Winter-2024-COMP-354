@@ -33,7 +33,7 @@ public record AltitudeGainLoss(float gain_m, float loss_m) {
                 isSkiing = false;
                 return true;
             }
-            else if (altitudeChange < -altitudeChangeThreshold){
+            else if (altitudeChange < altitudeChangeThreshold){
                 isChairlift = false;
                 isSkiing = true;
                 return true;
