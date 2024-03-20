@@ -169,85 +169,6 @@
         app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_max_rate"
         tools:text="@string/stats_max_speed" />
 
-<!--    START OF SHARPENING INFO-->
-
-    <TextView
-        android:id="@+id/sharpening_1"
-        style="@style/TextAppearance.OpenTracks.PrimaryValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
-        app:layout_constraintEnd_toStartOf="@id/aggregated_stats_distance_unit"
-        app:layout_constraintHorizontal_bias="0.927"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/activity_icon"
-        tools:text="99999" />
-
-    <TextView
-        android:id="@+id/sharpening_2"
-        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/sharpening_1"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_distance"
-        tools:text="testing" />
-
-    <TextView
-        android:id="@+id/sharpening_3"
-        style="@style/TextAppearance.OpenTracks.SecondaryValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        app:layout_constraintEnd_toStartOf="@+id/aggregated_stats_avg_rate_unit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_distance"
-        tools:text="30" />
-
-    <TextView
-        android:id="@+id/sharpening_5"
-        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_avg_rate"
-        tools:text="@string/stats_average_moving_speed" />
-
-    <!--    END OF SHARPENING INFO-->
-
-    <!--    START OF WAXING INFO -->
-
-    <TextView
-        android:id="@+id/waxing_1"
-        style="@style/TextAppearance.OpenTracks.PrimaryValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/activity_icon"
-        tools:text="00:00:00" />
-
-    <TextView
-        android:id="@+id/sharpening_4"
-        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sharpening_3"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_avg_rate"
-        tools:text="km/h" />
-
     <View
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
@@ -256,19 +177,8 @@
         app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/testing_text_view"-->
-<!--        android:textSize="23sp"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="% of Sharpening Interval"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_horizontal_line"-->
-<!--        app:layout_constraintStart_toStartOf="@id/guideline1"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/guideline3"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        />-->
-
     <RelativeLayout
+        android:id="@+id/sharpening_percentage_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/aggregated_stats_horizontal_line"
@@ -276,7 +186,7 @@
         app:layout_constraintEnd_toEndOf="@id/guideline3">
 
         <TextView
-            android:id="@+id/left_text_view"
+            android:id="@+id/sharpening_percentage_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="% of sharpening interval"
@@ -284,7 +194,7 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:id="@+id/right_text_view"
+            android:id="@+id/sharpening_percentage_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10%"
@@ -292,6 +202,86 @@
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/km_since_last_sharpening_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sharpening_percentage_container"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline3">
+
+        <TextView
+            android:id="@+id/km_since_last_sharpening_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="km since last sharpening"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/km_since_last_sharpening_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/waxing_percentage_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/km_since_last_sharpening_container"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline3">
+
+        <TextView
+            android:id="@+id/waxing_percentage_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% of waxing interval"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/waxing_percentage_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/km_since_last_waxing_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/waxing_percentage_container"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline3">
+
+        <TextView
+            android:id="@+id/km_since_last_waxing_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="km since last waxing"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/km_since_last_waxing_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
 
 
 
