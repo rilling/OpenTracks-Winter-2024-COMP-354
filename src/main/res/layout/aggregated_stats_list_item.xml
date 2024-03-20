@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingEnd="8dp"
-    android:paddingStart="8dp"
     android:paddingBottom="8dp">
 
     <!-- Guidelines -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="0dp"
@@ -40,27 +41,27 @@
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?android:textColorPrimary"
-        tools:srcCompat="@drawable/ic_activity_bike_24dp" />
+        tools:srcCompat="@drawable/ic_activity_skiing_24dp" />
 
     <TextView
         android:id="@+id/aggregated_stats_type_label"
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_icon"
         app:layout_constraintTop_toTopOf="@+id/activity_icon"
-        tools:text="@string/activity_type_cycling" />
+        tools:text="@string/activity_type_skiing" />
 
     <TextView
         android:id="@+id/aggregated_stats_num_tracks"
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_type_label"
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_type_label"
         app:layout_constraintTop_toTopOf="@+id/aggregated_stats_type_label"
@@ -79,6 +80,8 @@
         tools:layout_editor_absoluteX="52dp"
         tools:text="100000" />
 
+    <!-- Time -->
+
     <TextView
         android:id="@+id/aggregated_stats_distance_unit"
         style="@style/TextAppearance.OpenTracks.PrimaryUnit"
@@ -89,7 +92,6 @@
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_distance"
         tools:text="km" />
 
-    <!-- Time -->
     <TextView
         android:id="@+id/aggregated_stats_time"
         style="@style/TextAppearance.OpenTracks.PrimaryValue"
@@ -122,6 +124,7 @@
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_avg_rate"
         tools:text="km/h" />
 
+<!--  avg moving speed  -->
     <TextView
         android:id="@+id/aggregated_stats_avg_rate_label"
         style="@style/TextAppearance.OpenTracks.SecondaryHeader"
@@ -166,12 +169,91 @@
         app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_max_rate"
         tools:text="@string/stats_max_speed" />
 
+<!--    START OF SHARPENING INFO-->
+
+    <TextView
+        android:id="@+id/sharpening_1"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        app:layout_constraintEnd_toStartOf="@id/aggregated_stats_distance_unit"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/activity_icon"
+        tools:text="99999" />
+
+    <TextView
+        android:id="@+id/sharpening_2"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/sharpening_1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_distance"
+        tools:text="testing" />
+
+    <TextView
+        android:id="@+id/sharpening_3"
+        style="@style/TextAppearance.OpenTracks.SecondaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
+        app:layout_constraintEnd_toStartOf="@+id/aggregated_stats_avg_rate_unit"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_distance"
+        tools:text="30" />
+
+    <TextView
+        android:id="@+id/sharpening_5"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_avg_rate"
+        tools:text="@string/stats_average_moving_speed" />
+
+    <!--    END OF SHARPENING INFO-->
+
+    <!--    START OF WAXING INFO -->
+
+    <TextView
+        android:id="@+id/waxing_1"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/activity_icon"
+        tools:text="00:00:00" />
+
+    <TextView
+        android:id="@+id/sharpening_4"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sharpening_3"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_avg_rate"
+        tools:text="km/h" />
+
     <View
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
