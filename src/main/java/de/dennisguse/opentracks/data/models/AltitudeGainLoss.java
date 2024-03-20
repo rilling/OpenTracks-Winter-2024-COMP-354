@@ -3,7 +3,7 @@ package de.dennisguse.opentracks.data.models;
 import java.util.List;
 
 public record AltitudeGainLoss(float gain_m, float loss_m) {
-    private static final double altitudeChangeThreshold = 0;
+    private static final double altitudeChangeThreshold = 10.0;
 
     private static boolean isSkiing;
     private static boolean isChairlift;

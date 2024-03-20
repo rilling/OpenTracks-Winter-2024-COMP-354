@@ -15,8 +15,6 @@ public class SegmentSplits {
 
         AltitudeGainLoss altitudeGainLoss = new AltitudeGainLoss(0, 0);
 
-        System.out.println(trackPoints.size());
-
         for (int i = 1; i < trackPoints.size(); i++) {
             TrackPoint cPoint = trackPoints.get(i);
 
