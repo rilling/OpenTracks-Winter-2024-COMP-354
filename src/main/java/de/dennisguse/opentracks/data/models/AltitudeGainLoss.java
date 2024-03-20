@@ -16,7 +16,7 @@ public record AltitudeGainLoss(float gain_m, float loss_m) {
     public static boolean isSkiing(){
         return isSkiing;
     }
-    public static boolean isIsChairlift(){
+    public static boolean isChairlift(){
         return isChairlift;
     }
     public boolean shouldStartNewSegment(List<TrackPoint> trackPoints, int currentIndex){
