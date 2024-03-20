@@ -406,7 +406,7 @@ limitations under the License.
     <string name="settings_night_mode_option_night">Night</string>
     <!-- Custom Names for Group 2 Setting Page -->
 
-    <string name="settings_maintenance_info_title">Maintenance Set Up and Information</string>
+    <string name="settings_maintenance_info_skis_title">Information about your skis</string>
     <string name="settings_maintenance_info">Set Up your Waxing and Sharpening Information</string>
 
     <string name="settings_announcements_totaltime_frequency">Time interval</string>
@@ -415,6 +415,10 @@ limitations under the License.
     <string name="settings_announcements_lap_heart_rate">Lap heart rate</string>
     <string name="settings_announcements_average_speed_pace">Average speed/pace</string>
     <string name="settings_announcements_lap_speed_pace">Lap speed/pace</string>
+
+    <string name="settings_maintenance_info_title">Maintenance Set Up and Information</string>
+    <string name="settings_maintenance_sharp_title">Sharpening Information</string>
+    <string name="settings_maintenance_wax_title">Waxing Information</string>
 
     <!-- Custom Layout -->
 

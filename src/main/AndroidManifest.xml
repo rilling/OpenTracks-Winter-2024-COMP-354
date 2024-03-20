@@ -1,21 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-Copyright 2010 Google Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:installLocation="auto">
+    android:installLocation="auto" >
 
     <supports-screens
         android:anyDensity="true"
@@ -43,13 +29,10 @@ limitations under the License.
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<!--    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
@@ -61,26 +44,33 @@ limitations under the License.
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="s" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 
     <application
         android:name=".Startup"
         android:allowBackup="true"
-        android:fullBackupContent="@xml/backup_rules_30_lower"
         android:dataExtractionRules="@xml/backup_rules_31_higher"
         android:enableOnBackInvokedCallback="true"
+        android:fullBackupContent="@xml/backup_rules_30_lower"
         android:hardwareAccelerated="true"
         android:hasFragileUserData="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/OpenTracksTheme">
-
+        android:theme="@style/OpenTracksTheme" >
+        <activity
+            android:name=".settings.MaintenanceInfo"
+            android:exported="true" />
         <activity
             android:name=".publicapi.StartRecording"
             android:exported="true"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -88,46 +78,40 @@ limitations under the License.
         <activity
             android:name=".publicapi.StopRecording"
             android:exported="true"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-
-        <!-- NOTE: the name of the MAIN/LAUNCHER is used by icon packs; if this is changed, icon packs break.-->
+        </activity> <!-- NOTE: the name of the MAIN/LAUNCHER is used by icon packs; if this is changed, icon packs break. -->
         <activity
             android:name=".introduction.IntroductionActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts"
-            />
+                android:resource="@xml/shortcuts" />
         </activity>
-
         <activity android:name=".AboutActivity" />
-
         <activity
             android:name=".HelpActivity"
             android:label="@string/menu_help" />
-
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ImportDirectoryChooserActivity" />
-
         <activity
             android:name=".io.file.importer.ImportActivity"
-            android:exported="true">
-
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/gpx+xml" />
             </intent-filter>
             <intent-filter>
@@ -135,12 +119,12 @@ limitations under the License.
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/gpx" />
             </intent-filter>
-
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -163,10 +147,9 @@ limitations under the License.
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx" />
             </intent-filter>
-
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -188,18 +171,17 @@ limitations under the License.
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.gpx" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/vnd.google-earth.kmz" />
             </intent-filter>
-
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -222,10 +204,9 @@ limitations under the License.
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kmz" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kmz" />
             </intent-filter>
-
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -247,18 +228,17 @@ limitations under the License.
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kmz" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kmz" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/vnd.google-earth.kml+xml" />
             </intent-filter>
-
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -281,10 +261,9 @@ limitations under the License.
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kml" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kml" />
             </intent-filter>
-
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -307,68 +286,59 @@ limitations under the License.
                 <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.kml" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.markers.MarkerDetailActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="de.dennisguse.opentracks.MarkerDetails" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.markers.MarkerEditActivity" />
-
         <activity
             android:name=".ui.markers.MarkerListActivity"
             android:exported="true"
             android:label="@string/menu_markers"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity
             android:name=".TrackListActivity"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity android:name=".TrackRecordedActivity" />
         <activity android:name=".TrackStoppedActivity" />
-
         <activity
             android:name=".TrackRecordingActivity"
-            android:parentActivityName=".TrackListActivity">
+            android:parentActivityName=".TrackListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".TrackListActivity" />
         </activity>
-
         <activity android:name=".TrackEditActivity" />
-
         <activity android:name=".ui.aggregatedStatistics.AggregatedStatisticsActivity" />
-
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ExportDirectoryChooserActivity" />
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ExportDirectoryChooserOneFileActivity" />
         <activity android:name=".io.file.importer.DirectoryChooserActivity$DefaultTrackExportDirectoryChooserActivity" />
-
         <activity android:name=".io.file.exporter.ExportActivity" />
-
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".settings.SettingsCustomLayoutListActivity" />
         <activity android:name=".settings.SettingsCustomLayoutEditActivity" />
-
         <activity
             android:name=".ShowErrorActivity"
             android:excludeFromRecents="true"
@@ -382,12 +352,11 @@ limitations under the License.
             android:authorities="${applicationId}.content"
             android:exported="false"
             android:grantUriPermissions="true" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
@@ -400,26 +369,18 @@ limitations under the License.
             android:foregroundServiceType="location|connectedDevice"
             android:icon="@drawable/ic_logo_color_24dp"
             android:label="@string/recording_service" />
-
         <service
             android:name=".io.file.exporter.ExportService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
         <service
             android:name=".io.file.importer.ImportService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
         <service
             android:name=".services.TrackDeleteService"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.TTS_SERVICE" />
-        </intent>
-    </queries>
 </manifest>
