@@ -44,7 +44,9 @@ public class TTSManager {
     // Adding log messages related to the TTSManager class
     private static final String TAG = TTSManager.class.getSimpleName();
 
+    //Super important : Context class provides access to system services & application resources
     private final Context context;
+
     //AudioManager Class  : Manage audio focus on the device (audio playback & recording)
     private final AudioManager audioManager;
 
@@ -58,8 +60,8 @@ public class TTSManager {
             Log.d(TAG, "Audio focus changed to " + focusChange); // Logging a message to the class
 
             //Constants that can be returned by the AudioManager Class
-            //AUDIOFOCUS_LOSS : system lost audio focus and can no longer be used
-            //AUDIOFOCUS_LOSS_TRANSIENT : Temporary loss of audio focus
+            // _LOSS : system lost audio focus and can no longer be used
+            // _LOSS_TRANSIENT : Temporary loss of audio focus
             // ''_CAN_DUCK : Lowers the volume of the media player (if another app is playing for example)
 
             boolean stop = List.of(AudioManager.AUDIOFOCUS_LOSS, AudioManager.AUDIOFOCUS_LOSS_TRANSIENT, AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK)
@@ -74,10 +76,11 @@ public class TTSManager {
             }
         }
     };
-
+    // 'UtteranceProgressListener' : interface & defines methods that can be called to monitor the progress of TTS utterance
     private final UtteranceProgressListener utteranceListener = new UtteranceProgressListener() {
+        // These methods can be really good for BackEnd to UI implementation
         @Override
-        public void onStart(String utteranceId) {
+        public void onStart(String utteranceId) { //when utterance begins
             int result = audioManager.requestAudioFocus(audioFocusChangeListener, AUDIO_STREAM, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
             if (result == AudioManager.AUDIOFOCUS_REQUEST_FAILED) {
                 Log.w(TAG, "Failed to request audio focus.");
@@ -85,7 +88,7 @@ public class TTSManager {
         }
 
         @Override
-        public void onDone(String utteranceId) {
+        public void onDone(String utteranceId) { // when utterance has been successfully spoken
             int result = audioManager.abandonAudioFocus(audioFocusChangeListener);
             if (result == AudioManager.AUDIOFOCUS_REQUEST_FAILED) {
                 Log.w(TAG, "Failed to relinquish audio focus.");
@@ -93,25 +96,33 @@ public class TTSManager {
         }
 
         @Override
-        public void onError(String utteranceId) {
+        public void onError(String utteranceId) { // Called if an error occurs during the utterance
             Log.e(TAG, "An error occurred for utteranceId " + utteranceId);
         }
     };
 
-    private TextToSpeech tts;
+    private TextToSpeech tts; //Conversion
     // Response from TTS after its initialization
-    private int ttsInitStatus = TextToSpeech.ERROR;
+    private int ttsInitStatus = TextToSpeech.ERROR; //Stores initialization status =>
+    // Can/will change to .SUCCESS or  .FAILED_SYNTHESIS
 
+//    A boolean field that indicates whether the text-to-speech engine has been properly initialized
+//    and is ready to perform text-to-speech conversion.
     private boolean ttsReady = false;
 
     private MediaPlayer ttsFallback;
+//    MediaPlayer class: used to play a pre-recorded audio file as a fallback mechanism when
+//    the TTS engine is unable to perform the TTS conversion.
 
-    TTSManager(Context context) {
+    TTSManager(Context context) { // Constructor of the TTSManager class
         this.context = context;
         audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+//        TTSManager constructor initializes audioManager by calling
+//        getSystemService(Context.AUDIO_SERVICE) on the Context object, which returns an
+//        AudioManager object.
     }
 
-    public void start() {
+    public void start() { // Called in the VoiceAnnouncementManager Class
         Log.d(TAG, "Start");
 
         if (tts == null) {
@@ -121,7 +132,12 @@ public class TTSManager {
             });
         }
         if (ttsFallback == null) {
+
+
             ttsFallback = MediaPlayer.create(context, R.raw.tts_fallback);
+            // initialize a new instance of MediaPlayer & associates it with a sound file resource in the app's raw directory
+            //R.raw.tts_fallback : contains reference to the sound file
+
             if (ttsFallback == null) {
                 Log.w(TAG, "MediaPlayer for ttsFallback could not be created.");
             } else {
