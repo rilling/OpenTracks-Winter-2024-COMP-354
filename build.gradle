@@ -14,6 +14,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -136,6 +137,7 @@ dependencies {
     implementation 'androidx.core:core:1.12.0'
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation 'androidx.mediarouter:mediarouter:1.6.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     androidTestImplementation 'androidx.test:core:1.5.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
