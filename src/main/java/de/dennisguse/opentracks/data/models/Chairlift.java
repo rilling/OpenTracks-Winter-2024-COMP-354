@@ -143,6 +143,7 @@ public class Chairlift {
             double rideDurationMinutes = rideDuration.toMinutes(); // Convert duration to minutes
             totalTime += rideDurationMinutes; // Add the ride duration to total time
         }
+
         return totalTime;
     }
 
