@@ -142,5 +142,4 @@ public class Chairlift {
         return totalTime;
     }
 
-
 }
