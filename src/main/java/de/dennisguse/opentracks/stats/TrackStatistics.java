@@ -61,6 +61,26 @@ public class TrackStatistics {
     // The average heart rate seen on this track
     private HeartRate avgHeartRate = null;
 
+
+    // The total number of runs in a season.
+    private int totalRunsSeason;
+
+    // The total number of days skied in a season.
+    private int totalSkiDaysSeason;
+
+    // The total distance skied (consider all tracks) in a season.
+    private Distance totalTrackDistanceSeason;
+
+    // The total distance covered while in vertical descents in a season.
+    private Distance totalVerticalDescentSeason;
+
+    // The average speed in a season.
+    private Speed avgSpeedSeason;
+
+    // The slope percentage in a season.
+    private double slopePercentageSeason;
+
+
     private boolean isIdle;
 
     public TrackStatistics() {
@@ -373,6 +393,60 @@ public class TrackStatistics {
             totalAltitudeLoss_m = 0f;
         }
         totalAltitudeLoss_m += loss_m;
+    }
+
+
+    public int getTotalRunsSeason(){
+        return this.totalRunsSeason;
+    }
+
+    public void setTotalRunsSeason(int totalRunsSeason){
+        this.totalRunsSeason = totalRunsSeason;
+    }
+
+
+    public int getTotalSkiDaysSeason(){
+        return this.totalSkiDaysSeason;
+    }
+
+    public void setTotalSkiDaysSeason(int totalSkiDaysSeason){
+        this.totalSkiDaysSeason = totalSkiDaysSeason;
+    }
+
+
+    public Distance getTotalTrackDistanceSeason(){
+        return this.totalTrackDistanceSeason;
+    }
+
+    public void setTotalTrackDistanceSeason(Distance totalTrackDistanceSeason){
+        this.totalTrackDistanceSeason = totalTrackDistanceSeason;
+    }
+
+
+    public Distance getTotalVerticalDescentSeasonSeason(){
+        return this.totalVerticalDescentSeason;
+    }
+
+    public void setTotalVerticalDescentSeason(Distance totalVerticalDescentSeason){
+        this.totalVerticalDescentSeason = totalVerticalDescentSeason;
+    }
+
+
+    public Speed getAvgSpeedSeason(){
+        return this.avgSpeedSeason;
+    }
+
+    public void setAvgSpeedSeason(Speed avgSpeedSeason){
+        this.avgSpeedSeason = avgSpeedSeason;
+    }
+
+
+    public double getSlopePercentageSeason(){
+        return this.slopePercentageSeason;
+    }
+
+    public void setSlopePercentageSeason(double slopePercentageSeason){
+        this.slopePercentageSeason = slopePercentageSeason;
     }
 
     @Override
