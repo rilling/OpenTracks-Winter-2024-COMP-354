@@ -132,6 +132,7 @@ public class Chairlift {
         return durationMinutes;
     }
     private double calculateTotalTime(List<TrackPoint> trackPoints) {
+
         double totalTime = 0; //max time for chairlift
 
         for (int i = 1; i < trackPoints.size(); i++) {
