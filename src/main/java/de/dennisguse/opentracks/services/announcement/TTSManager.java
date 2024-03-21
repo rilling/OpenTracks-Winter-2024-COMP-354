@@ -151,8 +151,8 @@ public class TTSManager {
     }
 
     public void announce(@NonNull Spannable announcement) {
-        synchronized (this) {
-            if (!ttsReady) {
+        synchronized (this) { // One announcement at a time
+            if (!ttsReady) { // checking if ready to make an announcement
                 ttsReady = ttsInitStatus == TextToSpeech.SUCCESS;
                 if (ttsReady) {
                     onTtsReady();
@@ -196,8 +196,9 @@ public class TTSManager {
     }
 
     private void onTtsReady() {
-        Locale locale = Locale.getDefault();
-        int languageAvailability = tts.isLanguageAvailable(locale);
+        Locale locale = Locale.getDefault(); // Get default geolocation / region etc
+        int languageAvailability = tts.isLanguageAvailable(locale); //Method in the TTS class :
+        // checks is the engine can speak specified language
         if (languageAvailability == TextToSpeech.LANG_MISSING_DATA || languageAvailability == TextToSpeech.LANG_NOT_SUPPORTED) {
             Log.w(TAG, "Default locale not available, use English.");
             locale = Locale.ENGLISH;
@@ -207,7 +208,9 @@ public class TTSManager {
              */
         }
         tts.setLanguage(locale);
-        tts.setSpeechRate(PreferencesUtils.getVoiceSpeedRate());
+        tts.setSpeechRate(PreferencesUtils.getVoiceSpeedRate()); // Set speech rate output based on app preferences (set by user)
+        // track the progress of the TTS utterance,and to perform certain actions
+        // when specific events in the lifecycle of an utterance occur.
         tts.setOnUtteranceProgressListener(utteranceListener);
     }
 }
