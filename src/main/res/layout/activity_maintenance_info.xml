@@ -136,7 +136,7 @@ Also this file is on folder layout don't try to change it I had some issue-->
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Date of Last Waxing:"
+        android:text="@string/settings_maintenance_last_wax_date"
         app:layout_constraintTop_toBottomOf="@id/WaxingInfo"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -146,7 +146,7 @@ Also this file is on folder layout don't try to change it I had some issue-->
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:text="DD:MM:YYYY"
+        android:text="@string/settings_maintenance_wax_date"
         app:layout_constraintTop_toTopOf="@id/tvDateLastWaxingLabel"
         app:layout_constraintBottom_toBottomOf="@id/tvDateLastWaxingLabel"
         app:layout_constraintStart_toEndOf="@id/tvDateLastWaxingLabel"
@@ -158,7 +158,7 @@ Also this file is on folder layout don't try to change it I had some issue-->
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Wax Type: X"
+        android:text="@string/settings_maintenance_wax_type"
         app:layout_constraintTop_toBottomOf="@id/tvDateLastWaxingLabel"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -168,7 +168,7 @@ Also this file is on folder layout don't try to change it I had some issue-->
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:text="Type"
+        android:text="@string/settings_maintenance_wax_type_input"
         app:layout_constraintTop_toTopOf="@id/tvWaxTypeLabel"
         app:layout_constraintBottom_toBottomOf="@id/tvWaxTypeLabel"
         app:layout_constraintStart_toEndOf="@id/tvWaxTypeLabel"
@@ -180,7 +180,7 @@ Also this file is on folder layout don't try to change it I had some issue-->
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Waxing Interval: XXXX KM"
+        android:text="@string/settings_maintenance_wax_interval"
         app:layout_constraintTop_toBottomOf="@id/tvWaxTypeLabel"
         app:layout_constraintStart_toStartOf="parent" />
 
