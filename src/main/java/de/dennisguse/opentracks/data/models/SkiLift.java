@@ -1,3 +1,5 @@
+package de.dennisguse.opentracks.data.models;
+
 import java.util.List;
 
 /**
