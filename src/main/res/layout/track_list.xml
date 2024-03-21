@@ -124,7 +124,7 @@ limitations under the License.
             app:icon="@drawable/ic_gps_off_24dp"
             app:iconTint="?attr/colorOnBackground" />
 
-        <!--podium icon from : <a href="https://www.flaticon.com/free-icons/podium" title="podium icons">Podium icons created by Freepik - Flaticon</a> -->
+        <!--podium icon from https://www.flaticon.com/free-icon/podium_548440?term=leaderboard&related_id=548440 : <a href="https://www.flaticon.com/free-icons/podium" title="podium icons">Podium icons created by Freepik - Flaticon</a> -->
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.Material3.Button.IconButton"
             android:id="@+id/leaderboard_button"
