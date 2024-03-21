@@ -96,7 +96,7 @@ public class Chairlift {
         }
 
         if (totalTime > timeThreshold){
-            if (time > 1 && time < 10){
+            if (time > 1 && time < 77){ //in second?
                 return true;
             }
             else
@@ -124,10 +124,13 @@ public class Chairlift {
     }
 
     private double calculateTime(List<TrackPoint> trackPoints) {
+        TrackPoint fPoint = trackPoints.get(0);
+        TrackPoint lPoint = trackPoints.get(trackPoints.size() - 1);
+        Duration duration = Duration.between(fPoint.getTime(), lPoint.getTime());
+        double durationMinutes = duration.toMinutes(); //convert into minutes
 
-        return 0;
+        return durationMinutes
     }
-
     private double calculateTotalTime(List<TrackPoint> trackPoints) {
         double totalTime = 0; //max time for chairlift
 
