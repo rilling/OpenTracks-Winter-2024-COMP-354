@@ -129,7 +129,7 @@ public class Chairlift {
         Duration duration = Duration.between(fPoint.getTime(), lPoint.getTime());
         double durationMinutes = duration.toMinutes(); //convert into minutes
 
-        return durationMinutes
+        return durationMinutes;
     }
     private double calculateTotalTime(List<TrackPoint> trackPoints) {
         double totalTime = 0; //max time for chairlift
