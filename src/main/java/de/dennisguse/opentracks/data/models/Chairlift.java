@@ -61,13 +61,13 @@ public class Chairlift {
         double speedThreshold = 2;
         double timeThreshold = 1;
 
-        // Get the first and last track points
+        //Get the first and last track points
         TrackPoint firstPoint = trackPoints.get(0);
         TrackPoint lastPoint = trackPoints.get(trackPoints.size() - 1);
-        // Check if altitude change is within threshold
+        //Check if altitude change is within threshold
         double altitudeChange;
 
-        // Check if altitude change is within threshold
+        //Check if altitude change is within threshold
         altitudeChange = Math.abs(firstPoint.getAltitude().toM() - lastPoint.getAltitude().toM());
 
         if (altitudeChange > altitudeChangeThreshold) {
@@ -78,15 +78,15 @@ public class Chairlift {
         // Calculate total distance
         double totalDistance = calculateTotalDistance(trackPoints);
 
-        // Calculate total time
+        //Calculate total time
         double totalTime = calculateTotalTime(trackPoints);
 
         double time = calculateTime(trackPoints);
 
-        // Calculate average speed
+        //Calculate average speed
         double averageSpeed = totalDistance / totalTime;
 
-        // Check if average speed is below a certain threshold
+        //Check if average speed is below a certain threshold
         if (averageSpeed > speedThreshold) {
             if (averageSpeed < 2 || averageSpeed > 6) //meters/seconds
             return false; //averege speed too slow/fast for a chairlift
@@ -101,7 +101,6 @@ public class Chairlift {
             }
             else
                 return false;
-
         }
 
         return false;
