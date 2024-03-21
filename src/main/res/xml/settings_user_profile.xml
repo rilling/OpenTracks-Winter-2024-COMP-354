@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-</androidx.preference.PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Profile Picture Preference -->
+    <Preference
+        android:key="profile_picture"
+        android:title="Profile Picture"
+        android:summary=" "
+        android:layout="@layout/laprofile_picture_preference_layout"/>
+
+    <!-- Username Preference -->
+    <Preference
+        android:key="username"
+        android:title="Username"
+        android:summary="John Doe"/>
+
+    <!-- User Details Section -->
+    <PreferenceCategory
+        android:title="User Details">
+
+        <!-- Birthday Preference -->
+        <Preference
+            android:key="birthday"
+            android:title="Birthday"
+            android:summary="January 1, 1990"/>
+
+        <!-- Location Preference -->
+        <Preference
+            android:key="location"
+            android:title="Location"
+            android:summary="New York, USA"/>
+
+        <!-- Weight Preference -->
+        <Preference
+            android:key="weight"
+            android:title="Weight"
+            android:summary="70 kg"/>
+
+        <!-- Height Preference -->
+        <Preference
+            android:key="height"
+            android:title="Height"
+            android:summary="175 cm"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
