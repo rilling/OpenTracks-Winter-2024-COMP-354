@@ -1,6 +1,11 @@
 package de.dennisguse.opentracks.settings;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
@@ -13,7 +18,86 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings_user_profile);
+
+        Preference editPreference = findPreference(getString(R.string.edit_profile_key));
+        if (editPreference != null) {
+            editPreference.setOnPreferenceClickListener(preference -> {
+                showEditProfileDialog();
+                return true;
+            });
+        }
     }
+
+    private void showEditProfileDialog() {
+        // Inflate the custom layout for the edit dialog.
+        View formView = LayoutInflater.from(getContext()).inflate(R.layout.edit_profile_form, null);
+
+        // Initialize all the EditText fields.
+        EditText editNickname = formView.findViewById(R.id.editNickname);
+        EditText editDateOfBirth = formView.findViewById(R.id.editDateOfBirth);
+        EditText editHeight = formView.findViewById(R.id.editHeight);
+        EditText editWeight = formView.findViewById(R.id.editWeight);
+        EditText editGender = formView.findViewById(R.id.editGender);
+        EditText editLocation = formView.findViewById(R.id.editLocation);
+
+        // Create the AlertDialog.
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.edit_profile_title)
+                .setView(formView)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    // Collect data from the EditText fields.
+                    String nickname = editNickname.getText().toString();
+                    String dateOfBirth = editDateOfBirth.getText().toString();
+                    String height = editHeight.getText().toString();
+                    String weight = editWeight.getText().toString();
+                    String gender = editGender.getText().toString();
+                    String location = editLocation.getText().toString();
+
+                    // Validate and save the data if valid.
+                    if (validateInputs(nickname, dateOfBirth, height, weight, gender, location)) {
+                        saveProfileData(nickname, dateOfBirth, height, weight, gender, location);
+                        showToast("Profile updated successfully!");
+                    } else {
+                        showToast("Please check your inputs.");
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    // A simple method to show toast messages.
+    private void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    // A method to validate the user inputs.
+    private boolean validateInputs(String nickname, String dateOfBirth, String height, String weight, String gender, String location) {
+        if (nickname.isEmpty() || gender.isEmpty()) {
+            showToast("Nickname and gender cannot be empty.");
+            return false;
+        }
+        try {
+            if (Double.parseDouble(height) < 0) {
+                showToast("Height cannot be negative.");
+                return false;
+            }
+            if (Double.parseDouble(weight) < 0) {
+                showToast("Weight cannot be negative.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showToast("Height and weight must be valid numbers.");
+            return false;
+        }
+
+        return true;
+    }
+
+    // TODO: Implement saving logic here.
+    private void saveProfileData(String nickname, String dateOfBirth, String height, String weight, String gender, String location) {
+
+    }
+
     @Override
     public void onStart() {
         super.onStart();

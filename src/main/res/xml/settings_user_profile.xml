@@ -42,6 +42,12 @@
             android:key="height"
             android:title="Height"
             android:summary="175 cm"/>
+
+        <Preference
+            android:key="@string/edit_profile_key"
+            android:title="@string/edit_profile_title"
+            android:summary="@string/edit_profile_summary"
+            android:icon="@android:drawable/ic_menu_edit" />
     </PreferenceCategory>
 
 </PreferenceScreen>
