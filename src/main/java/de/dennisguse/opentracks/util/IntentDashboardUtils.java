@@ -29,7 +29,7 @@ import de.dennisguse.opentracks.data.tables.TrackPointsColumns;
 import de.dennisguse.opentracks.data.tables.TracksColumns;
 import de.dennisguse.opentracks.io.file.TrackFileFormat;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
-import de.dennisguse.opentracks.stats.SeasonalStatistics;
+import de.dennisguse.opentracks.stats.OverallStatistics;
 
 /**
  * Create an {@link Intent} to request showing tracks on a Map or a Dashboard.
@@ -207,7 +207,7 @@ public class IntentDashboardUtils {
          */
 
         // Retrieve the singleton (when it's put in place)
-        SeasonalStatistics allTimeStats = new SeasonalStatistics();
+        OverallStatistics allTimeStats = new OverallStatistics();
 
         // Would need to populate this with data once the service functions are created
         JSONObject overallSeasonStatsJSONPayload = new JSONObject();
