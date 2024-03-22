@@ -371,6 +371,9 @@ limitations under the License.
     <string name="settings_user_profile_title">User Profile</string>
     <string name="settings_user_profile_summary">Personalized digital identity</string>
 
+    <string name="settings_ski_profile_title">Ski Profile</string>
+    <string name="settings_ski_profile_summary">Personalized ski profile</string>
+
     <!-- Settings Advanced -->
     <string name="settings_advanced">Advanced</string>
     <string name="settings_default_trackfileformat">Export/sharing file format</string>
