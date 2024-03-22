@@ -96,6 +96,8 @@ public class SettingsActivity extends AbstractActivity implements ChooseActivity
             fragment = new PublicAPISettingsFragment();
         } else if (key.equals(getString(R.string.settings_user_profile_key))) {
             fragment = new UserProfileFragment();
+        } else if (key.equals(getString(R.string.settings_ski_profile_key))) {
+            fragment = new SkiProfileFragment();
         }
 
         return fragment;
