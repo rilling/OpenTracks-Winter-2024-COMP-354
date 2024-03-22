@@ -29,6 +29,7 @@ import de.dennisguse.opentracks.data.tables.TrackPointsColumns;
 import de.dennisguse.opentracks.data.tables.TracksColumns;
 import de.dennisguse.opentracks.io.file.TrackFileFormat;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
+import de.dennisguse.opentracks.stats.SeasonalStatistics;
 
 /**
  * Create an {@link Intent} to request showing tracks on a Map or a Dashboard.
@@ -205,10 +206,12 @@ public class IntentDashboardUtils {
          *  It would also inform us on what local db connection strings to pass over.
          */
 
+        // Retrieve the singleton (when it's put in place)
+        SeasonalStatistics allTimeStats = new SeasonalStatistics();
+
         // Would need to populate this with data once the service functions are created
         JSONObject overallSeasonStatsJSONPayload = new JSONObject();
-        overallSeasonStatsJSONPayload.put("Seasons", new Object());
-        // ...
+        overallSeasonStatsJSONPayload.put("All-Time Overall Stats", allTimeStats);
 
         ArrayList<Uri> uris = new ArrayList<>();
         uris.add(0, Uri.withAppendedPath(Uri.parse("{Some URI...}"), seasonIDList));
