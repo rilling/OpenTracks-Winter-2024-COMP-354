@@ -217,6 +217,10 @@ public class IntentDashboardUtils {
         uris.add(0, Uri.withAppendedPath(Uri.parse("{Some URI...}"), seasonIDList));
         // ...
 
+        Log.i(TAG, overallSeasonStatsJSONPayload.toString());
+
+        Log.i(TAG, uris.toString());
+
         Intent intent = new Intent(ACTION_DASHBOARD);
         intent.putExtra(EXTRAS_PROTOCOL_VERSION, CURRENT_VERSION);
         intent.putExtra(ACTION_DASHBOARD_OVERALL_SKI_PAYLOAD, overallSeasonStatsJSONPayload.toString());
