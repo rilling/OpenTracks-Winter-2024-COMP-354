@@ -21,6 +21,28 @@ import de.dennisguse.opentracks.data.models.Distance;
 import de.dennisguse.opentracks.data.models.Speed;
 
 public class OverallStatistics {
+    public OverallStatistics() {
+        this.totalRunsOverall = 50;
+        this.totalSkiDaysOverall = 25;
+        this.totalTrackDistanceOverall = Distance.ofKilometer(500);
+        this.totalVerticalDescentOverall = Distance.ofMM(100);
+        this.avgSpeedOverall = Speed.ofKMH(40);
+        this.slopePercentageOverall = .66;
+    }
+
+    public OverallStatistics(int totalRunsOverall,
+                             int totalSkiDaysOverall,
+                             Distance totalTrackDistanceOverall,
+                             Distance totalVerticalDescentOverall,
+                             Speed avgSpeedOverall,
+                             double slopePercentageOverall) {
+        this.totalRunsOverall = totalRunsOverall;
+        this.totalSkiDaysOverall = totalSkiDaysOverall;
+        this.totalTrackDistanceOverall = totalTrackDistanceOverall;
+        this.totalVerticalDescentOverall = totalVerticalDescentOverall;
+        this.avgSpeedOverall = avgSpeedOverall;
+        this.slopePercentageOverall = slopePercentageOverall;
+    }
 
     // The total number of all-time runs.
     private int totalRunsOverall;
