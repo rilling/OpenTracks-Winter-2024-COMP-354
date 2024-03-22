@@ -709,4 +709,7 @@ limitations under the License.
     <string name="always">Always</string>
 
     <string name="introduction_osm_dashboard">OpenTracks itself does not provide a map. Please install OSMDashboard to view your recordings on a map.</string>
+    <string name="title_activity_leaderboard">LeaderboardActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
