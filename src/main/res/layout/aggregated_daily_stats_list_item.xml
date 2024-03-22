@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingEnd="8dp"
+    android:paddingStart="8dp"
+    android:paddingBottom="8dp">
+
+    <!-- Guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="8dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="8dp" />
+
+    <!-- Icon and sport name -->
+    <ImageView
+        android:id="@+id/activity_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?android:textColorPrimary"
+        tools:srcCompat="@drawable/ic_activity_bike_24dp" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_day_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
+        app:layout_constraintStart_toEndOf="@+id/activity_icon"
+        app:layout_constraintTop_toTopOf="@+id/activity_icon"
+        tools:text="@string/stats_day" />
+
+    <!-- Distance -->
+
+    <TextView
+        android:id="@+id/aggregated_stats_distance"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/aggregated_stats_distance_unit"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/activity_icon"
+        tools:layout_editor_absoluteX="52dp"
+        tools:text="100000" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_distance_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_distance"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_distance"
+        tools:text="km" />
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/aggregated_stats_time"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/activity_icon"
+        tools:text="00:00:00" />
+
+    <!-- Avg. rate -->
+    <TextView
+        android:id="@+id/aggregated_stats_avg_rate"
+        style="@style/TextAppearance.OpenTracks.SecondaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/aggregated_stats_avg_rate_unit"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_distance"
+        tools:text="30" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_avg_rate_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_avg_rate"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_avg_rate"
+        tools:text="km/h" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_avg_rate_label"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_avg_rate"
+        tools:text="@string/stats_average_moving_speed" />
+
+    <!-- Max. rate -->
+    <TextView
+        android:id="@+id/aggregated_stats_max_rate"
+        style="@style/TextAppearance.OpenTracks.SecondaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/aggregated_stats_max_rate_unit"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_time"
+        tools:text="70" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_max_rate_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_max_rate"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_max_rate"
+        tools:text="km/h" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_max_rate_label"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_max_rate"
+        tools:text="@string/stats_max_speed" />
+
+    <View
+        android:id="@+id/aggregated_stats_horizontal_line"
+        style="@style/HorizontalLine"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
