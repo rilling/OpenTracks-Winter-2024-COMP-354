@@ -1,8 +1,10 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics.dailyStats;
 
 import org.junit.Test;
+
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List; // import the List class
+
 import com.github.mikephil.charting.data.Entry;
 
 public class DailyPlottingModuleTest {
@@ -10,7 +12,7 @@ public class DailyPlottingModuleTest {
     public void movingAverageCorrect() throws Exception {
         DailyPlottingModule plotModule = new DailyPlottingModule();
         List<Entry> test_entries = new ArrayList<Entry>();
-        for (float i = 1f; i<=10f; i++){
+        for (float i = 1f; i <= 10f; i++) {
             test_entries.add(new Entry(i, i));
         }
         int frequency = 3;
