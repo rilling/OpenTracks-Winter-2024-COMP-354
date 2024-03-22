@@ -19,6 +19,8 @@ import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.TrackSelection;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.databinding.AggregatedStatsBinding;
+import de.dennisguse.opentracks.ui.aggregatedStatistics.dailyStats.DailyStatsActivity;
+import de.dennisguse.opentracks.util.IntentUtils;
 
 public class AggregatedStatisticsActivity extends AbstractActivity implements FilterDialogFragment.FilterDialogListener {
 
@@ -110,6 +112,11 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         if (item.getItemId() == R.id.aggregated_statistics_clear_filter) {
             setMenuVisibility(false);
             viewModel.clearSelection();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.visualize_daily_stats) {
+            startActivity(IntentUtils.newIntent(this, DailyStatsActivity.class));
             return true;
         }
 
