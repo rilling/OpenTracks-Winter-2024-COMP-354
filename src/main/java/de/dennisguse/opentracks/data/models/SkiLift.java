@@ -1,4 +1,8 @@
+package de.dennisguse.opentracks.data.models;
+
 import java.util.List;
+
+import de.dennisguse.opentracks.data.models.TrackPoint;
 
 public class SkiLift {
     private String name;
@@ -62,7 +66,7 @@ public class SkiLift {
         TrackPoint lastPoint = trackPoints.get(trackPoints.size() - 1);
 
         // Check if altitude has increased significantly
-        double altitudeChange = lastPoint.getAltitude() - firstPoint.getAltitude();
+        double altitudeChange = firstPoint.getAltitude().toM() - lastPoint.getAltitude().toM();
         if (altitudeChange < altitudeChangeThreshold) {
             return false; // Altitude change is not significant
         }
