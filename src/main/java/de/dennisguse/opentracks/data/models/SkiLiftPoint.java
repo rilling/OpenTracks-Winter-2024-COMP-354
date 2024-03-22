@@ -2,6 +2,8 @@ package de.dennisguse.opentracks.data.models;
 
 import androidx.annotation.NonNull;
 
+import java.time.Instant;
+
 /**
  * A specialized TrackPoint representing a point during a ski lift ride.
  * Inherits from TrackPoint class.
