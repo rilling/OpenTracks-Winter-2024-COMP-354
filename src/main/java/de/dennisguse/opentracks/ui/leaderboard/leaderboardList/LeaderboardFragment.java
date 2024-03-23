@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.models.Rankings;
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.placeholder.PlaceholderContent;
 
 /**
  * A fragment representing a list of Items.

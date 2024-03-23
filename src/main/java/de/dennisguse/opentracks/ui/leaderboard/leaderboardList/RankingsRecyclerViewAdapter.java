@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import de.dennisguse.opentracks.data.models.Rankings.Ranking;
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.placeholder.PlaceholderContent.PlaceholderItem;
 import de.dennisguse.opentracks.databinding.FragmentLeaderboardBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * {@link RecyclerView.Adapter} that can display a list of {@link Ranking} instances.
  * TODO: Replace the implementation with code for your data type.
  */
 public class RankingsRecyclerViewAdapter extends RecyclerView.Adapter<RankingsRecyclerViewAdapter.ViewHolder> {
