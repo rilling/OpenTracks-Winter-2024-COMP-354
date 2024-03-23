@@ -17,6 +17,8 @@ import de.dennisguse.opentracks.R;
 
 public class UserProfileFragment extends PreferenceFragmentCompat {
 
+    SwitchPreference leaderboardSwitch;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings_user_profile);
@@ -30,15 +32,17 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
         }
 
         // Check toggle status for leaderboard preferences
-        SwitchPreference leaderboardSwitch = findPreference("leaderboard_switch");
+        leaderboardSwitch = findPreference("leaderboard_switch");
+        assert leaderboardSwitch != null;
         leaderboardSwitch.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(@NonNull Preference preference) {
                 if(leaderboardSwitch.isChecked())
                 {
-                    showToast("Updated sharing preferences");
-
                     // Form to check/ uncheck shared details
+
+                    displayCustomSharingDialog();
+
                 }
                 return false;
             }
@@ -110,6 +114,26 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
         }
 
         return true;
+    }
+
+    private void displayCustomSharingDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Confirm Selection")
+                .setMessage("Do you allow OpenTracks to store and display the following information on the leaderboard:\n...")
+                .setPositiveButton("ALLOW", (dialog, which) -> {
+
+                    showToast("Updated sharing permissions");
+
+                    // TODO: Implement saving sharing permissions here.
+
+                })
+                .setNegativeButton("CANCEL", (dialog, which) -> {
+                    // Un-toggle leaderboard switch
+
+                    leaderboardSwitch.setChecked(false);
+                })
+                .show();
     }
 
     // TODO: Implement saving logic here.
