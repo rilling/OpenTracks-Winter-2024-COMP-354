@@ -1,4 +1,4 @@
-package de.dennisguse.opentracks.ui.leaderboard;
+package de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
