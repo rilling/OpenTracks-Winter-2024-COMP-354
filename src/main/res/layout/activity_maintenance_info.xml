@@ -24,6 +24,7 @@ Also this file is on folder layout don't try to change it I had some issue-->
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <!-- Sharpening Information Section -->
     <TextView
         android:id="@+id/SharpeningInfo"
@@ -47,6 +48,29 @@ Also this file is on folder layout don't try to change it I had some issue-->
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/SharpeningInfo" />
 
+
+    <!-- Base Angle -->
+    <TextView
+        android:id="@+id/tvSharpeningDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_last_sharpening_date"
+        app:layout_constraintTop_toBottomOf="@id/SharpeningInfo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDateLastSharpening"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/settings_maintenance_sharpening_date"
+        app:layout_constraintTop_toTopOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintStart_toEndOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetSharpening" />
+
+
     <!-- Base Angle -->
     <TextView
         android:id="@+id/tvBaseAngleLabel"
@@ -54,8 +78,9 @@ Also this file is on folder layout don't try to change it I had some issue-->
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Base Angle: XXX"
-        app:layout_constraintTop_toBottomOf="@id/SharpeningInfo"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <!-- Edge Angle -->
     <SeekBar
