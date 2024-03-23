@@ -1,13 +1,12 @@
-package de.dennisguse.opentracks.ui.leaderboard;
+package de.dennisguse.opentracks.ui.leaderboard.leaderboardList;
 
 import static androidx.lifecycle.Transformations.map;
 
-import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class PageViewModel extends ViewModel {
+public class LeaderboardListViewModel extends ViewModel {
 
     private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
     private LiveData<String> mText = map(mIndex, input -> "Hello world from section: " + input);
