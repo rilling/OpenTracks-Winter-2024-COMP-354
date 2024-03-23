@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/SkiTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ski Resorts"
+        android:textAlignment="center"
+        android:textColor="#A43F20"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:text="Ski Season Stats" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longest Track"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="554dp" />
+
+    <TextView
+        android:id="@+id/longestTrackId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="573dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tallest Track"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="622dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Most Runs in a Day"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="554dp" />
+
+    <TextView
+        android:id="@+id/mostRunsId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="283dp"
+        tools:layout_editor_absoluteY="573dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steepest Run"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="622dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorite Lift"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="295dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 Most Used Lifts"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Most Common Resorts"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="432dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Track Dist."
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ave. Slope"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="293dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Runs"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="117dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Vert."
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="286dp"
+        tools:layout_editor_absoluteY="117dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overall Season Records"
+        android:textAlignment="center"
+        android:textColor="#A43F20"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="79dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resort Stats"
+        android:textAlignment="center"
+        android:textColor="#A43F20"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="266dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personal Bests"
+        android:textAlignment="center"
+        android:textColor="#A43F20"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="507dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ave. Speed"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="289dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ski Days"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <TextView
+        android:id="@+id/totalRunsId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <TextView
+        android:id="@+id/totalVertId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <TextView
+        android:id="@+id/skiDaysId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="184dp" />
+
+    <TextView
+        android:id="@+id/avgSpeedId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="300dp"
+        tools:layout_editor_absoluteY="184dp" />
+
+    <TextView
+        android:id="@+id/totalTrackDistId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <TextView
+        android:id="@+id/avgSlopeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="300dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <TextView
+        android:id="@+id/favoriteLiftId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="314dp" />
+
+    <TextView
+        android:id="@+id/fiveUsedLiftsId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="375dp" />
+
+    <TextView
+        android:id="@+id/steepestRunId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <TextView
+        android:id="@+id/tallestTrackId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <TextView
+        android:id="@+id/mostCommonResortsId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#value#"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="451dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
