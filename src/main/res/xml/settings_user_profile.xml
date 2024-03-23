@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Profile Picture Preference -->
     <Preference
@@ -48,6 +49,17 @@
             android:title="@string/edit_profile_title"
             android:summary="@string/edit_profile_summary"
             android:icon="@android:drawable/ic_menu_edit" />
+
+        <SwitchPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:defaultValue="false"
+            android:summaryOff="Share your details with other users"
+            android:summaryOn="Sharing"
+            android:title="Allow to Share on Leaderboard"
+            app:key="leaderboard_switch"
+            app:switchTextOff="No" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

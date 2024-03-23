@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreference;
 
 import de.dennisguse.opentracks.R;
 
@@ -26,6 +28,23 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
                 return true;
             });
         }
+
+        // Check toggle status for leaderboard preferences
+        SwitchPreference leaderboardSwitch = findPreference("leaderboard_switch");
+        leaderboardSwitch.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(@NonNull Preference preference) {
+                if(leaderboardSwitch.isChecked())
+                {
+                    showToast("Updated sharing preferences");
+
+                    // Form to check/ uncheck shared details
+                }
+                return false;
+            }
+        });
+
+
     }
 
     private void showEditProfileDialog() {
