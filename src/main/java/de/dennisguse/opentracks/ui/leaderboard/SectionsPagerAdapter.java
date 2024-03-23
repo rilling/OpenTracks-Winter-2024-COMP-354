@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.ItemFragment;
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.LeaderboardListFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
