@@ -201,7 +201,7 @@ public class TrackRecordingService extends Service implements TrackPointCreator.
 
 //        handler.postDelayed(updateRecordingData, RECORDING_DATA_UPDATE_INTERVAL.toMillis());
 
-        stopSensors();
+//        stopSensors();
 
 //        voiceAnnouncementManager.start(trackRecordingManager.getTrackStatistics());
     }
