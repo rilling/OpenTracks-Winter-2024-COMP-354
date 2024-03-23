@@ -1,4 +1,4 @@
-package de.dennisguse.opentracks.ui.leaderboard;
+package de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.dennisguse.opentracks.R;
+import de.dennisguse.opentracks.ui.leaderboard.TestData;
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.LeaderboardAdapter;
 
 public class LeaderboardFragment extends Fragment {
 

@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.LeaderboardFragment;
+
 public class LeaderboardPagerAdapter extends FragmentPagerAdapter {
     private LeaderboardFragment verticalLeaderboardFragment;
     private LeaderboardFragment distanceLeaderboardFragment;
