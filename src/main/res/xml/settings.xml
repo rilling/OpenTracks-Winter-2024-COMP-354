@@ -20,6 +20,11 @@
         android:key="@string/settings_gps_key"
         android:summary="@string/settings_gps_summary"
         android:title="@string/settings_gps_title" />
+    <Preference
+        android:icon="@drawable/ic_activity_skiing_24dp"
+        android:key="MaintenanceInfo"
+        android:summary="@string/settings_maintenance_info_title"
+        android:title="@string/settings_maintenance_info" />
 
     <Preference
         android:icon="@drawable/ic_baseline_sensors_24"
