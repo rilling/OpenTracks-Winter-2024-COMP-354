@@ -1,35 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.leaderboard.LeaderboardActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/OpenTracksTheme.AppBarOverlay">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#ececec"
+        android:padding="8dp">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabVert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vertical" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabDist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day" />
+        </com.google.android.material.tabs.TabLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filterBar"
+        android:layout_below="@id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btnEveryone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Everyone" />
+
+        <Button
+            android:id="@+id/btnThisSeason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="This Season" />
+
+        <Button
+            android:id="@+id/btnAllResorts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="All Resorts" />
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
+        android:layout_below="@id/filterBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
