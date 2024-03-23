@@ -77,6 +77,17 @@ limitations under the License.
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
 
+        <activity android:name=".Stats"
+            android:exported="true">
+            <!-- If you want this to be the start activity, add the following intent-filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
         <activity
             android:name=".publicapi.StartRecording"
             android:exported="true"
@@ -416,6 +427,7 @@ limitations under the License.
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
+
 
     <queries>
         <intent>
