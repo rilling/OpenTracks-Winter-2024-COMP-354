@@ -47,6 +47,7 @@ import java.util.Objects;
 import de.dennisguse.opentracks.data.ContentProviderUtils;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.databinding.TrackListBinding;
+import de.dennisguse.opentracks.databinding.TrackRecordingBinding;
 import de.dennisguse.opentracks.services.RecordingStatus;
 import de.dennisguse.opentracks.services.TrackRecordingService;
 import de.dennisguse.opentracks.services.TrackRecordingServiceConnection;
@@ -78,6 +79,8 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
     private TrackListAdapter adapter;
 
     private TrackListBinding viewBinding;
+
+    private TrackRecordingBinding recordingBinding;
 
     // Preferences
     private UnitSystem unitSystem = UnitSystem.defaultUnitSystem();
@@ -148,6 +151,8 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
 
         requestRequiredPermissions();
 
+        recordingBinding = TrackRecordingBinding.inflate(getLayoutInflater());
+
         recordingStatusConnection = new TrackRecordingServiceConnection(bindChangedCallback);
 
         viewBinding.aggregatedStatsButton.setOnClickListener((view) -> startActivity(IntentUtils.newIntent(this, AggregatedStatisticsActivity.class)));
@@ -186,6 +191,19 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
                 startActivity(newIntent);
             });
         });
+
+        recordingBinding.trackRecordingPause.setOnLongClickListener((view) -> {
+            if (!recordingStatus.isRecording()) {
+                return false;
+            }
+
+            // Recording -> Pause
+            ActivityUtils.vibrate(this, 1000);
+            updateGpsMenuItem(true, false);
+            recordingBinding.trackRecordingPause.setImageResource(R.drawable.ic_baseline_record_pause);
+            return true;
+        });
+
         viewBinding.trackListFabAction.setOnLongClickListener((view) -> {
             if (!recordingStatus.isRecording()) {
                 return false;

@@ -104,7 +104,7 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
         }
         if (key == null) return;
 
-        runOnUiThread(TrackRecordingActivity.this::invalidateOptionsMenu); //TODO Should not be necessary
+//        runOnUiThread(TrackRecordingActivity.this::invalidateOptionsMenu); //TODO Should not be necessary
     };
 
     @Override
@@ -136,7 +136,7 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
         viewBinding.trackRecordingFabAction.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.opentracks));
         viewBinding.trackRecordingFabAction.setBackgroundColor(ContextCompat.getColor(this, R.color.opentracks));
         viewBinding.trackRecordingFabAction.setOnClickListener((view) -> {
-            ActivityUtils.vibrate(this, 1000);
+            ActivityUtils.vibrate(this, 200);
             trackRecordingServiceConnection.stopRecording(TrackRecordingActivity.this);
             Intent newIntent = IntentUtils.newIntent(TrackRecordingActivity.this, TrackStoppedActivity.class)
                     .putExtra(TrackStoppedActivity.EXTRA_TRACK_ID, trackId);
@@ -145,7 +145,13 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
             finish();
         });
 
-        setSupportActionBar(viewBinding.bottomAppBar);
+        viewBinding.trackRecordingPause.setImageResource(R.drawable.ic_baseline_record_pause);
+        viewBinding.trackRecordingPause.setOnClickListener((view) -> {
+            ActivityUtils.vibrate(this, 200);
+            trackRecordingServiceConnection.pauseRecording(TrackRecordingActivity.this);
+        });
+
+                setSupportActionBar(viewBinding.bottomAppBar);
     }
 
     @Override

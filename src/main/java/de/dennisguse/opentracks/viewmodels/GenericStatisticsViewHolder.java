@@ -3,6 +3,8 @@ package de.dennisguse.opentracks.viewmodels;
 import android.util.Pair;
 import android.view.LayoutInflater;
 
+import java.security.AccessControlContext;
+
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.models.DistanceFormatter;
 import de.dennisguse.opentracks.data.models.Speed;
@@ -30,8 +32,18 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
 
     public static class Distance extends GenericStatisticsViewHolder {
 
+        private static boolean paused = false;
+        private static String savedTime;
+
+        public static void pause() {
+            paused = true;
+        }
+
         @Override
         public void onChanged(UnitSystem unitSystem, RecordingData data) {
+            if (paused) {
+                return; // Don't update UI if paused
+            }
             Pair<String, String> valueAndUnit = DistanceFormatter.Builder()
                     .setUnit(unitSystem)
                     .build(getContext()).getDistanceParts(data.getTrackStatistics().getTotalDistance());
@@ -56,8 +68,17 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
 
     public static class MovingTime extends GenericStatisticsViewHolder {
 
+        private static boolean paused = false;
+        private static String savedTime;
+
+        public static void pause() {
+            paused = true;
+        }
         @Override
         public void onChanged(UnitSystem unitSystem, RecordingData data) {
+            if (paused) {
+                return; // Don't update UI if paused
+            }
             String value = StringUtils.formatElapsedTime(data.getTrackStatistics().getMovingTime());
 
             getBinding().statsValue.setText(value);
@@ -66,7 +87,12 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
     }
 
     public abstract static class SpeedOrPace extends GenericStatisticsViewHolder {
+        private static boolean paused = false;
+        private static String savedTime;
 
+        public static void pause() {
+            paused = true;
+        }
         private final boolean reportSpeed;
 
         public SpeedOrPace(boolean reportSpeed) {
@@ -75,6 +101,9 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
 
         @Override
         public void onChanged(UnitSystem unitSystem, RecordingData data) {
+            if (paused) {
+                return; // Don't update UI if paused
+            }
             SpeedFormatter localSpeedFormatter = SpeedFormatter.Builder()
                     .setUnit(unitSystem)
                     .setReportSpeedOrPace(reportSpeed)

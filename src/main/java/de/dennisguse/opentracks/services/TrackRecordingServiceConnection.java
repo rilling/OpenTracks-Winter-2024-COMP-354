@@ -24,11 +24,13 @@ import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import de.dennisguse.opentracks.BuildConfig;
+import de.dennisguse.opentracks.stats.TrackStatistics;
 
 /**
  * Wrapper for the track recording service.
@@ -89,13 +91,18 @@ public class TrackRecordingServiceConnection {
      * Unbinds the service (but leave it running).
      */
     //TODO This is often called for one-shot operations and should be refactored as unbinding is required.
+    // TEST TODO
     public void unbind(Context context) {
-        try {
-            context.unbindService(serviceConnection);
-        } catch (IllegalArgumentException e) {
-            // Means not bound to the service. OK to ignore.
+        if (trackRecordingService != null) {
+            try {
+                context.unbindService(serviceConnection);
+            } catch (IllegalArgumentException e) {
+                // Means not bound to the service. OK to ignore.
+            }
+            setTrackRecordingService(null);
+        } else {
+            Log.w(TAG, "TrackRecordingService is not bound; no need to unbind.");
         }
-        setTrackRecordingService(null);
     }
 
     public void stopService(Context context) {
@@ -128,6 +135,14 @@ public class TrackRecordingServiceConnection {
             trackRecordingService.endCurrentTrack();
         }
         unbindAndStop(context);
+    }
+
+    public void pauseRecording(@NonNull Context context) {
+        if (trackRecordingService == null) {
+            Log.e(TAG, "TrackRecordingService not connected.");
+        } else {
+            trackRecordingService.pauseRecording();
+        }
     }
 
     public interface Callback {

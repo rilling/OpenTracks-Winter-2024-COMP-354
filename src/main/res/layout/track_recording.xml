@@ -48,7 +48,7 @@
         android:layout_marginEnd="120dp"
         android:contentDescription="@string/image_pause"
         android:foreground="@drawable/ic_button_pause"
-        android:src="@drawable/ic_baseline_record_24"
+        android:src="@drawable/ic_baseline_record_pause"
         app:elevation="0dp"
         app:layout_anchor="@+id/track_recording_fab_action" />
 
