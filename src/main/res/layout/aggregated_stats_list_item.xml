@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingEnd="8dp"
-    android:paddingStart="8dp"
     android:paddingBottom="8dp">
 
     <!-- Guidelines -->
@@ -47,8 +47,8 @@
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_icon"
         app:layout_constraintTop_toTopOf="@+id/activity_icon"
@@ -59,8 +59,8 @@
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_type_label"
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_type_label"
         app:layout_constraintTop_toTopOf="@+id/aggregated_stats_type_label"
@@ -170,8 +170,8 @@
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
