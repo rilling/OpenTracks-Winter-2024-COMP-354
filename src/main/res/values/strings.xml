@@ -418,10 +418,14 @@ limitations under the License.
 
     <string name="settings_maintenance_info_title">Maintenance Set Up and Information</string>
     <string name="settings_maintenance_sharp_title">Sharpening Information</string>
+    <string name="settings_maintenance_set_button">SET</string>
     <string name="settings_maintenance_wax_title">Waxing Information</string>
 
     <string name="settings_maintenance_last_sharpening_date">Date of Last Sharpening:</string>
     <string name="settings_maintenance_sharpening_date">DD:MM:YYYY</string>
+    <string name="settings_maintenance_base_angle">Base Angle: XXX</string>
+    <string name="settings_maintenance_edge_angle">Edge Angle: XXX</string>
+    <string name="settings_maintenance_sharpening_interval">Sharpening Interval: XXXX KM</string>
 
 
     <string name="settings_maintenance_last_wax_date">Date of Last Waxing:</string>
