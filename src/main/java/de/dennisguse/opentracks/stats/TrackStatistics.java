@@ -72,7 +72,8 @@ public class TrackStatistics {
      *
      * @param other another statistics data object to copy from
      */
-    public TrackStatistics(TrackStatistics other) {
+    public TrackStatistics(TrackStatistics other) { // Need to create objects of this in order to activate
+        //VoiceAnnouncementsManager
         startTime = other.startTime;
         stopTime = other.stopTime;
         totalDistance = other.totalDistance;

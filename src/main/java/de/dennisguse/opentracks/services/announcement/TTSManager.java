@@ -132,8 +132,6 @@ public class TTSManager {
             });
         }
         if (ttsFallback == null) {
-
-
             ttsFallback = MediaPlayer.create(context, R.raw.tts_fallback);
 
             // initialize a new instance of MediaPlayer & associates it with a sound file resource in the app's raw directory
@@ -178,7 +176,7 @@ public class TTSManager {
             return;
         }
 
-        if (announcement.length() > 0) {
+        if (announcement.length() > 0) { //Where it is gonna speak and start announcement / IMPORTANT
             // We don't care about the utterance id. It is supplied here to force onUtteranceCompleted to be called.
             tts.speak(announcement, TextToSpeech.QUEUE_FLUSH, null, "not used");
         }
@@ -217,3 +215,6 @@ public class TTSManager {
         tts.setOnUtteranceProgressListener(utteranceListener);
     }
 }
+
+//Write a method that converts text to speech
+//
