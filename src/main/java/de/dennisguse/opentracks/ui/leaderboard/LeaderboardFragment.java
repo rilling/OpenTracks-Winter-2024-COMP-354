@@ -20,7 +20,7 @@ public class LeaderboardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_vertical_leaderboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
 
         leaderboardRecyclerView = view.findViewById(R.id.leaderboardList);
         leaderboardRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
