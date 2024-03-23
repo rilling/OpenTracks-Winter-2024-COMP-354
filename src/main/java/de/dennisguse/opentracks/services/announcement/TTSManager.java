@@ -135,6 +135,7 @@ public class TTSManager {
 
 
             ttsFallback = MediaPlayer.create(context, R.raw.tts_fallback);
+
             // initialize a new instance of MediaPlayer & associates it with a sound file resource in the app's raw directory
             //R.raw.tts_fallback : contains reference to the sound file
 
@@ -206,8 +207,10 @@ public class TTSManager {
              * TODO: instead of using english, load the language if missing and show a toast if not supported.
              *  Not able to change the resource strings to English.
              */
+
+            //Potentially set status to 0
         }
-        tts.setLanguage(locale);
+        tts.setLanguage(locale);  //set method in android sdk
         tts.setSpeechRate(PreferencesUtils.getVoiceSpeedRate()); // Set speech rate output based on app preferences (set by user)
         // track the progress of the TTS utterance,and to perform certain actions
         // when specific events in the lifecycle of an utterance occur.
