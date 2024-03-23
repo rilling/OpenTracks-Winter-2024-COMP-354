@@ -260,6 +260,7 @@ limitations under the License.
     <string name="image_photo_marker">Photo marker</string>
     <string name="image_record">Record</string>
     <string name="image_stop">Stop</string>
+    <string name="image_pause">Pause</string>
     <string name="image_discard">Discard</string>
     <string name="image_track">Track</string>
     <!-- Import -->
