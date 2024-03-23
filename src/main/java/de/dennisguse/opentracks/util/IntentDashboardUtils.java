@@ -211,15 +211,23 @@ public class IntentDashboardUtils {
 
         // Would need to populate this with data once the service functions are created
         JSONObject overallSeasonStatsJSONPayload = new JSONObject();
-        overallSeasonStatsJSONPayload.put("All-Time Overall Stats", allTimeStats);
+        overallSeasonStatsJSONPayload.put("Total Runs", allTimeStats.getTotalRunsOverall());
+        overallSeasonStatsJSONPayload.put("Total Days", allTimeStats.getTotalSkiDaysOverall());
+        overallSeasonStatsJSONPayload.put("Total Track Distance", allTimeStats.getTotalTrackDistanceOverall().distance_m());
+        overallSeasonStatsJSONPayload.put("Total Vert", allTimeStats.getTotalVerticalDescentOverall().distance_m());
+        overallSeasonStatsJSONPayload.put("Average Speed", allTimeStats.getAvgSpeedOverall().toKMH());
+        overallSeasonStatsJSONPayload.put("Average Slope %", allTimeStats.getSlopePercentageOverall());
 
         ArrayList<Uri> uris = new ArrayList<>();
         uris.add(0, Uri.withAppendedPath(Uri.parse("{Some URI...}"), seasonIDList));
+        uris.add(1, Uri.withAppendedPath(Uri.parse("{Some other URI...}"), seasonIDList));
         // ...
 
-        Log.i(TAG, overallSeasonStatsJSONPayload.toString());
+        Log.i(TAG, "[IntentDashboardUtils/startOverallSeasonDashboard] -- JSON Payload:\n"
+                        + overallSeasonStatsJSONPayload.toString(4));
 
-        Log.i(TAG, uris.toString());
+        Log.i(TAG, "[IntentDashboardUtils/startOverallSeasonDashboard] -- Database connections" +
+                        "Payload:\n" + uris);
 
         Intent intent = new Intent(ACTION_DASHBOARD);
         intent.putExtra(EXTRAS_PROTOCOL_VERSION, CURRENT_VERSION);
