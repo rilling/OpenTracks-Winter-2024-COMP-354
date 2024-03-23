@@ -39,6 +39,4 @@ public class DailyPlottingModule {
         return toReturn;
     }
 
-    public static void main(String[] args) {
-    }
 }
