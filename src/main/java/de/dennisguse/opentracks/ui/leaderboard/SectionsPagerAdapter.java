@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import de.dennisguse.opentracks.R;
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.ItemFragment;
 import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.LeaderboardListFragment;
 
 /**
@@ -30,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a LeaderboardListFragment.
-        return LeaderboardListFragment.newInstance(position + 1);
+        return ItemFragment.newInstance(position + 1);
     }
 
     @Nullable
