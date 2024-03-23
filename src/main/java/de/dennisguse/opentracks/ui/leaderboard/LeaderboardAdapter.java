@@ -14,10 +14,10 @@ import de.dennisguse.opentracks.data.models.Ranking;
 
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
 
-    private final List<Ranking> userList;
+    private final List<Ranking> rankingList;
 
-    public LeaderboardAdapter(List<Ranking> userList) {
-        this.userList = userList;
+    public LeaderboardAdapter(List<Ranking> rankingList) {
+        this.rankingList = rankingList;
     }
 
     @NonNull
@@ -29,16 +29,16 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Ranking user = userList.get(position);
-        holder.usernameText.setText(user.getUsername());
-        holder.locationText.setText(user.getLocation());
-        holder.rankText.setText(String.valueOf(user.getRank()));
-        holder.valueText.setText(String.valueOf(user.getScore()));
+        Ranking ranking = rankingList.get(position);
+        holder.usernameText.setText(ranking.getUsername());
+        holder.locationText.setText(ranking.getLocation());
+        holder.rankText.setText(String.valueOf(ranking.getRank()));
+        holder.scoreText.setText(String.valueOf(ranking.getScore()));
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return rankingList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,7 +46,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         TextView usernameText;
         TextView locationText;
         TextView rankText;
-        TextView valueText;
+        TextView scoreText;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -54,7 +54,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             usernameText = itemView.findViewById(R.id.usernameText);
             locationText = itemView.findViewById(R.id.locationText);
             rankText = itemView.findViewById(R.id.rankText);
-            valueText = itemView.findViewById(R.id.valueText);
+            scoreText = itemView.findViewById(R.id.valueText);
         }
     }
 }

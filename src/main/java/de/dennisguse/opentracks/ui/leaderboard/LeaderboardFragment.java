@@ -24,6 +24,8 @@ public class LeaderboardFragment extends Fragment {
 
         leaderboardRecyclerView = view.findViewById(R.id.leaderboardList);
         leaderboardRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        //
         leaderboardAdapter = new LeaderboardAdapter(TestData.getTestData());
         leaderboardRecyclerView.setAdapter(leaderboardAdapter);
 

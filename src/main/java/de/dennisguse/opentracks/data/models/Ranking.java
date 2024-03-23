@@ -3,7 +3,9 @@ package de.dennisguse.opentracks.data.models;
 import android.graphics.Bitmap;
 
 /**
- * An individual user's Ranking on a Leaderboard, designed to work with any type of Leaderboard.
+ * An individual user's Ranking on a specific Leaderboard.
+ * This class is designed to work with any type of Leaderboard;
+ * as such, the Score attribute is meant to represent any numerical value that a leaderboard would be based on.
  */
 public class Ranking {
     private int rank;
