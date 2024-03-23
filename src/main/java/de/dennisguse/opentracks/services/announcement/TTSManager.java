@@ -151,7 +151,7 @@ public class TTSManager {
         }
     }
 
-    public void announce(@NonNull Spannable announcement) {
+    public void announce(@NonNull Spannable announcement) { // parameter cannot be null
         synchronized (this) { // One announcement at a time
             if (!ttsReady) { // checking if ready to make an announcement
                 ttsReady = ttsInitStatus == TextToSpeech.SUCCESS;
