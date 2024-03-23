@@ -15,8 +15,9 @@
         android:padding="8dp">
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabVert"
@@ -69,11 +70,10 @@
             android:text="All Resorts" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/leaderboardList"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_below="@id/filterBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

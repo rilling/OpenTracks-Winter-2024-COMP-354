@@ -1,45 +1,34 @@
 package de.dennisguse.opentracks.ui.leaderboard;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-import android.view.Menu;
 import de.dennisguse.opentracks.R;
-
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.MenuItem;
-import android.view.View;
-
-import de.dennisguse.opentracks.ui.leaderboard.SectionsPagerAdapter;
-import de.dennisguse.opentracks.databinding.ActivityLeaderboardBinding;
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.RankingsRecyclerViewAdapter;
 
 public class LeaderboardActivity extends AppCompatActivity {
 
     private RecyclerView leaderboardList;
+    private LeaderboardAdapter adapter;
+    private List<User> userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
-        leaderboardList = findViewById(R.id.leaderboardList);
+        LeaderboardPagerAdapter sectionsPagerAdapter = new LeaderboardPagerAdapter(getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
 
-        // Set up the RecyclerView with the adapter
-        // Assuming RankingsRecyclerViewAdapter is already implemented
-        RankingsRecyclerViewAdapter adapter = new RankingsRecyclerViewAdapter(RankingsRecyclerViewAdapter.makePlaceholderRankingList());
-        leaderboardList.setAdapter(adapter);
-
-        // Set up the layout manager
-        leaderboardList.setLayoutManager(new LinearLayoutManager(this));
-
-        // TODO: Set up toggle buttons and filter button listeners
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
     }
-
-    // TODO: Implement methods to handle toggle and filter actions
 }
