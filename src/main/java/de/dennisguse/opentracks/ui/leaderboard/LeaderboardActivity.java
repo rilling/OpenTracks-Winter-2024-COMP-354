@@ -2,8 +2,6 @@ package de.dennisguse.opentracks.ui.leaderboard;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
@@ -13,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import de.dennisguse.opentracks.ui.leaderboard.ui.main.SectionsPagerAdapter;
+import de.dennisguse.opentracks.ui.leaderboard.SectionsPagerAdapter;
 import de.dennisguse.opentracks.databinding.ActivityLeaderboardBinding;
 
 public class LeaderboardActivity extends AppCompatActivity {
