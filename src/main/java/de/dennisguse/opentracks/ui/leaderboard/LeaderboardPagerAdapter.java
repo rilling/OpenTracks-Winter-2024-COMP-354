@@ -5,44 +5,60 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class LeaderboardPagerAdapter extends FragmentPagerAdapter {
+    private LeaderboardFragment verticalLeaderboardFragment;
+    private LeaderboardFragment distanceLeaderboardFragment;
+    private LeaderboardFragment dayLeaderboardFragment;
 
     public LeaderboardPagerAdapter(FragmentManager fm) {
         super(fm);
+        verticalLeaderboardFragment = new LeaderboardFragment();
+        distanceLeaderboardFragment = new LeaderboardFragment();
+        dayLeaderboardFragment = new LeaderboardFragment();
     }
 
-    @Override
-    public Fragment getItem(int position) {
-        // Return the appropriate Fragment for each tab position
-        switch (position) {
-            case 0:
-                return new LeaderboardFragment();
-            case 1:
-                return new LeaderboardFragment(); // You will need to create this Fragment
-            case 2:
-                return new LeaderboardFragment(); // You will need to create this Fragment
-            default:
-                return null;
+    public enum LeaderboardType {
+        Vertical(0),
+        Distance(1),
+        Day(2);
+
+        // Assisted by https://stackoverflow.com/questions/1067352/can-i-set-enum-start-value-in-java
+        private final int value;
+
+        private LeaderboardType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
         }
     }
 
     @Override
     public int getCount() {
-        // We have 3 tabs
-        return 3;
+        return LeaderboardType.values().length;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        // Return the appropriate Fragment for each tab position
+        if (position == LeaderboardType.Vertical.value)
+            return verticalLeaderboardFragment;
+        else if (position == LeaderboardType.Distance.value)
+            return distanceLeaderboardFragment;
+        else if (position == LeaderboardType.Day.value)
+            return dayLeaderboardFragment;
+        return null;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "Vertical";
-            case 1:
-                return "Distance";
-            case 2:
-                return "Day";
-            default:
-                return null;
-        }
+        if (position == LeaderboardType.Vertical.value)
+            return LeaderboardType.Vertical.name();
+        else if (position == LeaderboardType.Distance.value)
+            return LeaderboardType.Distance.name();
+        else if (position == LeaderboardType.Day.value)
+            return LeaderboardType.Day.name();
+        return null;
     }
 }
 
