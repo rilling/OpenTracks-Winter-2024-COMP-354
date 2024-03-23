@@ -10,11 +10,12 @@
     android:paddingEnd="16dp">
 
     <!-- User's avatar -->
+    <!-- profile icon taken from: https://www.flaticon.com/free-icon/user_149071?term=profile&page=1&position=11&origin=search&related_id=149071 <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Smashicons - Flaticon</a>-->
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/ic_podium"
+        android:src="@drawable/user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
