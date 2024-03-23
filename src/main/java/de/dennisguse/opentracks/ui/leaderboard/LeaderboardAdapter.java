@@ -54,7 +54,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             usernameText = itemView.findViewById(R.id.usernameText);
             locationText = itemView.findViewById(R.id.locationText);
             rankText = itemView.findViewById(R.id.rankText);
-            scoreText = itemView.findViewById(R.id.valueText);
+            scoreText = itemView.findViewById(R.id.scoreText);
         }
     }
 }

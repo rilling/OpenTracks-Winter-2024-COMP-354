@@ -50,7 +50,7 @@
         android:layout_height="0dp"
         android:text="Rank"
         app:layout_constraintStart_toEndOf="@+id/locationText"
-        app:layout_constraintEnd_toStartOf="@+id/valueText"
+        app:layout_constraintEnd_toStartOf="@+id/scoreText"
         app:layout_constraintTop_toTopOf="@+id/avatar"
         app:layout_constraintBottom_toBottomOf="@+id/avatar"
         android:layout_marginStart="8dp"
@@ -59,10 +59,10 @@
 
     <!-- Value (Vertical Meters) TextView -->
     <TextView
-        android:id="@+id/valueText"
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Value"
+        android:text="Score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/avatar"
         app:layout_constraintBottom_toBottomOf="@+id/avatar"
