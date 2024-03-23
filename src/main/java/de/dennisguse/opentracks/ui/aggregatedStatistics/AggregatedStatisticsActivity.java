@@ -30,6 +30,7 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private AggregatedStatsBinding viewBinding;
 
     private AggregatedStatisticsAdapter adapter;
+    private AggregatedDayStatisticsAdapter dayAdapter;
 
     private AggregatedStatisticsModel viewModel;
     private final TrackSelection selection = new TrackSelection();
@@ -53,13 +54,17 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         adapter = new AggregatedStatisticsAdapter(this, null);
+        dayAdapter = new AggregatedDayStatisticsAdapter(this, null);
         viewBinding.aggregatedStatsList.setLayoutManager(layoutManager);
-        viewBinding.aggregatedStatsList.setAdapter(adapter);
 
         viewModel = new ViewModelProvider(this).get(AggregatedStatisticsModel.class);
 
         Switch dailySwitch = findViewById(R.id.aggregated_stats_daily_switch);
-        dailySwitch.setOnCheckedChangeListener((compoundButton, switchState) -> isDailyView = switchState);
+        dailySwitch.setOnCheckedChangeListener((compoundButton, switchState) -> {
+            isDailyView = switchState;
+            toggleAdapter();
+        });
+        toggleAdapter();
 
         viewModel.getAggregatedStats(selection).observe(this, aggregatedStatistics -> {
             if ((aggregatedStatistics == null || aggregatedStatistics.getCount() == 0) && !selection.isEmpty()) {
@@ -67,11 +72,27 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
             }
             if (aggregatedStatistics != null) {
                 adapter.swapData(aggregatedStatistics);
+                dayAdapter.swapData(aggregatedStatistics);
             }
             checkListEmpty();
         });
 
+
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
+    }
+
+    private void toggleAdapter() {
+        if (isDailyView) {
+            viewBinding.aggregatedStatsList.setAdapter(dayAdapter);
+        } else {
+            viewBinding.aggregatedStatsList.setAdapter(adapter);
+            viewModel.getAggregatedStats(selection).observe(this, aggregatedStats -> {
+                if (aggregatedStats != null) {
+                    adapter.swapData(aggregatedStats);
+                }
+                checkListEmpty();
+            });
+        }
     }
 
     private void checkListEmpty() {
