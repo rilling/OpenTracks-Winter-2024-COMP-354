@@ -3,7 +3,6 @@ package de.dennisguse.opentracks.ui.leaderboard.leaderboardList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -16,11 +15,11 @@ import java.util.List;
  * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class RankingsRecyclerViewAdapter extends RecyclerView.Adapter<RankingsRecyclerViewAdapter.ViewHolder> {
 
     private final List<PlaceholderItem> mValues;
 
-    public MyItemRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public RankingsRecyclerViewAdapter(List<PlaceholderItem> items) {
         mValues = items;
     }
 
