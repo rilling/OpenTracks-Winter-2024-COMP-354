@@ -1,4 +1,4 @@
-package de.dennisguse.opentracks.ui.leaderboard.ui.main;
+package de.dennisguse.opentracks.ui.leaderboard;
 
 import android.content.Context;
 

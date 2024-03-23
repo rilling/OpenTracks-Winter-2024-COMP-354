@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import de.dennisguse.opentracks.ui.leaderboard.ui.main.SectionsPagerAdapter;
+import de.dennisguse.opentracks.ui.leaderboard.SectionsPagerAdapter;
 import de.dennisguse.opentracks.databinding.ActivityLeaderboardBinding;
 
 public class LeaderboardActivity extends AppCompatActivity {
