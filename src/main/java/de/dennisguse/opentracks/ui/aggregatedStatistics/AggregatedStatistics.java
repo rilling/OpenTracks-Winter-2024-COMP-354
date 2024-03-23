@@ -25,8 +25,8 @@ public class AggregatedStatistics {
         }
         MockupData mockupData = new MockupData();
         List<TrackStatistics> trackStatistics = mockupData.getTrackStatistics();
-        int getTotalRuns = trackStatistics.get(0).getTotalRunsSeason();
-        int getTotalRuns2 = trackStatistics.get(1).getTotalRunsSeason();
+        //int getTotalRuns = trackStatistics.get(0).getTotalRunsSeason();
+        //int getTotalRuns2 = trackStatistics.get(1).getTotalRunsSeason();
         dataList.addAll(dataMap.values());
         dataList.sort((o1, o2) -> {
             if (o1.getCountTracks() == o2.getCountTracks()) {
