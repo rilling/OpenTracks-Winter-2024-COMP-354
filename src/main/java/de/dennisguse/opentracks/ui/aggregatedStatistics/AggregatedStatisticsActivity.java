@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
@@ -37,6 +38,8 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private MenuItem filterItem;
     private MenuItem clearFilterItem;
 
+    private boolean isDailyView = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,10 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         viewBinding.aggregatedStatsList.setAdapter(adapter);
 
         viewModel = new ViewModelProvider(this).get(AggregatedStatisticsModel.class);
+
+        Switch dailySwitch = findViewById(R.id.aggregated_stats_daily_switch);
+        dailySwitch.setOnCheckedChangeListener((compoundButton, switchState) -> isDailyView = switchState);
+
         viewModel.getAggregatedStats(selection).observe(this, aggregatedStatistics -> {
             if ((aggregatedStatistics == null || aggregatedStatistics.getCount() == 0) && !selection.isEmpty()) {
                 viewBinding.aggregatedStatsEmptyView.setText(getString(R.string.aggregated_stats_filter_no_results));
