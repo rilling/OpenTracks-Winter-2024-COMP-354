@@ -29,6 +29,7 @@ import de.dennisguse.opentracks.data.tables.TrackPointsColumns;
 import de.dennisguse.opentracks.data.tables.TracksColumns;
 import de.dennisguse.opentracks.io.file.TrackFileFormat;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
+import de.dennisguse.opentracks.stats.OverallStatistics;
 
 /**
  * Create an {@link Intent} to request showing tracks on a Map or a Dashboard.
@@ -205,14 +206,28 @@ public class IntentDashboardUtils {
          *  It would also inform us on what local db connection strings to pass over.
          */
 
+        // Retrieve the singleton (when it's put in place)
+        OverallStatistics allTimeStats = new OverallStatistics();
+
         // Would need to populate this with data once the service functions are created
         JSONObject overallSeasonStatsJSONPayload = new JSONObject();
-        overallSeasonStatsJSONPayload.put("Seasons", new Object());
-        // ...
+        overallSeasonStatsJSONPayload.put("Total Runs", allTimeStats.getTotalRunsOverall());
+        overallSeasonStatsJSONPayload.put("Total Days", allTimeStats.getTotalSkiDaysOverall());
+        overallSeasonStatsJSONPayload.put("Total Track Distance", allTimeStats.getTotalTrackDistanceOverall().distance_m());
+        overallSeasonStatsJSONPayload.put("Total Vert", allTimeStats.getTotalVerticalDescentOverall().distance_m());
+        overallSeasonStatsJSONPayload.put("Average Speed", allTimeStats.getAvgSpeedOverall().toKMH());
+        overallSeasonStatsJSONPayload.put("Average Slope %", allTimeStats.getSlopePercentageOverall());
 
         ArrayList<Uri> uris = new ArrayList<>();
         uris.add(0, Uri.withAppendedPath(Uri.parse("{Some URI...}"), seasonIDList));
+        uris.add(1, Uri.withAppendedPath(Uri.parse("{Some other URI...}"), seasonIDList));
         // ...
+
+        Log.i(TAG, "[IntentDashboardUtils/startOverallSeasonDashboard] -- JSON Payload:\n"
+                        + overallSeasonStatsJSONPayload.toString(4));
+
+        Log.i(TAG, "[IntentDashboardUtils/startOverallSeasonDashboard] -- Database connections" +
+                        "Payload:\n" + uris);
 
         Intent intent = new Intent(ACTION_DASHBOARD);
         intent.putExtra(EXTRAS_PROTOCOL_VERSION, CURRENT_VERSION);
