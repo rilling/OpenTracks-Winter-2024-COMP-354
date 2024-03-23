@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,16 +17,13 @@ import de.dennisguse.opentracks.R;
 
 import de.dennisguse.opentracks.data.models.Rankings;
 import de.dennisguse.opentracks.databinding.FragmentLeaderboardListBinding;
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.LeaderboardListViewModel;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class LeaderboardListFragment extends Fragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private LeaderboardListViewModel leaderboardListViewModel;
     private FragmentLeaderboardListBinding binding;
 
     /**
@@ -42,7 +36,6 @@ public class LeaderboardListFragment extends Fragment {
     public static LeaderboardListFragment newInstance(int columnCount) {
         LeaderboardListFragment fragment = new LeaderboardListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, columnCount);
         bundle.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(bundle);
         return fragment;
@@ -51,13 +44,10 @@ public class LeaderboardListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        leaderboardListViewModel = new ViewModelProvider(this).get(LeaderboardListViewModel.class);
         int index = 1;
         if (getArguments() != null) {
-            index = getArguments().getInt(ARG_SECTION_NUMBER);
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-        leaderboardListViewModel.setIndex(index);
     }
 
     @Override
