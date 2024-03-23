@@ -15,10 +15,6 @@ import de.dennisguse.opentracks.R;
 
 public class LeaderboardActivity extends AppCompatActivity {
 
-    private RecyclerView leaderboardList;
-    private LeaderboardAdapter adapter;
-    private List<User> userList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

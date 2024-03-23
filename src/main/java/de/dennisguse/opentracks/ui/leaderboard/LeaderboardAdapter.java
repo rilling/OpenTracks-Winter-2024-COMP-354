@@ -10,15 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import de.dennisguse.opentracks.R;
+import de.dennisguse.opentracks.data.models.Ranking;
 
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
 
-    private final List<User> userList;
-    private boolean showVertical;
+    private final List<Ranking> userList;
 
-    public LeaderboardAdapter(List<User> userList, boolean showVertical) {
+    public LeaderboardAdapter(List<Ranking> userList) {
         this.userList = userList;
-        this.showVertical = showVertical;
     }
 
     @NonNull
@@ -30,15 +29,11 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user = userList.get(position);
-        holder.usernameText.setText(user.getName());
+        Ranking user = userList.get(position);
+        holder.usernameText.setText(user.getUsername());
         holder.locationText.setText(user.getLocation());
         holder.rankText.setText(String.valueOf(user.getRank()));
-        if(showVertical) {
-            holder.valueText.setText(user.getVerticalMeters());
-        } else {
-            holder.valueText.setText(user.getDistance());
-        }
+        holder.valueText.setText(String.valueOf(user.getScore()));
     }
 
     @Override

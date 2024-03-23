@@ -15,11 +15,11 @@ public class LeaderboardPagerAdapter extends FragmentPagerAdapter {
         // Return the appropriate Fragment for each tab position
         switch (position) {
             case 0:
-                return new VerticalLeaderboardFragment();
+                return new LeaderboardFragment();
             case 1:
-                return new DistanceLeaderboardFragment(); // You will need to create this Fragment
+                return new LeaderboardFragment(); // You will need to create this Fragment
             case 2:
-                return new DayLeaderboardFragment(); // You will need to create this Fragment
+                return new LeaderboardFragment(); // You will need to create this Fragment
             default:
                 return null;
         }
