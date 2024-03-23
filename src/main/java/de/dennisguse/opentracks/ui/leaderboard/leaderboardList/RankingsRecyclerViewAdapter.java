@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import de.dennisguse.opentracks.data.models.Rankings.Ranking;
 import de.dennisguse.opentracks.ui.leaderboard.leaderboardList.placeholder.PlaceholderContent.PlaceholderItem;
 import de.dennisguse.opentracks.databinding.FragmentLeaderboardBinding;
 
@@ -17,9 +18,9 @@ import java.util.List;
  */
 public class RankingsRecyclerViewAdapter extends RecyclerView.Adapter<RankingsRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<Ranking> mValues;
 
-    public RankingsRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public RankingsRecyclerViewAdapter(List<Ranking> items) {
         mValues = items;
     }
 
@@ -33,8 +34,8 @@ public class RankingsRecyclerViewAdapter extends RecyclerView.Adapter<RankingsRe
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(String.valueOf(mValues.get(position).rank));
+        holder.mContentView.setText(mValues.get(position).username);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class RankingsRecyclerViewAdapter extends RecyclerView.Adapter<RankingsRe
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public Ranking mItem;
 
         public ViewHolder(FragmentLeaderboardBinding binding) {
             super(binding.getRoot());
