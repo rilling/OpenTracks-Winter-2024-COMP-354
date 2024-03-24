@@ -34,8 +34,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="10dp">
+            android:paddingTop="5dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -68,7 +69,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="52dp"
             android:text="DOB"
-             />
+            android:textSize="18sp" />
 
         <TextView
 
@@ -76,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date_of_birth"
-            android:textSize="18sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -95,7 +96,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:text="Gender" />
+            android:text="Gender"
+            android:textSize="18sp" />
 
         <TextView
 
@@ -103,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gender"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -121,8 +123,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="38dp"
-            android:text="Height" />
+            android:layout_marginEnd="37dp"
+            android:text="Height"
+            android:textSize="18sp" />
 
         <TextView
 
@@ -130,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/stats_empty_value_integer"
-            android:textSize="18sp"/>
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -148,8 +151,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="36dp"
-            android:text="Weight" />
+            android:layout_marginEnd="34dp"
+            android:text="Weight"
+            android:textSize="18sp" />
 
         <TextView
 
@@ -157,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/stats_empty_value_integer"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
