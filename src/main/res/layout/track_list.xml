@@ -132,7 +132,7 @@ limitations under the License.
             android:layout_height="wrap_content"
             app:icon="@drawable/podium"
             app:iconTint="?attr/colorOnBackground" />
-
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/friends_button"
             style="@style/Widget.Material3.Button.IconButton"
