@@ -64,6 +64,12 @@ public class AggregatedStatisticsAdapter extends RecyclerView.Adapter<RecyclerVi
         TextView kmSinceLastWaxingValue = holder.itemView.findViewById(R.id.km_since_last_waxing_value);
         kmSinceLastWaxingValue.setText(Double.toString(dummyData.getKmSinceLastWaxingValue()));
 
+        TextView unit = holder.itemView.findViewById(R.id.aggregated_stats_waxing_unit);
+        unit.setText(dummyData.getUnit());
+
+        TextView unit2 = holder.itemView.findViewById(R.id.aggregated_stats_sharpening_unit);
+        unit2.setText(dummyData.getUnit());
+
     }
 
     @Override
