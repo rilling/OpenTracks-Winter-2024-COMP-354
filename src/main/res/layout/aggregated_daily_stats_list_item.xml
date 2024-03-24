@@ -226,17 +226,6 @@
         app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
         tools:text="0" />
 
-
-    <!--  ************************* The End of Run Summary ************************************* -->
-
-    <!-- Distance -->
-
-    <!-- Time -->
-
-    <!-- Avg. rate -->
-
-    <!-- Max. rate -->
-
     <TextView
         android:id="@+id/daily_run_number_unit"
         style="@style/TextAppearance.OpenTracks.PrimaryUnit"
@@ -250,6 +239,18 @@
         app:layout_constraintStart_toEndOf="@+id/daily_run_number"
         app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
         tools:text="@string/daily_run_number_unit" />
+
+
+    <!--  ************************* The End of Run Summary ************************************* -->
+
+    <!-- Distance -->
+
+    <!-- Time -->
+
+    <!-- Avg. rate -->
+
+    <!-- Max. rate -->
+
 
     <TextView
         android:id="@+id/aggregated_stats_day_label"
