@@ -1,11 +1,15 @@
 package de.dennisguse.opentracks.viewmodels;
 
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.widget.Toast;
 
 import java.security.AccessControlContext;
+import java.time.Duration;
 
 import de.dennisguse.opentracks.R;
+import de.dennisguse.opentracks.TrackRecordingActivity;
 import de.dennisguse.opentracks.data.models.DistanceFormatter;
 import de.dennisguse.opentracks.data.models.Speed;
 import de.dennisguse.opentracks.data.models.SpeedFormatter;
@@ -14,6 +18,7 @@ import de.dennisguse.opentracks.databinding.StatsGenericItemBinding;
 import de.dennisguse.opentracks.sensors.sensorData.SensorDataSet;
 import de.dennisguse.opentracks.services.RecordingData;
 import de.dennisguse.opentracks.settings.UnitSystem;
+import de.dennisguse.opentracks.stats.TrackStatistics;
 import de.dennisguse.opentracks.ui.customRecordingLayout.DataField;
 import de.dennisguse.opentracks.util.StringUtils;
 
@@ -37,6 +42,10 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
 
         public static void pause() {
             paused = true;
+        }
+
+        public static void resume() {
+            paused = false;
         }
 
         @Override
@@ -69,19 +78,35 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
     public static class MovingTime extends GenericStatisticsViewHolder {
 
         private static boolean paused = false;
+        private static boolean resume = false;
+        private static boolean fix = true;
+
+        public static Duration currentTime;
         private static String savedTime;
 
         public static void pause() {
             paused = true;
+            TrackStatistics.pause = true;
         }
         public static void resume() {
             paused = false;
+            resume = true;
         }
 
         @Override
         public void onChanged(UnitSystem unitSystem, RecordingData data) {
             if (paused) {
+                if (fix) {
+                    currentTime = data.getTrackStatistics().getMovingTime();
+                }
+                fix = false;
                 return; // Don't update UI if paused
+            }
+            if (resume) {
+                data.getTrackStatistics().setMovingTime(currentTime);
+                resume = false;
+                TrackStatistics.pause = false;
+                return;
             }
             String value = StringUtils.formatElapsedTime(data.getTrackStatistics().getMovingTime());
 
