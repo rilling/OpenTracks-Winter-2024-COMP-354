@@ -188,14 +188,9 @@ public class DailyRunsProvider {
         {
             return getDailyRunsSample4();
         }
-        else if(randomNum == 9 || randomNum == 10)
-        {
-            return getDailyRunsSample5();
-        }
         else
         {
-            //This shouldn't ever be called since randomNum will generate a number from 1-10 inclusive.
-            return new ArrayList<RunVM>();
+            return getDailyRunsSample5();
         }
     }
 }
