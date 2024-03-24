@@ -8,17 +8,19 @@ import de.dennisguse.opentracks.data.models.Ranking;
 public class VerticalLeaderboardFragment extends LeaderboardFragment {
 
     // Temporary boolean to confirm that refresh works when expected to; delete once Issue 67 is finished.
-    private boolean firstRefresh = true;
+    private boolean refresh;
 
     @Override
     protected List<Ranking> getLatestRankingsData() {
         // TODO: Replace the test data with code that gathers the appropriate Ranking data
         List<Ranking> latestRankingsData;
-        if (!firstRefresh)
+        if (!refresh)
+            // Get a smaller data set if this is the first time the rankings dats is being collected
             latestRankingsData = getAltTestData();
         else
             latestRankingsData = getTestData();
-        firstRefresh = false;
+        // All future rankings data collections should be refreshes
+        refresh = true;
         return latestRankingsData;
     }
 
