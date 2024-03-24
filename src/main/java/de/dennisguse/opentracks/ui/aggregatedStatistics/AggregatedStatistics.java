@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
 import java.time.Duration;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,13 +35,43 @@ public class AggregatedStatistics {
         });
     }
 
+    public AggregatedStatistics(@NonNull List<Track> tracks, Boolean isDaily) {
+        for (Track track : tracks) {
+            if (isDaily) {
+                aggregateDays(track);
+            } else {
+                aggregate(track);
+            }
+        }
+
+        dataList.addAll(dataMap.values());
+        dataList.sort((o1, o2) -> {
+            if (o1.getCountTracks() == o2.getCountTracks()) {
+                return o1.getActivityTypeLocalized().compareTo(o2.getActivityTypeLocalized());
+            }
+            return (o1.getCountTracks() < o2.getCountTracks() ? 1 : -1);
+        });
+    }
+
     @VisibleForTesting
     public void aggregate(@NonNull Track track) {
         String activityTypeLocalized = track.getActivityTypeLocalized();
         if (dataMap.containsKey(activityTypeLocalized)) {
             dataMap.get(activityTypeLocalized).add(track.getTrackStatistics());
         } else {
-            dataMap.put(activityTypeLocalized, new AggregatedStatistic(activityTypeLocalized, track.getTrackStatistics()));
+            dataMap.put(activityTypeLocalized,
+                    new AggregatedStatistic(activityTypeLocalized, track.getTrackStatistics()));
+        }
+    }
+
+    @VisibleForTesting
+    public void aggregateDays(@NonNull Track track) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM dd yyy");
+        String day = formatter.format(Date.from(track.getTrackStatistics().getStopTime()));
+        if (dataMap.containsKey(day)) {
+            dataMap.get(day).add(track.getTrackStatistics());
+        } else {
+            dataMap.put(day, new AggregatedStatistic(day, track.getTrackStatistics()));
         }
     }
 
@@ -82,17 +114,19 @@ public class AggregatedStatistics {
             countTracks++;
         }
 
-        public String getTotalTime(){
+        public String getTotalTime() {
             Duration duration = trackStatistics.getTotalTime();
             String formattedTime = formatDuration(duration);
-            return formattedTime;}
+            return formattedTime;
+        }
 
-        public String getMovingTime(){
+        public String getMovingTime() {
             Duration duration = trackStatistics.getMovingTime();
             String formattedTime = formatDuration(duration);
-            return formattedTime;}
+            return formattedTime;
+        }
 
-        public Speed getMaxSpeed(){
+        public Speed getMaxSpeed() {
             return trackStatistics.getMaxSpeed();
 
         }
