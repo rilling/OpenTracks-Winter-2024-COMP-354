@@ -14,7 +14,7 @@ public class Chairlift {
     private int id;
     private static int nextId = 1;
 
-    private static Map<Integer, Chairlift> validChairlifts = new HashMap<>();
+    private static final Map<Integer, Chairlift> validChairlifts = new HashMap<>();
 
     public int getId() {
         return id;
