@@ -192,12 +192,23 @@ public class TrackRecordingService extends Service implements TrackPointCreator.
         startRecording();
     }
 
-    // TODO Verify
     public void pauseRecording() {
 //        stopUpdateRecordingData();
         GenericStatisticsViewHolder.MovingTime.pause();
         GenericStatisticsViewHolder.Distance.pause();
         GenericStatisticsViewHolder.SpeedOrPace.pause();
+
+//        handler.postDelayed(updateRecordingData, RECORDING_DATA_UPDATE_INTERVAL.toMillis());
+
+//        stopSensors();
+
+//        voiceAnnouncementManager.start(trackRecordingManager.getTrackStatistics());
+    }
+
+    public void resumeRecording() {
+        GenericStatisticsViewHolder.MovingTime.resume();
+//        GenericStatisticsViewHolder.Distance.pause();
+//        GenericStatisticsViewHolder.SpeedOrPace.pause();
 
 //        handler.postDelayed(updateRecordingData, RECORDING_DATA_UPDATE_INTERVAL.toMillis());
 

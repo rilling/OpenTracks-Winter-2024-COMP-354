@@ -74,6 +74,10 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
         public static void pause() {
             paused = true;
         }
+        public static void resume() {
+            paused = false;
+        }
+
         @Override
         public void onChanged(UnitSystem unitSystem, RecordingData data) {
             if (paused) {
@@ -85,6 +89,7 @@ public abstract class GenericStatisticsViewHolder extends StatisticViewHolder<St
             getBinding().statsDescriptionMain.setText(getContext().getString(R.string.stats_moving_time));
         }
     }
+
 
     public abstract static class SpeedOrPace extends GenericStatisticsViewHolder {
         private static boolean paused = false;

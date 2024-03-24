@@ -145,6 +145,14 @@ public class TrackRecordingServiceConnection {
         }
     }
 
+    public void resumeRecording(@NonNull Context context) {
+        if (trackRecordingService == null) {
+            Log.e(TAG, "TrackRecordingService not connected.");
+        } else {
+            trackRecordingService.resumeRecording();
+        }
+    }
+
     public interface Callback {
         void onConnected(TrackRecordingService service, TrackRecordingServiceConnection self);
     }

@@ -149,7 +149,16 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
         viewBinding.trackRecordingPause.setOnClickListener((view) -> {
             ActivityUtils.vibrate(this, 200);
             trackRecordingServiceConnection.pauseRecording(TrackRecordingActivity.this);
+            view.setVisibility(View.GONE);
         });
+
+        viewBinding.trackRecordingResume.setImageResource(R.drawable.ic_button_resume);
+        viewBinding.trackRecordingResume.setOnClickListener((view) -> {
+            ActivityUtils.vibrate(this, 200);
+            trackRecordingServiceConnection.pauseRecording(TrackRecordingActivity.this);
+            viewBinding.trackRecordingPause.setVisibility(View.VISIBLE);
+        });
+
 
                 setSupportActionBar(viewBinding.bottomAppBar);
     }
