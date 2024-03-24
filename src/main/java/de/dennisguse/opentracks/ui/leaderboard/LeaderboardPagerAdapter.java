@@ -6,18 +6,21 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.DayLeaderboardFragment;
 import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.DistanceLeaderboardFragment;
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.LeaderboardFragment;
 import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.VerticalLeaderboardFragment;
 
 public class LeaderboardPagerAdapter extends FragmentPagerAdapter {
     private VerticalLeaderboardFragment verticalLeaderboardFragment;
     private DistanceLeaderboardFragment distanceLeaderboardFragment;
     private DayLeaderboardFragment dayLeaderboardFragment;
+    private LeaderboardFragment currentLeaderboardFragment;
 
     public LeaderboardPagerAdapter(FragmentManager fm) {
         super(fm);
         verticalLeaderboardFragment = new VerticalLeaderboardFragment();
         distanceLeaderboardFragment = new DistanceLeaderboardFragment();
         dayLeaderboardFragment = new DayLeaderboardFragment();
+        currentLeaderboardFragment = verticalLeaderboardFragment;
     }
 
     public enum LeaderboardType {
@@ -35,6 +38,19 @@ public class LeaderboardPagerAdapter extends FragmentPagerAdapter {
         public int getValue() {
             return value;
         }
+    }
+
+    public void setCurrentLeaderboardFragment(int position) {
+        if (position == LeaderboardType.Vertical.value)
+            currentLeaderboardFragment = verticalLeaderboardFragment;
+        else if (position == LeaderboardType.Distance.value)
+            currentLeaderboardFragment = distanceLeaderboardFragment;
+        else if (position == LeaderboardType.Day.value)
+            currentLeaderboardFragment = dayLeaderboardFragment;
+    }
+
+    public void refreshCurrentLeaderboardFragment() {
+        currentLeaderboardFragment.refreshRankingsData();
     }
 
     @Override
