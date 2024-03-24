@@ -77,13 +77,10 @@ limitations under the License.
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
 
-        <activity android:name=".Stats"
+        <activity android:name=".ui.aggregatedStatistics.Stats"
             android:exported="true">
             <!-- If you want this to be the start activity, add the following intent-filter -->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+
         </activity>
 
 
