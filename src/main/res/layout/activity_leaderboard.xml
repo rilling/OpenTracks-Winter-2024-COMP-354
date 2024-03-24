@@ -72,6 +72,13 @@
             android:layout_marginStart="4dp"
             android:text="All Resorts"
             app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Refresh" />
     </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
