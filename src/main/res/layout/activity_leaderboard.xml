@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -41,40 +42,44 @@
 
     <LinearLayout
         android:id="@+id/filterBar"
-        android:layout_below="@id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/topBar"
         android:gravity="center"
+        android:orientation="horizontal"
         android:padding="8dp">
 
         <Button
             android:id="@+id/btnEveryone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Everyone" />
+            android:layout_marginStart="4dp"
+            android:text="Everyone"
+            app:cornerRadius="8dp" />
 
         <Button
             android:id="@+id/btnThisSeason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="This Season" />
+            android:layout_marginStart="4dp"
+            android:text="This Season"
+            app:cornerRadius="8dp" />
 
         <Button
             android:id="@+id/btnAllResorts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="All Resorts" />
+            android:layout_marginStart="4dp"
+            android:text="All Resorts"
+            app:cornerRadius="8dp" />
 
         <Button
             android:id="@+id/btnRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Refresh" />
+            android:layout_marginStart="4dp"
+            android:text="Refresh"
+            app:cornerRadius="8dp"/>
     </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
