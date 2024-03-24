@@ -1,14 +1,19 @@
-package de.dennisguse.opentracks.ui.leaderboard;
+package de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.dennisguse.opentracks.data.models.Ranking;
 
-public class TestData {
+public class VerticalLeaderboardFragment extends LeaderboardFragment {
 
-    // TODO: Delete this file when issue 67 is resolved.
-    public static List<Ranking> getTestData() {
+    @Override
+    protected void refreshRankingsData() {
+        // TODO: Replace the test data with code that gathers the appropriate Ranking data
+        setLeaderboardAdapterRankingList(getTestData());
+    }
+
+    private List<Ranking> getTestData() {
         List<Ranking> rankings = new ArrayList<>();
         rankings.add(new Ranking(1, "Da bes", "Steamboat Springs",  25));
         rankings.add(new Ranking(2, "Second place", "North California CA",  24));

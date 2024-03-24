@@ -4,18 +4,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.LeaderboardFragment;
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.DayLeaderboardFragment;
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.DistanceLeaderboardFragment;
+import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.VerticalLeaderboardFragment;
 
 public class LeaderboardPagerAdapter extends FragmentPagerAdapter {
-    private LeaderboardFragment verticalLeaderboardFragment;
-    private LeaderboardFragment distanceLeaderboardFragment;
-    private LeaderboardFragment dayLeaderboardFragment;
+    private VerticalLeaderboardFragment verticalLeaderboardFragment;
+    private DistanceLeaderboardFragment distanceLeaderboardFragment;
+    private DayLeaderboardFragment dayLeaderboardFragment;
 
     public LeaderboardPagerAdapter(FragmentManager fm) {
         super(fm);
-        verticalLeaderboardFragment = new LeaderboardFragment();
-        distanceLeaderboardFragment = new LeaderboardFragment();
-        dayLeaderboardFragment = new LeaderboardFragment();
+        verticalLeaderboardFragment = new VerticalLeaderboardFragment();
+        distanceLeaderboardFragment = new DistanceLeaderboardFragment();
+        dayLeaderboardFragment = new DayLeaderboardFragment();
     }
 
     public enum LeaderboardType {

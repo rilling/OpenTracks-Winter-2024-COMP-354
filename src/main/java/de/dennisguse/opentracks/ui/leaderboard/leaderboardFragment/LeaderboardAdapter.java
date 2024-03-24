@@ -13,11 +13,14 @@ import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.models.Ranking;
 
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
+    private List<Ranking> rankingList;
 
-    private final List<Ranking> rankingList;
+    public LeaderboardAdapter() {
+    }
 
-    public LeaderboardAdapter(List<Ranking> rankingList) {
+    public void setRankingList(List<Ranking> rankingList) {
         this.rankingList = rankingList;
+        // TODO: Might need to call notify here...
     }
 
     @NonNull
