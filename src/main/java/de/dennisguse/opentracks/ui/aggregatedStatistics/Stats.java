@@ -1,8 +1,10 @@
-package de.dennisguse.opentracks;
+package de.dennisguse.opentracks.ui.aggregatedStatistics;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import de.dennisguse.opentracks.R;
 
 public class Stats extends AppCompatActivity {
     @Override
