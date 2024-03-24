@@ -8,9 +8,9 @@ import de.dennisguse.opentracks.data.models.Ranking;
 public class DistanceLeaderboardFragment extends LeaderboardFragment {
 
     @Override
-    public void refreshRankingsData() {
+    protected List<Ranking> getLatestRankingsData() {
         // TODO: Replace the test data with code that gathers the appropriate Ranking data
-        setLeaderboardAdapterRankingList(getTestData());
+        return getTestData();
     }
 
     private List<Ranking> getTestData() {

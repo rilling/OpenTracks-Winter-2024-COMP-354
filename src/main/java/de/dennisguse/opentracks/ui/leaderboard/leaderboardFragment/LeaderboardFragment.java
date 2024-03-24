@@ -20,6 +20,10 @@ public abstract class LeaderboardFragment extends Fragment {
     private RecyclerView leaderboardRecyclerView;
     private LeaderboardAdapter leaderboardAdapter;
 
+    public LeaderboardFragment() {
+        leaderboardAdapter = new LeaderboardAdapter(getLatestRankingsData());
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,19 +31,14 @@ public abstract class LeaderboardFragment extends Fragment {
 
         leaderboardRecyclerView = view.findViewById(R.id.leaderboardList);
         leaderboardRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        leaderboardAdapter = new LeaderboardAdapter();
-
-        // Refresh the rankings data now that the Leaderboard Adapter has been constructed
-        refreshRankingsData();
-
         leaderboardRecyclerView.setAdapter(leaderboardAdapter);
 
         return view;
     }
 
-    public abstract void refreshRankingsData();
-
-    protected void setLeaderboardAdapterRankingList(List<Ranking> rankingList) {
-        leaderboardAdapter.setRankingList(rankingList);
+    public void refreshRankingsData() {
+        leaderboardAdapter.setRankingList(getLatestRankingsData());
     }
+
+    protected abstract List<Ranking> getLatestRankingsData();
 }

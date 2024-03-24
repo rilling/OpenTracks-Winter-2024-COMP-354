@@ -6,16 +6,20 @@ import java.util.List;
 import de.dennisguse.opentracks.data.models.Ranking;
 
 public class VerticalLeaderboardFragment extends LeaderboardFragment {
-    private boolean done = false;
+
+    // Temporary boolean to confirm that refresh works when expected to; delete once Issue 67 is finished.
+    private boolean firstRefresh = true;
 
     @Override
-    public void refreshRankingsData() {
+    protected List<Ranking> getLatestRankingsData() {
         // TODO: Replace the test data with code that gathers the appropriate Ranking data
-        if (done)
-            setLeaderboardAdapterRankingList(getAltTestData());
+        List<Ranking> latestRankingsData;
+        if (!firstRefresh)
+            latestRankingsData = getAltTestData();
         else
-            setLeaderboardAdapterRankingList(getTestData());
-        done = true;
+            latestRankingsData = getTestData();
+        firstRefresh = false;
+        return latestRankingsData;
     }
 
     private List<Ranking> getTestData() {
