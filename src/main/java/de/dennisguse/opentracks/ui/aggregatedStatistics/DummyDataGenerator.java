@@ -6,13 +6,13 @@ import de.dennisguse.opentracks.R;
 
 public class DummyDataGenerator {
     public double getSharpeningPercentageValue() {
-        return 0.22;
+        return 0.55;
     }
     public double getKmSinceLastSharpeningValue() {
-        return 11.0;
+        return 55.0;
     }
     public double getWaxingPercentageValue() {
-        return 0.33;
+        return 0.55;
     }
-    public double getKmSinceLastWaxingValue() { return 44.0; }
+    public double getKmSinceLastWaxingValue() { return 55.0; }
 }
