@@ -44,11 +44,13 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
-        <include
-            android:id="@+id/bottom_app_bar_layout"
-            layout="@layout/bottomappbar" />
+
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/bottom_app_bar_layout"
+        layout="@layout/bottomappbar" />
 
     <TextView
         android:id="@+id/aggregated_stats_empty_view"

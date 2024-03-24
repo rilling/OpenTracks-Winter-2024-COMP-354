@@ -58,6 +58,7 @@ import de.dennisguse.opentracks.share.ShareUtils;
 import de.dennisguse.opentracks.ui.TrackListAdapter;
 import de.dennisguse.opentracks.ui.aggregatedStatistics.AggregatedStatisticsActivity;
 import de.dennisguse.opentracks.ui.aggregatedStatistics.ConfirmDeleteDialogFragment;
+import de.dennisguse.opentracks.ui.friends.FriendsActivity;
 import de.dennisguse.opentracks.ui.markers.MarkerListActivity;
 import de.dennisguse.opentracks.ui.util.ActivityUtils;
 import de.dennisguse.opentracks.util.IntentDashboardUtils;
@@ -150,6 +151,7 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
 
         recordingStatusConnection = new TrackRecordingServiceConnection(bindChangedCallback);
 
+        viewBinding.friendsButton.setOnClickListener((view)->startActivity(IntentUtils.newIntent(this, FriendsActivity.class)));
         viewBinding.aggregatedStatsButton.setOnClickListener((view) -> startActivity(IntentUtils.newIntent(this, AggregatedStatisticsActivity.class)));
         viewBinding.sensorStartButton.setOnClickListener((view) -> {
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
