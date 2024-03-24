@@ -50,7 +50,7 @@ public class ListItemUtils {
      * @param totalTime     the total time. Can be null
      * @param totalDistance the total distance. Can be null
      */
-    private static String getTimeDistance(String totalTime, String totalDistance, String avgSpeed) {
+    private static String getTimeDistance(String totalTime, String totalDistance) {
         StringBuilder builder = new StringBuilder();
         if (totalTime != null && totalTime.length() != 0) {
             if (builder.length() != 0) {
@@ -64,11 +64,10 @@ public class ListItemUtils {
             }
             builder.append("(").append(totalDistance).append(")");
         }
-        builder.append(avgSpeed);
         return builder.toString();
     }
 
-    public static String getTimeDistanceText(Context context, UnitSystem unitSystem, boolean isRecording, Duration totalTime, Distance totalDistance, int markerCount, String avgSpeed) {
+    public static String getTimeDistanceText(Context context, UnitSystem unitSystem, boolean isRecording, Duration totalTime, Distance totalDistance, int markerCount) {
         String timeDistanceText;
         if (isRecording) {
             timeDistanceText = context.getString(R.string.generic_recording);
@@ -81,7 +80,7 @@ public class ListItemUtils {
                     .build(context)
                     .formatDistance(totalDistance);
 
-            timeDistanceText = getTimeDistance(time, distance, avgSpeed);
+            timeDistanceText = getTimeDistance(time, distance);
             if (markerCount > 0) {
                 timeDistanceText += "  ‧";
             }

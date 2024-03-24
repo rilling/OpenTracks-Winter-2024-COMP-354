@@ -200,7 +200,9 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             String description = cursor.getString(descriptionIndex);
             trackId = new Track.Id(cursor.getLong(idIndex));
 
-            String avgSpeed = String.format("%.2f", totalDistance.toM() / totalTime.getSeconds()) + " m/s\n";
+            // This would have displayed on the list of runs alongside the total time and distance.
+            // ...but then I realised that "moving average" is displayed somewhere else lmao
+            // String avgSpeed = "\nAvg Speed: " + String.format("%.2f", totalDistance.toMI() / totalTime.toHours()) + " mph";
 
             int iconId = activityType.getIconDrawableId();
             int iconDesc = R.string.image_track;
@@ -216,7 +218,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             viewBinding.trackListItemName.setText(name);
 
-            String timeDistanceText = ListItemUtils.getTimeDistanceText(context, unitSystem, isRecordingThisTrackRecording, totalTime, totalDistance, markerCount, avgSpeed);
+            String timeDistanceText = ListItemUtils.getTimeDistanceText(context, unitSystem, isRecordingThisTrackRecording, totalTime, totalDistance, markerCount);
             viewBinding.trackListItemTimeDistance.setText(timeDistanceText);
 
             viewBinding.trackListItemMarkerCountIcon.setVisibility(markerCount > 0 ? View.VISIBLE : View.GONE);
