@@ -1,7 +1,13 @@
 package de.dennisguse.opentracks;
 
+import static android.app.PendingIntent.getActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,20 +21,39 @@ import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
  * @author Woo Jun Ann, Zachary Therrien
  * */
 public class SeasonalActivity extends AbstractActivity {
-
     private ActivitySeasonalBinding viewBinding;
-    private RecyclerView seasonsRecyclerViee;
+    private RecyclerView seasonsRecyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Sesonal Activity!");
-        seasonsRecyclerViee = findViewById(R.id.seasons_recyclerView);
+        setTitle("Seasonal Activity!");
+        seasonsRecyclerView = findViewById(R.id.seasons_recyclerView);
+
+        MakeYesNoButton(findViewById(R.id.activity_game_answer1_btn));
+        MakeYesNoButton(findViewById(R.id.activity_game_answer2_btn));
+        MakeYesNoButton(findViewById(R.id.activity_game_answer3_btn));
+
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
 
+    private void MakeYesNoButton(Button button)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Heading to " + button.getText()).setMessage("Is this okay?")
+                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                    Intent intent = new Intent(SeasonalActivity.this, SeasonalActivityPerSeason.class);
+                    intent.putExtra("seasonTitle", button.getText());
+                    startActivity(intent);
+                })
+                .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
+
+        button.setOnClickListener(view -> builder.create().show());
+    }
+
     @Override
-    protected View getRootView() {
+    protected View getRootView()
+    {
         viewBinding = ActivitySeasonalBinding.inflate(getLayoutInflater());
         return viewBinding.getRoot();
     }
