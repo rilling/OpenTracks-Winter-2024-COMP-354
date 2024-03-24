@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Sharpening Information">
+
+
+        <EditTextPreference
+            android:key="last_sharpening_date"
+            android:title="@string/settings_maintenance_last_sharpening_date"
+            android:inputType="date"/>
+        <ListPreference
+            android:key="base_angle"
+            android:title="@string/settings_maintenance_base_angle"
+            android:dialogTitle="Base angle"
+            android:entries="@array/angle_entries"
+            android:entryValues="@array/angle_values"
+            android:defaultValue="0"
+            android:summary="%s"/>
+
+        <ListPreference
+            android:key="Edge_angle"
+            android:title="@string/settings_maintenance_edge_angle"
+            android:dialogTitle="Edge Angle "
+            android:entries="@array/angle_entries"
+            android:entryValues="@array/angle_values"
+            android:defaultValue="0"
+            android:summary="%s"/>
+
+        <ListPreference
+            android:key="sharpening_interval"
+            android:title= "@string/settings_maintenance_sharpening_interval"
+            android:dialogTitle="Select sharpening interval"
+            android:entries="@array/interval_entries"
+            android:entryValues="@array/interval_values"
+            android:defaultValue="0"
+            android:summary="%s" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Waxing Information">
+        <EditTextPreference
+            android:key="last_waxing_date"
+            android:title="@string/settings_maintenance_last_wax_date"
+            android:inputType="date"/>
+        <ListPreference
+            android:key="wax_type"
+            android:title="@string/settings_maintenance_wax_type"
+            android:entries="@array/wax_type_entries"
+            android:entryValues="@array/wax_type_values"
+            android:summary="%s"/>
+        <ListPreference
+            android:key="waxing_interval"
+            android:title="@string/settings_maintenance_wax_interval"
+            android:dialogTitle="Select waxing interval"
+            android:entries="@array/interval_entries"
+            android:entryValues="@array/interval_values"
+            android:defaultValue="0"
+            android:summary="%s" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

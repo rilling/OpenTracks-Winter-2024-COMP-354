@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Java file is MaintenanceInfo on settings folder
+Also this file is on folder layout don't try to change it I had some issue-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.MaintenanceInfo"
+    android:background="@color/chart_pace_border">
+
+    <!-- Information about your skis -->
+    <TextView
+        android:id="@+id/maintenanceInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_maintenance_info_title"
+        android:textColor="#DE000000"
+        android:gravity="center"
+        android:background="@android:color/darker_gray"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- Sharpening Information Section -->
+    <TextView
+        android:id="@+id/SharpeningInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/settings_maintenance_sharp_title"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toBottomOf="@id/maintenanceInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnSetSharpening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_maintenance_set_button"
+        app:layout_constraintTop_toTopOf="@id/SharpeningInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/SharpeningInfo" />
+
+
+    <!-- Base Angle -->
+    <TextView
+        android:id="@+id/tvSharpeningDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_last_sharpening_date"
+        app:layout_constraintTop_toBottomOf="@id/SharpeningInfo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDateLastSharpening"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/settings_maintenance_sharpening_date"
+        app:layout_constraintTop_toTopOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintStart_toEndOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetSharpening" />
+
+
+    <!-- Base Angle -->
+    <TextView
+        android:id="@+id/tvBaseAngleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_base_angle"
+        app:layout_constraintTop_toBottomOf="@id/tvSharpeningDateLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <!-- Edge Angle -->
+    <SeekBar
+        android:id="@+id/seekBarBaseAngle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/tvBaseAngleLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetSharpening"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/tvBaseAngleLabel"
+        app:layout_constraintTop_toTopOf="@id/tvBaseAngleLabel"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvEdgeAngleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_edge_angle"
+        app:layout_constraintTop_toBottomOf="@id/tvBaseAngleLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarEdgeAngle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tvEdgeAngleLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvEdgeAngleLabel"
+        app:layout_constraintStart_toEndOf="@id/tvEdgeAngleLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetSharpening" />
+
+    <!-- Sharpening Interval -->
+    <TextView
+        android:id="@+id/tvSharpeningIntervalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_sharpening_interval"
+        app:layout_constraintTop_toBottomOf="@id/tvEdgeAngleLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarSharpeningInterval"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tvSharpeningIntervalLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvSharpeningIntervalLabel"
+        app:layout_constraintStart_toEndOf="@id/tvSharpeningIntervalLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetSharpening" />
+
+
+    <!-- Waxing Information Section -->
+    <TextView
+        android:id="@+id/WaxingInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/settings_maintenance_wax_title"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toBottomOf="@id/seekBarSharpeningInterval"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnSetWaxing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_maintenance_set_button"
+        app:layout_constraintTop_toTopOf="@id/WaxingInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/WaxingInfo" />
+
+    <!-- Date of Last Waxing -->
+    <TextView
+        android:id="@+id/tvDateLastWaxingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_last_wax_date"
+        app:layout_constraintTop_toBottomOf="@id/WaxingInfo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvDateLastWaxing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/settings_maintenance_wax_date"
+        app:layout_constraintTop_toTopOf="@id/tvDateLastWaxingLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvDateLastWaxingLabel"
+        app:layout_constraintStart_toEndOf="@id/tvDateLastWaxingLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetWaxing" />
+
+    <!-- Wax Type -->
+    <TextView
+        android:id="@+id/tvWaxTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_wax_type"
+        app:layout_constraintTop_toBottomOf="@id/tvDateLastWaxingLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvWaxType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/settings_maintenance_wax_type_input"
+        app:layout_constraintTop_toTopOf="@id/tvWaxTypeLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvWaxTypeLabel"
+        app:layout_constraintStart_toEndOf="@id/tvWaxTypeLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetWaxing" />
+
+    <!-- Waxing Interval -->
+    <TextView
+        android:id="@+id/tvWaxingIntervalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_maintenance_wax_interval"
+        app:layout_constraintTop_toBottomOf="@id/tvWaxTypeLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarWaxingInterval"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tvWaxingIntervalLabel"
+        app:layout_constraintBottom_toBottomOf="@id/tvWaxingIntervalLabel"
+        app:layout_constraintStart_toEndOf="@id/tvWaxingIntervalLabel"
+        app:layout_constraintEnd_toStartOf="@id/btnSetWaxing" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
