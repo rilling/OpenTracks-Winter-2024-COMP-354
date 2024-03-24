@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.50121653" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -193,8 +193,41 @@
         app:layout_constraintVertical_bias="0.0"
         tools:text="@string/daily_stats_max_speed_label" />
 
+
     <!--  ************************* The End of Lift Summary ************************************* -->
 
+
+    <!--  ************************* The Beginning of Run Summary ************************************* -->
+
+    <TextView
+        android:id="@+id/daily_run_number_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_number"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="@string/daily_run_number_label" />
+
+    <TextView
+        android:id="@+id/daily_run_number"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
+        tools:text="0" />
+
+
+    <!--  ************************* The End of Run Summary ************************************* -->
 
     <!-- Distance -->
 
@@ -203,6 +236,20 @@
     <!-- Avg. rate -->
 
     <!-- Max. rate -->
+
+    <TextView
+        android:id="@+id/daily_run_number_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/daily_run_number"
+        app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
+        tools:text="@string/daily_run_number_unit" />
 
     <TextView
         android:id="@+id/aggregated_stats_day_label"
@@ -219,7 +266,7 @@
     <View
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="260dp"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
         app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_num_day_tracks" />

@@ -721,4 +721,6 @@ limitations under the License.
     <string name="daily_lift_waiting_time_label">LIFT WAITING TIME</string>
     <string name="daily_stats_max_speed_label">LIFT MAX SPEED</string>
     <string name="daily_lift_max_speed_unit">km/h</string>
+    <string name="daily_run_number_label">NUMBER OF RUNS</string>
+    <string name="daily_run_number_unit">Run(s)</string>
 </resources>
