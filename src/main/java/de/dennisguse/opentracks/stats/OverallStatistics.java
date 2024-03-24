@@ -19,6 +19,9 @@ package de.dennisguse.opentracks.stats;
 
 import de.dennisguse.opentracks.data.models.Distance;
 import de.dennisguse.opentracks.data.models.Speed;
+import de.dennisguse.opentracks.data.models.Track;
+import de.dennisguse.opentracks.stats.TrackStatistics;
+
 
 public class OverallStatistics {
     public OverallStatistics() {
@@ -117,4 +120,41 @@ public class OverallStatistics {
         this.slopePercentageOverall = slopePercentageOverall;
     }
 
+
+    //The addToOverallStatistics() method is called whenever updating the overall
+    //statistics of a user.
+    public void addToOverallStatistics(TrackStatistics trackStatistics){
+        calculateTotalRunsOverall(trackStatistics);
+        calculateTotalSkiDaysOverall(trackStatistics);
+        calculateTotalTrackDistanceOverall(trackStatistics);
+        calculateTotalVerticalDescentOverall(trackStatistics);
+        calculateAvgSpeedOverall(trackStatistics);
+        calculateSlopePercentageOverall(trackStatistics);
+
+    }
+    private void calculateTotalRunsOverall(TrackStatistics trackStatistics){
+        totalRunsOverall += trackStatistics.getTotalRunsSeason();
+    }
+
+    private void calculateTotalSkiDaysOverall(TrackStatistics trackStatistics){
+        totalSkiDaysOverall += trackStatistics.getTotalSkiDaysSeason();
+    }
+
+    private void calculateTotalTrackDistanceOverall(TrackStatistics trackStatistics){
+        totalTrackDistanceOverall.plus(trackStatistics.getTotalTrackDistanceSeason());
+    }
+
+    private void calculateTotalVerticalDescentOverall(TrackStatistics trackStatistics){
+        totalVerticalDescentOverall.plus(trackStatistics.getTotalVerticalDescentSeasonSeason());
+    }
+
+    private void calculateAvgSpeedOverall(TrackStatistics trackStatistics){
+        double tempAvgOverall = (Double.parseDouble(String.valueOf(avgSpeedOverall)) + Double.parseDouble(String.valueOf(trackStatistics.getAvgSpeedSeason())))/2;
+        avgSpeedOverall = new Speed(tempAvgOverall);
+    }
+
+    private void calculateSlopePercentageOverall(TrackStatistics trackStatistics){
+        slopePercentageOverall = (slopePercentageOverall + trackStatistics.getSlopePercentageSeason())/2;
+
+    }
 }
