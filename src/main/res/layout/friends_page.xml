@@ -45,10 +45,6 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
-        <include
-            android:id="@+id/bottom_app_bar_layout"
-            layout="@layout/bottomappbar" />
-
     </LinearLayout>
 
     <TextView
@@ -60,5 +56,9 @@
         android:padding="16dp"
         app:layout_anchor="@+id/linearLayout2"
         app:layout_anchorGravity="center" />
+
+    <include
+        android:id="@+id/bottom_app_bar_layout"
+        layout="@layout/bottomappbar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
