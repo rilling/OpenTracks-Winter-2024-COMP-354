@@ -23,6 +23,7 @@
         android:paddingBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!--Search icon from https://www.pngall.com/wp-content/uploads/13/Search-Button-White-PNG.png -->
         <Button
             android:id="@+id/searchButton"
             android:layout_width="wrap_content"
