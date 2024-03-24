@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import de.dennisguse.opentracks.R;
@@ -24,6 +26,8 @@ import de.dennisguse.opentracks.util.StringUtils;
 public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private AggregatedStatistics aggregatedStatistics;
+    private SimpleDateFormat formatter = new SimpleDateFormat("MM dd yyy");
+
     private final Context context;
 
     public AggregatedDayStatisticsAdapter(Context context, AggregatedStatistics aggregatedStatistics) {
@@ -64,12 +68,13 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
         this.notifyDataSetChanged();
     }
 
-    public List<String> getCategories() {
-        List<String> categories = new ArrayList<>();
+    public List<String> getDays() {
+        List<String> days = new ArrayList<>();
         for (int i = 0; i < aggregatedStatistics.getCount(); i++) {
-            categories.add(aggregatedStatistics.getItem(i).getActivityTypeLocalized());
+            Date day = Date.from(aggregatedStatistics.getItem(i).getTrackStatistics().getStopTime());
+            days.add(formatter.format(day));
         }
-        return categories;
+        return days;
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder {
@@ -127,13 +132,14 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
         //TODO Check preference handling.
         private void setCommonValues(AggregatedStatistics.AggregatedStatistic aggregatedStatistic) {
             String activityType = aggregatedStatistic.getActivityTypeLocalized();
+            String day = formatter.format(Date.from(aggregatedStatistics.getItem(0).getTrackStatistics().getStopTime()));
 
             reportSpeed = PreferencesUtils.isReportSpeed(activityType);
             unitSystem = PreferencesUtils.getUnitSystem();
 
             viewBinding.activityIcon.setImageResource(getIcon(aggregatedStatistic));
-//            viewBinding.aggregatedStatsTypeLabel.setText(activityType);
-//            viewBinding.aggregatedStatsNumTracks.setText(StringUtils.valueInParentheses(String.valueOf(aggregatedStatistic.getCountTracks())));
+            viewBinding.aggregatedStatsDayLabel.setText(day);
+            viewBinding.aggregatedStatsNumDayTracks.setText(StringUtils.valueInParentheses(String.valueOf(aggregatedStatistic.getCountTracks())));
 
             Pair<String, String> parts = DistanceFormatter.Builder()
                     .setUnit(unitSystem)

@@ -130,7 +130,11 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.aggregated_statistics_filter) {
             ArrayList<FilterDialogFragment.FilterItem> filterItems = new ArrayList<>();
-            adapter.getCategories().stream().forEach(activityType -> filterItems.add(new FilterDialogFragment.FilterItem(activityType, activityType, true)));
+            if(isDailyView) {
+                dayAdapter.getDays().stream().forEach(day -> filterItems.add(new FilterDialogFragment.FilterItem(day, day, true)));
+            } else {
+                adapter.getCategories().stream().forEach(activityType -> filterItems.add(new FilterDialogFragment.FilterItem(activityType, activityType, true)));
+            }
             FilterDialogFragment.showDialog(getSupportFragmentManager(), filterItems);
             return true;
         }

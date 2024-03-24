@@ -10,6 +10,19 @@
     android:paddingBottom="8dp">
 
     <!-- Guidelines -->
+
+    <TextView
+        android:id="@+id/aggregated_stats_num_day_tracks"
+        style="@style/TextAppearance.OpenTracks.PrimaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_day_label"
+        app:layout_constraintStart_toEndOf="@+id/aggregated_stats_day_label"
+        app:layout_constraintTop_toTopOf="@+id/aggregated_stats_day_label"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="(1)" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="0dp"
@@ -41,6 +54,14 @@
         app:tint="?android:textColorPrimary"
         tools:srcCompat="@drawable/ic_activity_skiing_24dp" />
 
+    <!-- Distance -->
+
+    <!-- Time -->
+
+    <!-- Avg. rate -->
+
+    <!-- Max. rate -->
+
     <TextView
         android:id="@+id/aggregated_stats_day_label"
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
@@ -50,21 +71,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_icon"
         app:layout_constraintTop_toTopOf="@+id/activity_icon"
+        app:layout_constraintVertical_bias="1.0"
         tools:text="@string/stats_day" />
-
-    <!-- Distance -->
-
-    <!-- Time -->
-
-    <!-- Avg. rate -->
-
-    <!-- Max. rate -->
 
     <View
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
+        android:layout_marginTop="150dp"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
         app:layout_constraintStart_toEndOf="@id/guideline1"
-        tools:layout_editor_absoluteY="175dp" />
+        app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_num_day_tracks" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
