@@ -21,7 +21,6 @@ public class DailyStatsActivity extends AbstractActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.daily_stats);
 
         // Create and populate the spin_metrics spinner with Metric enums.
         Spinner spin_metrics = (Spinner)findViewById(R.id.daily_metric);
