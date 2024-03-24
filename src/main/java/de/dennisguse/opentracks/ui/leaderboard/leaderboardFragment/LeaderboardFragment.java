@@ -10,11 +10,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import de.dennisguse.opentracks.R;
-import de.dennisguse.opentracks.ui.leaderboard.TestData;
-import de.dennisguse.opentracks.ui.leaderboard.leaderboardFragment.LeaderboardAdapter;
+import java.util.List;
 
-public class LeaderboardFragment extends Fragment {
+import de.dennisguse.opentracks.R;
+import de.dennisguse.opentracks.data.models.Ranking;
+
+public abstract class LeaderboardFragment extends Fragment {
 
     private RecyclerView leaderboardRecyclerView;
     private LeaderboardAdapter leaderboardAdapter;
@@ -26,9 +27,19 @@ public class LeaderboardFragment extends Fragment {
 
         leaderboardRecyclerView = view.findViewById(R.id.leaderboardList);
         leaderboardRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        leaderboardAdapter = new LeaderboardAdapter(TestData.getTestData());
+        leaderboardAdapter = new LeaderboardAdapter();
+
+        // Refresh the rankings data now that the Leaderboard Adapter has been constructed
+        refreshRankingsData();
+
         leaderboardRecyclerView.setAdapter(leaderboardAdapter);
 
         return view;
+    }
+
+    protected abstract void refreshRankingsData();
+
+    protected void setLeaderboardAdapterRankingList(List<Ranking> rankingList) {
+        leaderboardAdapter.setRankingList(rankingList);
     }
 }
