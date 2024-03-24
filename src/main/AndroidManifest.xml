@@ -347,6 +347,7 @@
             android:launchMode="singleInstance"
             android:process=":crash" />
 
+
         <provider
             android:name=".data.ShareContentProvider"
             android:authorities="${applicationId}.content"
