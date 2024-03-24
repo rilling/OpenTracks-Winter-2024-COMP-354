@@ -16,11 +16,21 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:insetLeft="10dp"
+            android:text="Search"
+            app:icon="@drawable/search_button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/aggregated_stats_list"
@@ -34,18 +44,20 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/aggregated_stats_empty_view"
-            style="?attr/textAppearanceHeadline4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:gravity="center_horizontal|center_vertical" />
+        <include
+            android:id="@+id/bottom_app_bar_layout"
+            layout="@layout/bottomappbar" />
 
     </LinearLayout>
 
-    <include
-        android:id="@+id/bottom_app_bar_layout"
-        layout="@layout/bottomappbar" />
+    <TextView
+        android:id="@+id/aggregated_stats_empty_view"
+        style="?attr/textAppearanceHeadline4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="16dp"
+        app:layout_anchor="@+id/linearLayout2"
+        app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
