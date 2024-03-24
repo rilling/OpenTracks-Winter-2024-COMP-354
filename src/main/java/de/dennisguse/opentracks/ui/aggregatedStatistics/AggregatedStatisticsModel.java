@@ -17,6 +17,7 @@ import de.dennisguse.opentracks.data.models.Track;
 public class AggregatedStatisticsModel extends AndroidViewModel {
 
     private MutableLiveData<AggregatedStatistics> aggregatedStats;
+    private MutableLiveData<AggregatedStatistics> aggregatedDayStats;
 
     public AggregatedStatisticsModel(@NonNull Application application) {
         super(application);
@@ -28,6 +29,14 @@ public class AggregatedStatisticsModel extends AndroidViewModel {
             loadAggregatedStats(selection);
         }
         return aggregatedStats;
+    }
+
+    public LiveData<AggregatedStatistics> getAggregatedDailyStats(@Nullable TrackSelection selection) {
+        if (aggregatedDayStats == null) {
+            aggregatedDayStats = new MutableLiveData<>();
+            loadAggregatedStats(selection, true);
+        }
+        return aggregatedDayStats;
     }
 
     public void updateSelection(TrackSelection selection) {
@@ -43,9 +52,25 @@ public class AggregatedStatisticsModel extends AndroidViewModel {
             ContentProviderUtils contentProviderUtils = new ContentProviderUtils(getApplication().getApplicationContext());
             List<Track> tracks = selection != null ? contentProviderUtils.getTracks(selection) : contentProviderUtils.getTracks();
 
+            // This is where we need to define our custom sorting
             AggregatedStatistics aggregatedStatistics = new AggregatedStatistics(tracks);
 
             aggregatedStats.postValue(aggregatedStatistics);
+        }).start();
+    }
+
+    private void loadAggregatedStats(TrackSelection selection, Boolean isDaily) {
+        new Thread(() -> {
+            ContentProviderUtils contentProviderUtils = new ContentProviderUtils(getApplication().getApplicationContext());
+            List<Track> tracks = selection != null ? contentProviderUtils.getTracks(selection) : contentProviderUtils.getTracks();
+
+            // This is where we need to define our custom sorting
+            AggregatedStatistics aggregatedStatistics = new AggregatedStatistics(tracks, isDaily);
+            if(isDaily) {
+                aggregatedDayStats.postValue(aggregatedStatistics);
+            } else {
+                aggregatedStats.postValue(aggregatedStatistics);
+            }
         }).start();
     }
 }

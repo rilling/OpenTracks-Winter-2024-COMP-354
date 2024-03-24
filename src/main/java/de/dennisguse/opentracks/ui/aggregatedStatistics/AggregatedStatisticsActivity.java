@@ -66,24 +66,18 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         });
         toggleAdapter();
 
-        viewModel.getAggregatedStats(selection).observe(this, aggregatedStatistics -> {
-            if ((aggregatedStatistics == null || aggregatedStatistics.getCount() == 0) && !selection.isEmpty()) {
-                viewBinding.aggregatedStatsEmptyView.setText(getString(R.string.aggregated_stats_filter_no_results));
-            }
-            if (aggregatedStatistics != null) {
-                adapter.swapData(aggregatedStatistics);
-                dayAdapter.swapData(aggregatedStatistics);
-            }
-            checkListEmpty();
-        });
-
-
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
 
     private void toggleAdapter() {
         if (isDailyView) {
             viewBinding.aggregatedStatsList.setAdapter(dayAdapter);
+            viewModel.getAggregatedDailyStats(selection).observe(this, aggregatedStats -> {
+                if (aggregatedStats != null) {
+                    dayAdapter.swapData(aggregatedStats);
+                }
+                checkListEmpty();
+            });
         } else {
             viewBinding.aggregatedStatsList.setAdapter(adapter);
             viewModel.getAggregatedStats(selection).observe(this, aggregatedStats -> {
@@ -93,6 +87,7 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
                 checkListEmpty();
             });
         }
+
     }
 
     private void checkListEmpty() {

@@ -3,7 +3,9 @@ package de.dennisguse.opentracks.ui.aggregatedStatistics;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +33,24 @@ public class AggregatedStatistics {
         });
     }
 
+    public AggregatedStatistics(@NonNull List<Track> tracks, Boolean isDaily) {
+        for (Track track : tracks) {
+            if(isDaily) {
+                aggregateDays(track);
+            } else {
+                aggregate(track);
+            }
+        }
+
+        dataList.addAll(dataMap.values());
+        dataList.sort((o1, o2) -> {
+            if (o1.getCountTracks() == o2.getCountTracks()) {
+                return o1.getActivityTypeLocalized().compareTo(o2.getActivityTypeLocalized());
+            }
+            return (o1.getCountTracks() < o2.getCountTracks() ? 1 : -1);
+        });
+    }
+
     @VisibleForTesting
     public void aggregate(@NonNull Track track) {
         String activityTypeLocalized = track.getActivityTypeLocalized();
@@ -38,6 +58,17 @@ public class AggregatedStatistics {
             dataMap.get(activityTypeLocalized).add(track.getTrackStatistics());
         } else {
             dataMap.put(activityTypeLocalized, new AggregatedStatistic(activityTypeLocalized, track.getTrackStatistics()));
+        }
+    }
+
+    @VisibleForTesting
+    public void aggregateDays(@NonNull Track track) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM dd yyy");
+        String day = formatter.format(Date.from(track.getTrackStatistics().getStopTime()));
+        if (dataMap.containsKey(day)) {
+            dataMap.get(day).add(track.getTrackStatistics());
+        } else {
+            dataMap.put(day, new AggregatedStatistic(day, track.getTrackStatistics()));
         }
     }
 
