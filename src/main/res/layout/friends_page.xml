@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:insetLeft="10dp"
-            android:text="Search"
+            android:text="@string/search"
             app:icon="@drawable/search_button" />
 
         <androidx.recyclerview.widget.RecyclerView
