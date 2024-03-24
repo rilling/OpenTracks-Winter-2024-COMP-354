@@ -293,6 +293,7 @@ limitations under the License.
     <string name="marker_list_empty_message">You don\'t have any markers</string>
     <!-- Menu -->
     <string name="menu_aggregated_statistics">Aggregated stats</string>
+    <string name="menu_friends">Friends</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_edit">Edit</string>
     <string name="menu_export_all">Export all (one file per track)</string>
