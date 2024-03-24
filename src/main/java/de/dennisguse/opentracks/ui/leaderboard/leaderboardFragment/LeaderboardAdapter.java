@@ -20,7 +20,9 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
     public void setRankingList(List<Ranking> rankingList) {
         this.rankingList = rankingList;
-        // TODO: Might need to call notify here...
+
+        // Since the rankingList could have been remade from the ground up, we have to call notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     @NonNull

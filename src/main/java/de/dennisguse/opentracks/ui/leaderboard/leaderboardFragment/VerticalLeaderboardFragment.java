@@ -6,11 +6,16 @@ import java.util.List;
 import de.dennisguse.opentracks.data.models.Ranking;
 
 public class VerticalLeaderboardFragment extends LeaderboardFragment {
+    private boolean done = false;
 
     @Override
-    protected void refreshRankingsData() {
+    public void refreshRankingsData() {
         // TODO: Replace the test data with code that gathers the appropriate Ranking data
-        setLeaderboardAdapterRankingList(getTestData());
+        if (done)
+            setLeaderboardAdapterRankingList(getAltTestData());
+        else
+            setLeaderboardAdapterRankingList(getTestData());
+        done = true;
     }
 
     private List<Ranking> getTestData() {
@@ -40,6 +45,13 @@ public class VerticalLeaderboardFragment extends LeaderboardFragment {
         rankings.add(new Ranking(23,  "TwoThree", "Steamboat Springs",  3));
         rankings.add(new Ranking(24,  "The day", "Montreal",  2));
         rankings.add(new Ranking(25,  "The saved day", "Montreal",  1));
+        return rankings;
+    }
+
+    private List<Ranking> getAltTestData() {
+        List<Ranking> rankings = new ArrayList<>();
+        rankings.add(new Ranking(1, "Da bes", "Steamboat Springs",  25));
+        rankings.add(new Ranking(2,  "The saved day", "Montreal",  1));
         return rankings;
     }
 }

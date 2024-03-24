@@ -37,7 +37,7 @@ public abstract class LeaderboardFragment extends Fragment {
         return view;
     }
 
-    protected abstract void refreshRankingsData();
+    public abstract void refreshRankingsData();
 
     protected void setLeaderboardAdapterRankingList(List<Ranking> rankingList) {
         leaderboardAdapter.setRankingList(rankingList);
