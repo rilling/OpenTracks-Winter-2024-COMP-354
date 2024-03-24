@@ -1,24 +1,34 @@
 package de.dennisguse.opentracks;
 
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.annotation.Nullable;
 
-public class SeasonalActivity extends AppCompatActivity {
+import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
+
+
+/**
+ * This view will allow users to see the list of each season and select the season they wish to see the aggregated data for.
+ *
+ * @author Woo Jun Ann, Zachary Therrien
+ * */
+public class SeasonalActivity extends AbstractActivity {
+
+    private ActivitySeasonalBinding viewBinding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_seasonal);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        setTitle("Sesonal Activity!");
+
+
+        setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
+    }
+
+    @Override
+    protected View getRootView() {
+        viewBinding = ActivitySeasonalBinding.inflate(getLayoutInflater());
+        return viewBinding.getRoot();
     }
 }
