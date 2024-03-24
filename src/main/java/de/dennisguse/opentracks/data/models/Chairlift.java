@@ -1,13 +1,28 @@
 package de.dennisguse.opentracks.data.models;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Chairlift {
     private String name;
     private int number;
     private double averageSpeed;
     private String liftType;
+    private int id;
+    private static int nextId = 1;
+
+    private static final Map<Integer, Chairlift> validChairlifts = new HashMap<>();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     // Constructor
     public Chairlift(String name, int number, double averageSpeed, String liftType) {
@@ -15,6 +30,8 @@ public class Chairlift {
         this.number = number;
         this.averageSpeed = averageSpeed;
         this.liftType = liftType;
+        this.id = nextId;
+        nextId++;
     }
 
     // Getters and Setters
@@ -50,13 +67,13 @@ public class Chairlift {
         this.liftType = liftType;
     }
 
-    // Method to determine if the user is riding the chairlift
+    //to determine if the user is riding the chairlift
     public boolean isUserRidingChairlift(List<TrackPoint> trackPoints) {
         if (trackPoints.size() < 2) {
             return false; //Not enough data
         }
 
-        // Thresholds to determine movement of chairlift (you can adjust these as needed)
+        //Thresholds to determine movement of chairlift (you can adjust these as needed)
         double altitudeChangeThreshold = 2.0;
         double speedThreshold = 2;
         double timeThreshold = 1;
@@ -75,7 +92,7 @@ public class Chairlift {
             return false; //exceed and likely not on chairlift
         }
 
-        // Calculate total distance
+        //Calculate total distance
         double totalDistance = calculateTotalDistance(trackPoints);
 
         //Calculate total time
@@ -88,7 +105,7 @@ public class Chairlift {
 
         //Check if average speed is below a certain threshold
         if (averageSpeed > speedThreshold) {
-            if (averageSpeed < 2 || averageSpeed > 6) //meters/seconds
+            if (averageSpeed < 2 && averageSpeed > 6) //meters/seconds
             return false; //averege speed too slow/fast for a chairlift
         }
         else {
@@ -97,18 +114,21 @@ public class Chairlift {
 
         if (totalTime > timeThreshold){
             if (time > 1 && time < 77){ //in second?
+                Chairlift validChairlift = new Chairlift(name, number, averageSpeed, liftType);
+                validChairlifts.put(validChairlift.getId(), validChairlift);
                 return true;
             }
             else
                 return false;
         }
-
+        
         return false;
     }
 
+    private void put(int id, Chairlift validChairlift) {
+    }
 
-
-    // Helper method to calculate total distance covered
+    //Helper method to calculate total distance covered
     private double calculateTotalDistance(List<TrackPoint> trackPoints) {
 
 
@@ -145,5 +165,11 @@ public class Chairlift {
 
         return totalTime;
     }
+
+    public static List<Chairlift> getValidChairlifts() {
+        return new ArrayList<>(validChairlifts.values());
+    }
+    
+
 
 }
