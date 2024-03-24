@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
 
@@ -16,13 +17,13 @@ import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
 public class SeasonalActivity extends AbstractActivity {
 
     private ActivitySeasonalBinding viewBinding;
+    private RecyclerView seasonsRecyclerViee;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Sesonal Activity!");
-
-
+        seasonsRecyclerViee = findViewById(R.id.seasons_recyclerView);
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
 

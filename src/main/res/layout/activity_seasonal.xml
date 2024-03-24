@@ -28,21 +28,11 @@
                 app:title="Seasonal Data" />
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <TextView
-            android:id="@+id/activity_game_question_text"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/seasons_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content" />
+
 
         <Button
             android:id="@+id/activity_game_answer1_btn"
@@ -54,7 +44,6 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_game_question_text"
             tools:ignore="HardcodedText" />
 
         <Button
