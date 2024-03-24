@@ -24,7 +24,11 @@ import de.dennisguse.opentracks.stats.TrackStatistics;
 
 
 public class OverallStatistics {
-    public OverallStatistics() {
+
+    // Static field that stores singleton instance
+    private static OverallStatistics instance;
+
+    protected OverallStatistics() {
         this.totalRunsOverall = 50;
         this.totalSkiDaysOverall = 25;
         this.totalTrackDistanceOverall = Distance.ofKilometer(500);
@@ -33,7 +37,7 @@ public class OverallStatistics {
         this.slopePercentageOverall = .66;
     }
 
-    public OverallStatistics(int totalRunsOverall,
+    protected OverallStatistics(int totalRunsOverall,
                              int totalSkiDaysOverall,
                              Distance totalTrackDistanceOverall,
                              Distance totalVerticalDescentOverall,
@@ -45,6 +49,22 @@ public class OverallStatistics {
         this.totalVerticalDescentOverall = totalVerticalDescentOverall;
         this.avgSpeedOverall = avgSpeedOverall;
         this.slopePercentageOverall = slopePercentageOverall;
+    }
+
+    // Static method that controls access to singleton instance
+    public static OverallStatistics getInstance(){
+        if (instance == null){
+            instance = new OverallStatistics();
+        }
+        return instance;
+    }
+    
+    // Static method that controls access to singleton instance with parameters
+    public static OverallStatistics getInstance(int totalRunsOverall, int totalSkiDaysOverall, Distance totalTrackDistanceOverall, Distance totalVerticalDescentOverall, Speed avgSpeedOverall, double slopePercentageOverall){
+        if (instance == null){
+            instance = new OverallStatistics(totalRunsOverall, totalSkiDaysOverall, totalTrackDistanceOverall, totalVerticalDescentOverall, avgSpeedOverall, slopePercentageOverall);
+        }
+        return instance;
     }
 
     // The total number of all-time runs.
