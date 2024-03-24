@@ -30,25 +30,21 @@ public class SeasonalActivity extends AbstractActivity {
         setTitle("Seasonal Activity!");
         seasonsRecyclerView = findViewById(R.id.seasons_recyclerView);
 
-        MakeYesNoButton(findViewById(R.id.activity_game_answer1_btn));
-        MakeYesNoButton(findViewById(R.id.activity_game_answer2_btn));
-        MakeYesNoButton(findViewById(R.id.activity_game_answer3_btn));
+        GoToIndividualSite(findViewById(R.id.activity_game_answer1_btn));
+        GoToIndividualSite(findViewById(R.id.activity_game_answer2_btn));
+        GoToIndividualSite(findViewById(R.id.activity_game_answer3_btn));
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
 
-    private void MakeYesNoButton(Button button)
+    private void GoToIndividualSite(Button button)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Heading to " + button.getText()).setMessage("Is this okay?")
-                .setPositiveButton("Yes", (dialogInterface, i) -> {
-                    Intent intent = new Intent(SeasonalActivity.this, SeasonalActivityPerSeason.class);
-                    intent.putExtra("seasonTitle", button.getText());
-                    startActivity(intent);
-                })
-                .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
-
-        button.setOnClickListener(view -> builder.create().show());
+        button.setOnClickListener(view ->
+        {
+            Intent intent = new Intent(SeasonalActivity.this, SeasonalActivityPerSeason.class);
+            intent.putExtra("seasonTitle", button.getText());
+            startActivity(intent);
+        });
     }
 
     @Override

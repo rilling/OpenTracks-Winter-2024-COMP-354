@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -37,11 +38,22 @@ public class SeasonalActivityPerSeason extends AbstractActivity
             changeTitle(data.getString("seasonTitle"));
         }
     }
+    private void MakeYesNoButton(Button button)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Heading to " + button.getText()).setMessage("Is this okay?")
+                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                    // Do stuff
+                })
+                .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
+    }
     private void changeTitle(String newTitle)
     {
+        newTitle = newTitle.replaceAll("_", " ");
         setContentView(R.layout.activity_seasonal_per_season);
         TextView tv = (TextView)findViewById(R.id.pageTitle);
         tv.setText(newTitle);
+        tv.setTextSize(32);
     }
 
     @Override
