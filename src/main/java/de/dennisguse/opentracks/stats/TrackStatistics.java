@@ -22,6 +22,7 @@ import androidx.annotation.VisibleForTesting;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 import de.dennisguse.opentracks.data.models.Altitude;
 import de.dennisguse.opentracks.data.models.Distance;
@@ -442,6 +443,41 @@ public class TrackStatistics {
             totalAltitudeLoss_m = 0f;
         }
         totalAltitudeLoss_m += loss_m;
+    }
+
+    public static TrackStatistics sumOfTotalStats(List<TrackStatistics> trackStatistics)
+    {
+        TrackStatistics sum = new TrackStatistics();
+
+        int totalRuns = 0;
+        int totalSkiDays = 0;
+        Distance totalTrackDistance = Distance.of(0);
+        Distance totalVerticalDescent = Distance.of(0);
+        double totalAvgSpeed = 0;
+        double totalSlopePercentage = 0;
+
+        for(TrackStatistics trackStat : trackStatistics)
+        {
+            totalRuns += trackStat.getTotalRunsSeason();
+            totalSkiDays += trackStat.getTotalSkiDaysSeason();
+            totalTrackDistance = totalTrackDistance.plus(trackStat.getTotalTrackDistanceSeason());
+            totalVerticalDescent = totalVerticalDescent.plus(trackStat.getTotalVerticalDescentSeasonSeason());
+            totalAvgSpeed += trackStat.getAvgSpeedSeason().speed_mps();
+            totalSlopePercentage += trackStat.getSlopePercentageSeason();
+        }
+
+        int numTracks = trackStatistics.size();
+        totalAvgSpeed /= numTracks;
+        totalSlopePercentage /= numTracks;
+
+        sum.setTotalRunsSeason(totalRuns);
+        sum.setTotalSkiDaysSeason(totalSkiDays);
+        sum.setTotalTrackDistanceSeason(totalTrackDistance);
+        sum.setTotalVerticalDescentSeason(totalVerticalDescent);
+        sum.setAvgSpeedSeason(Speed.of(totalAvgSpeed));
+        sum.setSlopePercentageSeason(totalSlopePercentage);
+
+        return sum;
     }
 
     @Override
