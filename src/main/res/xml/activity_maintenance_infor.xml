@@ -47,7 +47,8 @@
             android:key="wax_type"
             android:title="@string/settings_maintenance_wax_type"
             android:entries="@array/wax_type_entries"
-            android:entryValues="@array/wax_type_values"/>
+            android:entryValues="@array/wax_type_values"
+            android:summary="%s"/>
         <ListPreference
             android:key="waxing_interval"
             android:title="@string/settings_maintenance_wax_interval"
