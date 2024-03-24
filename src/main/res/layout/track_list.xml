@@ -133,7 +133,7 @@ limitations under the License.
             app:icon="@drawable/podium"
             app:iconTint="?attr/colorOnBackground" />
 
-        <!--friends icon from "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F352633%2Fuser-friends&psig=AOvVaw1ZZtprp64Z3kJxaiz01CkM&ust=1711404038462000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDs5f7yjYUDFQAAAAAdAAAAABAE" modified to a vector drawable .xml using shapeshifter.design-->
+        <!--friends icon from "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F352633%2Fuser-friends&psig=AOvVaw1ZZtprp64Z3kJxaiz01CkM&ust=1711404038462000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDs5f7yjYUDFQAAAAAdAAAAABAE" modified to a vector drawable .xml using shapeshifter.design -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/friends_button"
             style="@style/Widget.Material3.Button.IconButton"
