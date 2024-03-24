@@ -3,11 +3,13 @@ package de.dennisguse.opentracks.ui.aggregatedStatistics;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.dennisguse.opentracks.data.models.Speed;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.stats.TrackStatistics;
 
@@ -78,6 +80,31 @@ public class AggregatedStatistics {
         void add(TrackStatistics statistics) {
             trackStatistics.merge(statistics);
             countTracks++;
+        }
+
+        public String getTotalTime(){
+            Duration duration = trackStatistics.getTotalTime();
+            String formattedTime = formatDuration(duration);
+            return formattedTime;}
+
+        public String getMovingTime(){
+            Duration duration = trackStatistics.getMovingTime();
+            String formattedTime = formatDuration(duration);
+            return formattedTime;}
+
+        public Speed getMaxSpeed(){
+            return trackStatistics.getMaxSpeed();
+
+        }
+
+        private String formatDuration(Duration duration) {
+            long seconds = duration.getSeconds();
+            long hours = seconds / 3600;
+            long minutes = (seconds % 3600) / 60;
+            long secs = seconds % 60;
+
+            // Format hours, minutes and seconds to ensure they are in 00:00:00 format
+            return String.format("%02d:%02d:%02d", hours, minutes, secs);
         }
     }
 }

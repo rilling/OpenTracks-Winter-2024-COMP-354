@@ -148,6 +148,16 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
 //            viewBinding.aggregatedStatsDistanceUnit.setText(parts.second);
 //
 //            viewBinding.aggregatedStatsTime.setText(StringUtils.formatElapsedTime(aggregatedStatistic.getTrackStatistics().getMovingTime()));
+
+            viewBinding.dailyLiftNumber.setText(String.valueOf(aggregatedStatistic.getCountTracks()));
+            viewBinding.dailyLiftNumberUnit.setText(context.getString(R.string.daily_lift_number_unit));
+            viewBinding.dailyLiftNumberLabel.setText(context.getString(R.string.daily_lift_number_label));
+
+            viewBinding.dailyLiftTotalTime.setText(String.valueOf(aggregatedStatistic.getTotalTime()));
+            viewBinding.dailyLiftTotalTimeLabel.setText(context.getString(R.string.daily_lift_total_time_label));
+
+            viewBinding.dailyLiftMovingTime.setText(String.valueOf(aggregatedStatistic.getMovingTime()));
+            viewBinding.dailyLiftMovingTimeLabel.setText(context.getString(R.string.daily_lift_moving_time_label));
         }
 
         private int getIcon(AggregatedStatistics.AggregatedStatistic aggregatedStatistic) {
