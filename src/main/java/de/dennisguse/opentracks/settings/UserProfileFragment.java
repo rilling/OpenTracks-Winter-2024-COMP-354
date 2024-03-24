@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -119,8 +120,31 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
     private void displayCustomSharingDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        // Array to store user information
+        String[] userInfo = new String[5];
+        int[] textViewIds = {R.id.nickname, R.id.dateOfBirth, R.id.userLocation, R.id.userHeight, R.id.userWeight};
+
+        // Array to store detail labels
+        String[] detailNames = {"Nickname", "Location", "Date of Birth", "Height", "Weight"};
+
+        StringBuilder alertMessageBuilder = new StringBuilder("Do you allow OpenTracks to store and display the following information on the leaderboard?\n\n");
+
+        // Retrieve values from TextViews and populate user info
+        for (int i = 0; i < textViewIds.length; i++) {
+
+            TextView textView = getView().findViewById(textViewIds[i]);
+            userInfo[i] = textView.getText().toString();
+
+            // Construct custom message
+            alertMessageBuilder.append(detailNames[i]).append(": ").append(userInfo[i]).append("\n");
+        }
+
+        String alertMessage = alertMessageBuilder.toString();
+
         builder.setTitle("Confirm Selection")
-                .setMessage("Do you allow OpenTracks to store and display the following information on the leaderboard:\n...")
+
+                .setMessage(alertMessage)
                 .setPositiveButton("ALLOW", (dialog, which) -> {
 
                     showToast("Updated sharing permissions");
