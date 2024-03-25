@@ -1,6 +1,10 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics.dailyStats;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List; // import the List class
@@ -9,6 +13,59 @@ import java.util.List; // import the List class
  * A module to aid in building the graph for visualizing daily statistics.
  */
 public class DailyPlottingModule {
+
+    public void plotGraph(LineChart lineChart, Metric metric, Frequency frequency) {
+        List<Entry> dataEntries;
+        LineDataSet metricDataSet;
+        LineDataSet runningAverageDataSet;
+
+        switch (metric) {
+            case AVG_SLOPE -> {
+                dataEntries = getAvgSlopeEntries(DailyRunsProvider.getAllDailyRuns());
+                metricDataSet = new LineDataSet(dataEntries, "Average slope line data set");
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for average slope"
+                );
+            }
+            case AVG_SPEED -> {
+                dataEntries = getAvgSpeedEntries(DailyRunsProvider.getAllDailyRuns());
+                metricDataSet = new LineDataSet(dataEntries, "Average speed line data set");
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for average speed"
+                );
+            }
+            case TOTAL_DISTANCE -> {
+                dataEntries = getTotalDistanceEntries(DailyRunsProvider.getAllDailyRuns());
+                metricDataSet = new LineDataSet(dataEntries, "Total distance line data set");
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for total distance"
+                );
+            }
+            case CHAIRLIFT_SPEED -> {
+                dataEntries = getAvgChairliftSpeedEntries(DailyRunsProvider.getAllDailyRuns());
+                metricDataSet = new LineDataSet(dataEntries, "Average chairlift speed line data set");
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for average chairlift speed"
+                );
+            }
+            default -> {
+                System.err.println("Unknown metric.");
+                return;
+            }
+        }
+
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(metricDataSet);
+        dataSets.add(runningAverageDataSet);
+
+        LineData data = new LineData(dataSets);
+        lineChart.setData(data);
+        lineChart.invalidate();
+    }
 
     /**
      * Method that helps calculating moving average.
