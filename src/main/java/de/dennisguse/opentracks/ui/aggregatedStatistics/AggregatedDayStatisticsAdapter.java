@@ -164,6 +164,10 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             viewBinding.dailyRunNumberUnit.setText(context.getString(R.string.daily_run_number_unit));
             viewBinding.dailyRunNumberLabel.setText(context.getString(R.string.daily_run_number_label));
 
+            // Run Elevation
+            viewBinding.dailyRunElevationUnit.setText(context.getString(R.string.daily_run_elevation_unit));
+            viewBinding.dailyRunElevationLabel.setText(context.getString(R.string.daily_run_elevation_label));
+
             //Activity type
             viewBinding.activityTypeLabel.setText(String.valueOf(aggregatedStatistic.getActivityTypeLocalized()));
         }
