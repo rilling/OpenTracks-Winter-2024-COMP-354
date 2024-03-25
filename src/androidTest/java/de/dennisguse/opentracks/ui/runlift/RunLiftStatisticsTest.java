@@ -59,6 +59,7 @@ public class RunLiftStatisticsTest {
 
         assertEquals(1, skiSubActivities.size());
         assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertTrue(skiSubActivities.get(0).getSlopePercentage() > 0);
         assertTrue(skiSubActivities.get(0).isLift());
         assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
     }
@@ -86,6 +87,7 @@ public class RunLiftStatisticsTest {
 
         assertEquals(1, skiSubActivities.size());
         assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertTrue(skiSubActivities.get(0).getSlopePercentage() > 0);
         assertFalse(skiSubActivities.get(0).isLift());
         assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
     }
