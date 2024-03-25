@@ -132,7 +132,7 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
         //TODO Check preference handling.
         private void setCommonValues(AggregatedStatistics.AggregatedStatistic aggregatedStatistic) {
             String activityType = aggregatedStatistic.getActivityTypeLocalized();
-            String day = formatter.format(Date.from(aggregatedStatistics.getItem(0).getTrackStatistics().getStopTime()));
+            String day = aggregatedStatistic.getDay();
 
             reportSpeed = PreferencesUtils.isReportSpeed(activityType);
             unitSystem = PreferencesUtils.getUnitSystem();

@@ -42,13 +42,23 @@ public class AggregatedStatistics {
             }
         }
 
-        dataList.addAll(dataMap.values());
-        dataList.sort((o1, o2) -> {
-            if (o1.getCountTracks() == o2.getCountTracks()) {
-                return o1.getActivityTypeLocalized().compareTo(o2.getActivityTypeLocalized());
-            }
-            return (o1.getCountTracks() < o2.getCountTracks() ? 1 : -1);
-        });
+        if(isDaily) {
+            dataList.addAll(dataMap.values());
+            dataList.sort((o1, o2) -> {
+                if (o1.getCountTracks() == o2.getCountTracks()) {
+                    return o1.getDay().compareTo(o2.getDay());
+                }
+                return (o1.getCountTracks() < o2.getCountTracks() ? 1 : -1);
+            });
+        } else {
+            dataList.addAll(dataMap.values());
+            dataList.sort((o1, o2) -> {
+                if (o1.getCountTracks() == o2.getCountTracks()) {
+                    return o1.getActivityTypeLocalized().compareTo(o2.getActivityTypeLocalized());
+                }
+                return (o1.getCountTracks() < o2.getCountTracks() ? 1 : -1);
+            });
+        }
     }
 
     @VisibleForTesting
@@ -68,7 +78,7 @@ public class AggregatedStatistics {
         if (dataMap.containsKey(day)) {
             dataMap.get(day).add(track.getTrackStatistics());
         } else {
-            dataMap.put(day, new AggregatedStatistic(day, track.getTrackStatistics()));
+            dataMap.put(day, new AggregatedStatistic(track.getTrackStatistics(), day));
         }
     }
 
@@ -86,6 +96,8 @@ public class AggregatedStatistics {
 
     public static class AggregatedStatistic {
         private final String activityTypeLocalized;
+
+        private String day;
         private final TrackStatistics trackStatistics;
         private int countTracks = 1;
 
@@ -94,8 +106,18 @@ public class AggregatedStatistics {
             this.trackStatistics = trackStatistics;
         }
 
+        public AggregatedStatistic(TrackStatistics trackStatistics, String day) {
+            this.day = day;
+            this.activityTypeLocalized = "skiing";
+            this.trackStatistics = trackStatistics;
+        }
+
         public String getActivityTypeLocalized() {
             return activityTypeLocalized;
+        }
+
+        public String getDay() {
+            return day;
         }
 
         public TrackStatistics getTrackStatistics() {
