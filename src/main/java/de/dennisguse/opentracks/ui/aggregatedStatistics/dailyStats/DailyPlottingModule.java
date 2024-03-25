@@ -1,6 +1,13 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics.dailyStats;
 
+import android.graphics.Color;
+import android.util.Log;
+
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList; // import the ArrayList class
 import java.util.List; // import the List class
@@ -10,6 +17,75 @@ import java.util.List; // import the List class
  */
 public class DailyPlottingModule {
 
+    public void plotGraph(LineChart lineChart, Metric metric, Frequency frequency) {
+        List<Entry> dataEntries;
+        LineDataSet metricDataSet;
+        LineDataSet runningAverageDataSet;
+
+        switch (metric) {
+            case AVG_SLOPE -> {
+                dataEntries = getAvgSlopeEntries(DailyRunsProvider.getAllDailyRuns());
+
+                metricDataSet = new LineDataSet(dataEntries, "Average slope line data set");
+                metricDataSet.setColor(Color.parseColor("#2774AE"));
+
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for average slope"
+                );
+            }
+            case AVG_SPEED -> {
+                dataEntries = getAvgSpeedEntries(DailyRunsProvider.getAllDailyRuns());
+
+                metricDataSet = new LineDataSet(dataEntries, "Average speed line data set");
+                metricDataSet.setColor(Color.parseColor("#ED9121"));
+
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for average speed"
+                );
+            }
+            case TOTAL_DISTANCE -> {
+                dataEntries = getTotalDistanceEntries(DailyRunsProvider.getAllDailyRuns());
+
+                metricDataSet = new LineDataSet(dataEntries, "Total distance line data set");
+                metricDataSet.setColor(Color.parseColor("#F8DE7E"));
+
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for total distance"
+                );
+            }
+            case CHAIRLIFT_SPEED -> {
+                dataEntries = getAvgChairliftSpeedEntries(DailyRunsProvider.getAllDailyRuns());
+
+                metricDataSet = new LineDataSet(dataEntries, "Average chairlift speed line data set");
+                metricDataSet.setColor(Color.parseColor("#8DB600"));
+
+                runningAverageDataSet = new LineDataSet(
+                        getMovingAverage(dataEntries, frequency.getValue()),
+                        "Running average line data set for average chairlift speed"
+                );
+            }
+            default -> {
+                Log.e("UNKNOWN_PLOT_GRAPH_METRIC", "plotGraph() called with an unknown metric parameter: " + metric);
+                return;
+            }
+        }
+
+        metricDataSet.setLineWidth(4);
+        runningAverageDataSet.setLineWidth(4);
+        runningAverageDataSet.setColor(Color.parseColor("#F2003C"));
+
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(metricDataSet);
+        dataSets.add(runningAverageDataSet);
+
+        LineData data = new LineData(dataSets);
+        lineChart.setData(data);
+        lineChart.invalidate();
+    }
+
     /**
      * Method that helps calculating moving average.
      *
@@ -18,7 +94,7 @@ public class DailyPlottingModule {
      * @return A list containing Entry objects representing the moving averages.
      */
     protected List<Entry> getMovingAverage(List<Entry> entries, int frequency) {
-        ArrayList<Entry> toReturn = new ArrayList<Entry>();
+        ArrayList<Entry> toReturn = new ArrayList<>();
         for (int e = 0; e <= entries.size() - frequency; e++) {
             //System.out.println("start idx = " + e );
             float x_sum = 0;
