@@ -77,6 +77,13 @@ limitations under the License.
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
 
+        <activity android:name=".ui.aggregatedStatistics.Stats"
+            android:exported="true">
+            <!-- If you want this to be the start activity, add the following intent-filter -->
+        </activity>
+
+
+
         <activity
             android:name=".publicapi.StartRecording"
             android:exported="true"
@@ -368,6 +375,14 @@ limitations under the License.
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".settings.SettingsCustomLayoutListActivity" />
         <activity android:name=".settings.SettingsCustomLayoutEditActivity" />
+        <activity android:name=".ui.aggregatedStatistics.StatisticsActivity"
+            android:exported="true">
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
+
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
+    </activity>
 
         <activity
             android:name=".ShowErrorActivity"
@@ -415,7 +430,9 @@ limitations under the License.
             android:name=".services.TrackDeleteService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
+
     </application>
+
 
     <queries>
         <intent>

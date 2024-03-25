@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
@@ -42,6 +44,8 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private MenuItem clearFilterItem;
     private MenuItem mapItem;
 
+    Button button1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +74,14 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         });
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
+
+        // add button to redirect to Overall statistics page.
+        button1 = (Button) (findViewById(R.id.StatsButtonId));
+
+        button1.setOnClickListener(view -> {
+            Intent intent = new Intent(AggregatedStatisticsActivity.this, StatisticsActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void checkListEmpty() {
