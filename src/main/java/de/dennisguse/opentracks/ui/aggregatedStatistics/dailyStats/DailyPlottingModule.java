@@ -75,6 +75,51 @@ public class DailyPlottingModule {
         return toReturn;
     }
 
+    /**
+     * Method that calculates average slope of entries.
+     *
+     * @param entries   This is a List of Entry objects that contains the original daily stats.
+     * @return A list containing Entry objects representing the average slope.
+     */
+    private List<Entry> getAvgSlopeEntries(List<RunVM> entries){
+        ArrayList<Entry> toReturn = new ArrayList<>();
+
+
+        for (int i = 0; i < entries.size(); i++){
+            RunVM run = entries.get(i);
+            float avgSlope = run.getAvgSlope();
+            toReturn.add(new Entry(i+1, avgSlope));
+
+
+        }
+        return toReturn;
+
+
+    }
+
+
+    /**
+     * Method that calculates total distance of entries.
+     *
+     * @param entries   This is a List of Entry objects that contains the original daily stats.
+     * @return A list containing Entry objects representing the total distance.
+     */
+    private List<Entry> getTotalDistanceEntries(List<RunVM> entries){
+        ArrayList<Entry> toReturn = new ArrayList<>();
+
+
+        for (int i = 0; i < entries.size(); i++){
+            RunVM run = entries.get(i);
+            float totalDistance = run.getTotalDistance();
+            toReturn.add(new Entry(i+1, totalDistance));
+
+
+        }
+        return toReturn;
+
+
+    }
+
 
 
 }
