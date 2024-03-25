@@ -78,12 +78,9 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         // add button to redirect to Overall statistics page.
         button1 = (Button) (findViewById(R.id.StatsButtonId));
 
-        button1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(AggregatedStatisticsActivity.this, Stats.class);
-                startActivity(intent);
-            }
+        button1.setOnClickListener(view -> {
+            Intent intent = new Intent(AggregatedStatisticsActivity.this, StatisticsActivity.class);
+            startActivity(intent);
         });
     }
 
