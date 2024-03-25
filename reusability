@@ -1,0 +1,49 @@
+package de.dennisguse.opentracks.data.models;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Preferences {
+
+    private Map<String, String> unitData;
+
+    public Preferences() {
+        unitData = new HashMap<>();
+        // Initialize with default unit data
+        unitData.put("speed", "km/h");
+        unitData.put("elevation", "m");
+    }
+
+    // Method to set unit for a specific category (e.g., "speed", "elevation")
+    public void setUnit(String category, String unit) {
+        // Validate category and unit
+        if (isValidCategory(category) && isValidUnit(unit)) {
+            unitData.put(category, unit);
+        } else {
+            System.out.println("Invalid category or unit.");
+        }
+    }
+
+    // Method to get unit for a specific category
+    public String getUnit(String category) {
+        // Validate category
+        if (isValidCategory(category)) {
+            return unitData.get(category);
+        } else {
+            System.out.println("Invalid category.");
+            return null;
+        }
+    }
+
+    // Method to check if category is valid
+    private boolean isValidCategory(String category) {
+        // Add additional categories as needed
+        return category.equals("speed") || category.equals("elevation");
+    }
+
+    // Method to check if unit is valid
+    private boolean isValidUnit(String unit) {
+        // Add additional units as needed
+        return unit.equals("km/h") || unit.equals("mph") || unit.equals("m/s") ||
+               unit.equals("m") || unit.equals("ft");
+    }
