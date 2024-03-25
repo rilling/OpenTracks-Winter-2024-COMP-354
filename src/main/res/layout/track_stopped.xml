@@ -184,7 +184,7 @@
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
 
-                <!-- TOOD Use MaterialDesign buttons instead of ImageView -->
+                <!-- TODO Use MaterialDesign buttons instead of ImageView -->
                 <ImageView
                     android:id="@+id/discard_button"
                     android:layout_width="32dp"

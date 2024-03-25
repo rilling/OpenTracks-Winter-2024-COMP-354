@@ -13,6 +13,7 @@ import android.icu.text.MessageFormat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.TtsSpan;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,7 @@ import de.dennisguse.opentracks.stats.TrackStatistics;
 import de.dennisguse.opentracks.ui.intervals.IntervalStatistics;
 
 class VoiceAnnouncementUtils {
+    private static final String TAG2 = TTSManager.class.getSimpleName();
 
     private VoiceAnnouncementUtils() {
     }
@@ -77,6 +79,7 @@ class VoiceAnnouncementUtils {
         double distanceInUnit = totalDistance.toKM_Miles(unitSystem);
 
         if (shouldVoiceAnnounceTotalDistance()) {
+           Log.d(TAG2, "in if statement");
             builder.append(context.getString(R.string.total_distance));
             // Units should always be english singular for TTS.
             // See https://developer.android.com/reference/android/text/style/TtsSpan?hl=en#TYPE_MEASURE

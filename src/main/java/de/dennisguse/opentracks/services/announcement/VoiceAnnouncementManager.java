@@ -18,6 +18,7 @@ package de.dennisguse.opentracks.services.announcement;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,7 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
     private TTSManager voiceAnnouncement;
 
     private TrackStatistics trackStatistics;
+//    trackStatistics.toString(); to be done in the code
 
     private static final Distance DISTANCE_OFF = Distance.of(Double.MAX_VALUE);
     private Distance distanceFrequency = DISTANCE_OFF;
@@ -79,7 +81,7 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
 
     public void start(@Nullable TrackStatistics trackStatistics) {
         voiceAnnouncement = new TTSManager(context);
-        voiceAnnouncement.start();
+        voiceAnnouncement.start(); // instance of TTSManager to call the start method which initializes the TTS engine
         update(trackStatistics);
     }
 
@@ -87,6 +89,12 @@ public class VoiceAnnouncementManager implements SharedPreferences.OnSharedPrefe
         this.trackStatistics = trackStatistics;
         updateNextDuration();
         updateNextTaskDistance();
+// Create a Spannable object with the text from TrackStatistics.toString()
+//        if(trackStatistics !=null){
+//            Spannable announcement = new SpannableString(trackStatistics.toString());
+//            // Pass the Spannable object to the announce() method of TTSManager
+//            voiceAnnouncement.announce(announcement);
+        //}
     }
 
     private boolean shouldNotAnnounce() {

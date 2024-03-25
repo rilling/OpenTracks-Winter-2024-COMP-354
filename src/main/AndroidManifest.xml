@@ -64,6 +64,8 @@ limitations under the License.
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+
+
     <application
         android:name=".Startup"
         android:allowBackup="true"
@@ -85,6 +87,7 @@ limitations under the License.
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".publicapi.StopRecording"
             android:exported="true"
