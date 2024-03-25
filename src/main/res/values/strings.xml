@@ -31,8 +31,22 @@ limitations under the License.
         * create markers (incl. pictures)\n
         * works completely offline\n
         * show tracks on a map (see below)
-    </string>
+        </string>
+    <string name="edit_sharing_preferences_title"> Edit Sharing Location </string>
 
+<string name="sharing_option_share_with">Share With</string>
+<string name="sharing_option_public">Pulbic</string>
+<string name="sharing_option_friends">Friends</string>
+<string name="sharing_option_no_one">No One</string>
+<string name="sharing_location_key">sharing_location</string>
+<string name="sharing_location_title">Sharing Location</string>
+<string name="sharing_location_summary">Choose who can see your location</string>
+<string-array name="sharing_options">
+    <item>No one</item>
+    <item>Friends</item>
+    <item>Family</item>
+    <item>Public</item>  
+</string-array>
     <string name="help_track_map_title">How to show a track on a map?</string>
     <string name="help_track_map_content">
         Use the small map icon.\n
