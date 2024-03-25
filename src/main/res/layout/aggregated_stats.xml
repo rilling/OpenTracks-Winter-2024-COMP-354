@@ -14,6 +14,12 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_statistics_24dp"
             app:title="@string/menu_aggregated_statistics" />
+
+        <Button
+            android:id="@+id/StatsButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Overall Stats" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
