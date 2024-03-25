@@ -537,9 +537,12 @@ limitations under the License.
     <string name="interval_list_empty_message">There are not any interval yet</string>
     <!-- Unit -->
     <string name="unit_feet">ft</string>
+    <string name="unit_feet_symbol">\'</string>
+    <string name="unit_inches_symbol">\"</string>
     <string name="unit_kilometer">km</string>
     <string name="unit_kilometer_per_hour">km/h</string>
     <string name="unit_meter">m</string>
+    <string name="unit_centimeter">cm</string>
     <string name="unit_mile">mi</string>
     <string name="unit_mile_per_hour">mph</string>
     <string name="unit_nautical_mile">NM</string>
@@ -547,6 +550,8 @@ limitations under the License.
     <string name="unit_minute_per_kilometer">min/km</string>
     <string name="unit_minute_per_mile">min/mi</string>
     <string name="unit_minute_per_nautical_mile">min/NM</string>
+    <string name="unit_kilograms">kg</string>
+    <string name="unit_pounds">lb</string>
     <!-- Location Coordinates -->
     <string name="location_coordinate">%1$s°</string>
     <string name="location_latitude_longitude">%1$s, %2$s</string>
@@ -726,6 +731,8 @@ limitations under the License.
     <string name="always">Always</string>
 
     <string name="introduction_osm_dashboard">OpenTracks itself does not provide a map. Please install OSMDashboard to view your recordings on a map.</string>
+
+    <string name="profile_picture_menu">profile_picture_menu</string>
 
     <!-- Edit button - Haithm-->
     <string name="edit_profile_key">edit_profile</string>

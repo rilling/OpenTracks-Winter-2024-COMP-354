@@ -1,7 +1,13 @@
 package de.dennisguse.opentracks.settings;
 
+import static de.dennisguse.opentracks.settings.PreferencesUtils.getUnitSystem;
+
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +21,12 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import de.dennisguse.opentracks.R;
+import de.dennisguse.opentracks.data.models.Height;
+import de.dennisguse.opentracks.data.models.HeightFormatter;
+import de.dennisguse.opentracks.data.models.Speed;
+import de.dennisguse.opentracks.data.models.SpeedFormatter;
+import de.dennisguse.opentracks.data.models.Weight;
+import de.dennisguse.opentracks.data.models.WeightFormatter;
 
 public class UserProfileFragment extends PreferenceFragmentCompat {
 
@@ -48,8 +60,6 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
                 return false;
             }
         });
-
-
     }
 
     private void showEditProfileDialog() {
@@ -169,6 +179,23 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
     public void onStart() {
         super.onStart();
         ((SettingsActivity) getActivity()).getSupportActionBar().setTitle(R.string.settings_ui_title);
+
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> {
+            TextView heightView = getView().findViewById(R.id.userHeight);
+            TextView weightView = getView().findViewById(R.id.userWeight);
+
+            UnitSystem unitSystem = getUnitSystem();
+
+            Height height = new Height(180);
+            Pair<String, String> heightStrings = HeightFormatter.Builder().setUnit(unitSystem).build(getContext()).getHeightParts(height);
+
+            Weight weight = new Weight(80);
+            Pair<String, String> weightStrings = WeightFormatter.Builder().setUnit(unitSystem).build(getContext()).getWeightParts(weight);
+
+            heightView.setText(heightStrings.first + heightStrings.second);
+            weightView.setText(weightStrings.first + weightStrings.second);
+        }, 50);
     }
 
     @Override

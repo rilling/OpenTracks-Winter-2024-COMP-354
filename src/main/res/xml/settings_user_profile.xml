@@ -5,7 +5,7 @@
 
     <!-- Profile Picture Preference -->
     <Preference
-        android:key="profile_picture"
+        android:key="@string/profile_picture_menu"
         android:title="Profile Picture"
         android:summary=" "
         android:layout="@layout/laprofile_picture_preference_layout"/>
