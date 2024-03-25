@@ -18,6 +18,7 @@ public class RunLiftStatistics {
     private final List<SkiSubActivity> skiSubActivityList;
 
     private final double waitThreshold = 1.6;
+    private final double runThreshold = 3.5;
     private int thresholdCount = 3;
 
     private final Queue<TrackPoint> waitQueue = new LinkedList<>();
@@ -36,6 +37,11 @@ public class RunLiftStatistics {
         return trackPoint.getSpeed().speed_mps() <= waitThreshold;
     }
 
+    private boolean isRun(TrackPoint trackPoint) {
+        return trackPoint.getAltitudeLoss() - trackPoint.getAltitudeGain() >= 0.0
+                && trackPoint.getSpeed().speed_mps() >= runThreshold;
+    }
+
     public TrackPoint.Id addTrackPoints(TrackPointIterator trackPointIterator) {
         boolean newSkiSubActivityAdded = false;
         TrackPoint trackPoint = null;
@@ -43,6 +49,9 @@ public class RunLiftStatistics {
 
         while (trackPointIterator.hasNext()) {
             trackPoint = trackPointIterator.next();
+
+            // check if you are already in a lift then don't count them as wait (it might be the chairlift stopped
+            // check if you are in a run if the next point is not a lift then skier could have just taken a break on the slope
 
             if (isWaiting(trackPoint)) {
                 waitQueue.add(trackPoint);
@@ -57,8 +66,10 @@ public class RunLiftStatistics {
                 }
 
                 if (!waitQueue.isEmpty()) {
-                    if (lastTrackPoint == null) lastTrackPoint = waitQueue.peek();
-                    lastSkiSubActivity.setWaitTime(Duration.between(lastTrackPoint.getTime(), trackPoint.getTime()));
+                    if (lastTrackPoint == null || !(isRun(lastTrackPoint) == isRun(trackPoint))) {
+                        if (lastTrackPoint == null) lastTrackPoint = waitQueue.peek();
+                        lastSkiSubActivity.setWaitTime(Duration.between(lastTrackPoint.getTime(), trackPoint.getTime()));
+                    }
                 }
 
                 while (!waitQueue.isEmpty()) {

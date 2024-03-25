@@ -286,8 +286,93 @@ public class RunLiftStatisticsTest {
     @Test
     public void testLiftAndRunAndLiftWithWaitTimesTrackPoints() {
         Track dummyTrack = new Track();
+        int numberOfPoints = 20;
         dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
-        assertTrue(true);
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+        createLiftWithWait(dummyTrack, trackStatisticsUpdater, numberOfPoints, 0);
+        createRun(dummyTrack, trackStatisticsUpdater, numberOfPoints, numberOfPoints);
+        createLiftWithWait(dummyTrack, trackStatisticsUpdater, numberOfPoints, numberOfPoints * 2);
+        dummyTrack.setTrackStatistics(trackStatisticsUpdater.getTrackStatistics());
+        contentProviderUtils.updateTrack(dummyTrack);
+
+        RunLiftStatistics runLiftStatistics = new RunLiftStatistics();
+
+        try (TrackPointIterator trackPointIterator = contentProviderUtils.getTrackPointLocationIterator(dummyTrack.getId(), null)) {
+            assertEquals(numberOfPoints * 3, trackPointIterator.getCount());
+            runLiftStatistics.addTrackPoints(trackPointIterator);
+        }
+
+        List<RunLiftStatistics.SkiSubActivity> skiSubActivities = runLiftStatistics.getSkiSubActivityList();
+
+        assertEquals(3, skiSubActivities.size());
+        assertEquals(4.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertEquals(0.0, skiSubActivities.get(1).getWaitTime().toSeconds(), 0.01);
+        assertEquals(5.0, skiSubActivities.get(2).getWaitTime().toSeconds(), 0.01);
+        assertTrue(skiSubActivities.get(0).isLift());
+        assertFalse(skiSubActivities.get(1).isLift());
+        assertTrue(skiSubActivities.get(2).isLift());
+        assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
+        assertEquals(numberOfPoints, skiSubActivities.get(1).getTrackPoints().size());
+        assertEquals(numberOfPoints, skiSubActivities.get(2).getTrackPoints().size());
+    }
+
+    @Test
+    public void testWaitInLiftTrackPoints() {
+        Track dummyTrack = new Track();
+        int numberOfPoints = 20;
+
+        dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+        createLiftWithInnerWaits(dummyTrack, trackStatisticsUpdater, numberOfPoints, 0, 3);
+        dummyTrack.setTrackStatistics(trackStatisticsUpdater.getTrackStatistics());
+        contentProviderUtils.updateTrack(dummyTrack);
+
+        RunLiftStatistics runLiftStatistics = new RunLiftStatistics();
+
+        try (TrackPointIterator trackPointIterator = contentProviderUtils.getTrackPointLocationIterator(dummyTrack.getId(), null)) {
+            assertEquals(numberOfPoints, trackPointIterator.getCount());
+            runLiftStatistics.addTrackPoints(trackPointIterator);
+        }
+
+        List<RunLiftStatistics.SkiSubActivity> skiSubActivities = runLiftStatistics.getSkiSubActivityList();
+
+        assertEquals(1, skiSubActivities.size());
+        assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertTrue(skiSubActivities.get(0).getSlopePercentage() > 0);
+        assertTrue(skiSubActivities.get(0).isLift());
+        assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
+    }
+
+    @Test
+    public void testWaitInRunTrackPoints() {
+        Track dummyTrack = new Track();
+        int numberOfPoints = 20;
+        dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+        createRunWithInnerWaits(dummyTrack, trackStatisticsUpdater, numberOfPoints, 0, 3);
+        dummyTrack.setTrackStatistics(trackStatisticsUpdater.getTrackStatistics());
+        contentProviderUtils.updateTrack(dummyTrack);
+
+        RunLiftStatistics runLiftStatistics = new RunLiftStatistics();
+
+        try (TrackPointIterator trackPointIterator = contentProviderUtils.getTrackPointLocationIterator(dummyTrack.getId(), null)) {
+            assertEquals(numberOfPoints, trackPointIterator.getCount());
+            runLiftStatistics.addTrackPoints(trackPointIterator);
+        }
+
+        List<RunLiftStatistics.SkiSubActivity> skiSubActivities = runLiftStatistics.getSkiSubActivityList();
+
+        assertEquals(1, skiSubActivities.size());
+        assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertTrue(skiSubActivities.get(0).getSlopePercentage() > 0);
+        assertFalse(skiSubActivities.get(0).isLift());
+        assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
     }
 
     private void createLift(Track dummyTrack, TrackStatisticsUpdater trackStatisticsUpdater, int numberOfPoints, int offset) {
@@ -306,15 +391,16 @@ public class RunLiftStatisticsTest {
         int currentAltitude = 187;
         int waitPointCount = 4;
         int altitudeGain = 3;
+        int i = offset;
         // add some wait times
-        for (int j = offset; j < offset + waitPointCount; j++) {
-            TrackPoint tp = TestDataUtil.createTrackPoint(offset, currentAltitude, (j-offset) % 2,
-                    Math.abs((j-offset) % 2 - 1),
-                    (j-offset) % 2);
+        for (; i < offset + waitPointCount; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, (i-offset) % 2,
+                    Math.abs((i-offset) % 2 - 1),
+                    (i-offset) % 2);
             contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
             trackStatisticsUpdater.addTrackPoint(tp);
         }
-        for (int i = offset + waitPointCount; i < offset + numberOfPoints; i++) {
+        for (; i < offset + numberOfPoints; i++) {
             TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 3, altitudeGain,
                     0);
             contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
@@ -327,7 +413,62 @@ public class RunLiftStatisticsTest {
         int currentAltitude = 400;
         int altitudeLoss = 5;
         for (int i = offset; i < offset + numberOfPoints; i++) {
-            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 3, 0,
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 4, 0,
+                    altitudeLoss);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+            currentAltitude -= altitudeLoss;
+        }
+    }
+
+    private void createLiftWithInnerWaits(Track dummyTrack, TrackStatisticsUpdater trackStatisticsUpdater, int numberOfPoints, int offset, int waitPoints) {
+        int currentAltitude = 187;
+        int waitPointCount = 4;
+        int altitudeGain = 3;
+        int i = offset;
+        for (; i < (offset + numberOfPoints) / 2; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 3, altitudeGain,
+                    0);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+            currentAltitude += altitudeGain;
+        }
+        for (; i < (offset + numberOfPoints) / 2 + waitPoints; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, (i - offset) % 2,
+                    Math.abs((i - offset) % 2 - 1),
+                    (i - offset) % 2);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+        }
+        for (; i < offset + numberOfPoints; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 3, altitudeGain,
+                    0);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+            currentAltitude += altitudeGain;
+        }
+    }
+
+    private void createRunWithInnerWaits(Track dummyTrack, TrackStatisticsUpdater trackStatisticsUpdater, int numberOfPoints, int offset, int waitPoints) {
+        int currentAltitude = 400;
+        int altitudeLoss = 5;
+        int i = offset;
+        for (; i < (offset + numberOfPoints) / 2; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 4, 0,
+                    altitudeLoss);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+            currentAltitude -= altitudeLoss;
+        }
+        for (; i < (offset + numberOfPoints) / 2 + waitPoints; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, (i - offset) % 2,
+                    Math.abs((i - offset) % 2 - 1),
+                    (i - offset) % 2);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+        }
+        for (; i < offset + numberOfPoints; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 4, 0,
                     altitudeLoss);
             contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
             trackStatisticsUpdater.addTrackPoint(tp);
