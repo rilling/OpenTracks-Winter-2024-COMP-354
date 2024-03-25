@@ -29,6 +29,12 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/aggregated_stats_list_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/aggregated_stats_empty_view"
             style="?attr/textAppearanceHeadline4"
