@@ -85,7 +85,7 @@ public class RunLiftStatistics {
         public boolean isLift() {
             float gain = trackStatistics.getTotalAltitudeGain() != null ? trackStatistics.getTotalAltitudeGain() : 0f;
             float loss = trackStatistics.getTotalAltitudeLoss() != null ? trackStatistics.getTotalAltitudeLoss() : 0f;
-            return loss >= gain;
+            return gain >= loss;
         }
 
         public double getSlopePercentage() {
@@ -96,6 +96,7 @@ public class RunLiftStatistics {
         }
 
         private void add(TrackStatistics trackStatistics, @Nullable TrackPoint lastTrackPoint) {
+            set(trackStatistics);
             trackPoints.add(lastTrackPoint);
         }
 

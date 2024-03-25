@@ -20,6 +20,7 @@ import org.junit.runners.JUnit4;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
@@ -74,8 +75,37 @@ public class RunLiftStatisticsTest {
     @Test
     public void testRunOnlyTrackPoints() {
         Track dummyTrack = new Track();
+        int numberOfPoints = 20;
+        int currentAltitude = 400;
+        int altitudeLoss = 5;
+
         dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
-        assertTrue(true);
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+        for (int i = 0; i < numberOfPoints; i++) {
+            TrackPoint tp = TestDataUtil.createTrackPoint(i, currentAltitude, 3, 0,
+                    altitudeLoss);
+            contentProviderUtils.insertTrackPoint(tp, dummyTrack.getId());
+            trackStatisticsUpdater.addTrackPoint(tp);
+            currentAltitude -= altitudeLoss;
+        }
+        dummyTrack.setTrackStatistics(trackStatisticsUpdater.getTrackStatistics());
+        contentProviderUtils.updateTrack(dummyTrack);
+
+        RunLiftStatistics runLiftStatistics = new RunLiftStatistics();
+
+        try (TrackPointIterator trackPointIterator = contentProviderUtils.getTrackPointLocationIterator(dummyTrack.getId(), null)) {
+            assertEquals(trackPointIterator.getCount(), numberOfPoints);
+            runLiftStatistics.addTrackPoints(trackPointIterator);
+        }
+
+        List<RunLiftStatistics.SkiSubActivity> skiSubActivities = runLiftStatistics.getSkiActivityList();
+
+        assertEquals(1, skiSubActivities.size());
+        assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertFalse(skiSubActivities.get(0).isLift());
+        assertEquals(20, skiSubActivities.get(0).getTrackPoints().size());
     }
 
     @Test
