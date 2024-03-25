@@ -113,9 +113,12 @@ public class Chairlift {
         }
 
         if (totalTime > timeThreshold){
-            if (time > 1 && time < 77){ //in second?
+            if (time > 1 && time < 7.7){ //in second?
                 Chairlift validChairlift = new Chairlift(name, number, averageSpeed, liftType);
                 validChairlifts.put(validChairlift.getId(), validChairlift);
+                for (TrackPoint trackPoint : trackPoints){
+                    trackPoint.setChairliftSegment(true);
+                }
                 return true;
             }
             else
