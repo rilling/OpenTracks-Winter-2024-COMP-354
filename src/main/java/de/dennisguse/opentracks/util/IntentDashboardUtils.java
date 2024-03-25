@@ -207,7 +207,7 @@ public class IntentDashboardUtils {
          */
 
         // Retrieve the singleton (when it's put in place)
-        OverallStatistics allTimeStats = new OverallStatistics();
+        OverallStatistics allTimeStats = OverallStatistics.getInstance();
 
         // Would need to populate this with data once the service functions are created
         JSONObject overallSeasonStatsJSONPayload = new JSONObject();
