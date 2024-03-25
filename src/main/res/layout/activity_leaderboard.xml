@@ -72,20 +72,34 @@
             android:layout_marginStart="4dp"
             android:text="All Resorts"
             app:cornerRadius="8dp" />
-
-        <Button
-            android:id="@+id/btnRefresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="Refresh"
-            app:cornerRadius="8dp"/>
     </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_below="@id/filterBar"
+        android:layout_above="@id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp">
+
+        <!-- Refresh Icon source -->
+        <!-- <a href="https://www.flaticon.com/free-icons/refresh" title="refresh icons">Refresh icons created by Arkinasi - Flaticon</a> -->
+        <ImageButton
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/refresh"
+            android:scaleType="fitCenter"
+            />
+    </RelativeLayout>
 
 </RelativeLayout>
