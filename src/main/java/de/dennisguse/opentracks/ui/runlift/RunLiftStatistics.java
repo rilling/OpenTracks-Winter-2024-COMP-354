@@ -44,6 +44,7 @@ public class RunLiftStatistics {
             trackStatisticsUpdater = new TrackStatisticsUpdater();
             trackStatisticsUpdater.addTrackPoint(trackPoint);
 
+            lastSkiSubActivity.add(trackStatisticsUpdater.getTrackStatistics(), trackPoint);
 
 
         }
@@ -74,10 +75,17 @@ public class RunLiftStatistics {
         public SkiSubActivity(SkiSubActivity s) {
             trackStatistics = new TrackStatistics(s.trackStatistics);
             trackPoints.addAll(s.trackPoints);
+            waitTime = s.waitTime;
         }
 
         public Duration getWaitTime() {
             return waitTime;
+        }
+
+        public boolean isLift() {
+            float gain = trackStatistics.getTotalAltitudeGain() != null ? trackStatistics.getTotalAltitudeGain() : 0f;
+            float loss = trackStatistics.getTotalAltitudeLoss() != null ? trackStatistics.getTotalAltitudeLoss() : 0f;
+            return loss >= gain;
         }
 
         public double getSlopePercentage() {
@@ -88,28 +96,15 @@ public class RunLiftStatistics {
         }
 
         private void add(TrackStatistics trackStatistics, @Nullable TrackPoint lastTrackPoint) {
-//            distance = distance.plus(trackStatistics.getTotalDistance());
-//            time = time.plus(trackStatistics.getTotalTime());
-//            gain_m = trackStatistics.hasTotalAltitudeGain() ? trackStatistics.getTotalAltitudeGain() : gain_m;
-//            loss_m = trackStatistics.hasTotalAltitudeLoss() ? trackStatistics.getTotalAltitudeLoss() : loss_m;
-//            avgHeartRate = trackStatistics.getAverageHeartRate();
-//            if (lastTrackPoint == null) {
-//                return;
-//            }
-//            if (hasGain() && lastTrackPoint.hasAltitudeGain()) {
-//                gain_m = gain_m - lastTrackPoint.getAltitudeGain();
-//            }
-//            if (hasLoss() && lastTrackPoint.hasAltitudeLoss()) {
-//                loss_m = loss_m - lastTrackPoint.getAltitudeLoss();
-//            }
+            trackPoints.add(lastTrackPoint);
         }
 
         private void set(TrackStatistics trackStatistics) {
-//            distance = trackStatistics.getTotalDistance();
-//            time = trackStatistics.getTotalTime();
-//            gain_m = trackStatistics.hasTotalAltitudeGain() ? trackStatistics.getTotalAltitudeGain() : gain_m;
-//            loss_m = trackStatistics.hasTotalAltitudeLoss() ? trackStatistics.getTotalAltitudeLoss() : loss_m;
-//            avgHeartRate = trackStatistics.getAverageHeartRate();
+            this.trackStatistics = trackStatistics;
+        }
+
+        public List<TrackPoint> getTrackPoints() {
+            return trackPoints;
         }
     }
 }

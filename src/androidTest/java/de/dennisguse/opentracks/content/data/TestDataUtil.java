@@ -124,12 +124,11 @@ public class TestDataUtil {
         return trackPoint;
     }
 
-    public static TrackPoint createTrackPoint(int i, double latitude, double longitude,
-                                              double altitude, double speed, float altitudeGain,
+    public static TrackPoint createTrackPoint(int i, double altitude, double speed, float altitudeGain,
                                               float altitudeLoss) {
         TrackPoint trackPoint = new TrackPoint(TrackPoint.Type.TRACKPOINT, Instant.ofEpochSecond(i));
-        trackPoint.setLatitude(altitude);
-        trackPoint.setLongitude(longitude);
+        trackPoint.setLatitude(INITIAL_LATITUDE + (double) i / 10000.0);
+        trackPoint.setLongitude(INITIAL_LONGITUDE - (double) i / 10000.0);
         trackPoint.setHorizontalAccuracy(Distance.of(i / 100.0f));
         trackPoint.setAltitude(altitude);
         trackPoint.setSpeed(Speed.of(speed));
