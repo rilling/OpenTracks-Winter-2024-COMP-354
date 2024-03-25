@@ -153,6 +153,10 @@ public class AggregatedStatistics {
 
         }
 
+        public double getMaxVertical() {
+            return trackStatistics.getMaxAltitude();
+        }
+
         private String formatDuration(Duration duration) {
             long seconds = duration.getSeconds();
             long hours = seconds / 3600;
