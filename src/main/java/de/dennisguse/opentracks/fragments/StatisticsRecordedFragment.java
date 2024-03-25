@@ -140,7 +140,7 @@ public class StatisticsRecordedFragment extends Fragment {
     }
 
     public void loadStatistics() {
-        if (isResumed()) {
+        if (isResumed() && getActivity() != null) {
             getActivity().runOnUiThread(() -> {
                 if (isResumed()) {
                     Track track = contentProviderUtils.getTrack(trackId);
@@ -166,6 +166,10 @@ public class StatisticsRecordedFragment extends Fragment {
                 }
             });
         }
+        //add logs
+        else {
+            Log.w(TAG, "Activity is null when loading statistics");
+        }
     }
 
     private void loadTrackDescription(@NonNull Track track) {
@@ -175,17 +179,15 @@ public class StatisticsRecordedFragment extends Fragment {
     }
 
     private void updateUI() {
-        //see if track is null
-        assert track != null;
 
-        // Check if track is null
+/*        // Check if track is null
         if (track == null) {
             Log.e(TAG, "track cannot be null");
             Toast.makeText(getContext(), "Error: Track cannot be null. Please retry.", Toast.LENGTH_SHORT).show();
 
             getActivity().finish();
             return;
-        }
+        }*/
 
 
         TrackStatistics trackStatistics = track.getTrackStatistics();
