@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:text="@string/invite"
+                android:translationX="10dp"
                 app:icon="@drawable/add_user" />
 
         </LinearLayout>
