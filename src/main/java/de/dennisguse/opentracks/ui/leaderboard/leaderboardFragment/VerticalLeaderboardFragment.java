@@ -15,7 +15,7 @@ public class VerticalLeaderboardFragment extends LeaderboardFragment {
         // TODO: Replace the test data with code that gathers the appropriate Ranking data
         List<Ranking> latestRankingsData;
         if (!refresh)
-            // Get a smaller data set if this is the first time the rankings dats is being collected
+            // Get a smaller data set if this is the first time the rankings data is being collected
             latestRankingsData = getAltTestData();
         else
             latestRankingsData = getTestData();
