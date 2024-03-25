@@ -144,10 +144,11 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             Pair<String, String> parts = DistanceFormatter.Builder()
                     .setUnit(unitSystem)
                     .build(context).getDistanceParts(aggregatedStatistic.getTrackStatistics().getTotalDistance());
-//            viewBinding.aggregatedStatsDistance.setText(parts.first);
-//            viewBinding.aggregatedStatsDistanceUnit.setText(parts.second);
-//
-//            viewBinding.aggregatedStatsTime.setText(StringUtils.formatElapsedTime(aggregatedStatistic.getTrackStatistics().getMovingTime()));
+            viewBinding.dailyTotalDistanceNumber.setText(parts.first);
+            viewBinding.dailyTotalDistanceUnit.setText(context.getString(R.string.daily_total_distance_unit));
+            viewBinding.dailyTotalDistanceLabel.setText(context.getString(R.string.daily_total_distance_label));
+
+//           viewBinding.aggregatedStatsTime.setText(StringUtils.formatElapsedTime(aggregatedStatistic.getTrackStatistics().getMovingTime()));
             // Number of Lifts
             viewBinding.dailyLiftNumber.setText(String.valueOf(aggregatedStatistic.getCountTracks()));
             viewBinding.dailyLiftNumberUnit.setText(context.getString(R.string.daily_lift_number_unit));

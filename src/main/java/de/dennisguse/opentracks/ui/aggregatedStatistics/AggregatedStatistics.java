@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.dennisguse.opentracks.data.models.Distance;
 import de.dennisguse.opentracks.data.models.Speed;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.stats.TrackStatistics;
@@ -153,6 +154,10 @@ public class AggregatedStatistics {
             Duration duration = trackStatistics.getMovingTime();
             String formattedTime = formatDuration(duration);
             return formattedTime;
+        }
+
+        public Distance getTotalDistance() {
+            return trackStatistics.getTotalDistance();
         }
 
         public Speed getMaxSpeed() {
