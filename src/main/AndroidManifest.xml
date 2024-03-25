@@ -68,6 +68,11 @@
             android:name=".ui.friends.FriendsActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.leaderboard.LeaderboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_leaderboard"
+            android:theme="@style/OpenTracksTheme.NoActionBar" />
+        <activity
             android:name=".publicapi.StartRecording"
             android:exported="true"
             android:theme="@style/SplashTheme">
