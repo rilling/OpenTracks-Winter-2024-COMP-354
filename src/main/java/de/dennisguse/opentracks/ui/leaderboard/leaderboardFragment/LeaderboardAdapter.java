@@ -15,12 +15,8 @@ import de.dennisguse.opentracks.data.models.Ranking;
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
     private List<Ranking> rankingList;
 
-    public LeaderboardAdapter() {
-    }
-
-    public void setRankingList(List<Ranking> rankingList) {
+    public LeaderboardAdapter(List<Ranking> rankingList) {
         this.rankingList = rankingList;
-        // TODO: Might need to call notify here...
     }
 
     @NonNull
@@ -42,6 +38,12 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     @Override
     public int getItemCount() {
         return rankingList.size();
+    }
+
+    public void setRankingList(List<Ranking> rankingList) {
+        this.rankingList = rankingList;
+        // Since the rankingList could have been remade from the ground up, we have to call notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
