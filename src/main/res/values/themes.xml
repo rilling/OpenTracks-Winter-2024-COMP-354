@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="OpenTracksTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="OpenTracksTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="OpenTracksTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

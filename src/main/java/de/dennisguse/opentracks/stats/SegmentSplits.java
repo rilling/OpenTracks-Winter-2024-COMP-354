@@ -12,7 +12,7 @@ public class SegmentSplits {
         Map<String, List<TrackPoint>> segments = new HashMap<>();
         segments.put("Skiing", new ArrayList<>());
         segments.put("Chairlift", new ArrayList<>());
-
+        segments.put("Waiting", new ArrayList<>());
         AltitudeGainLoss altitudeGainLoss = new AltitudeGainLoss(0, 0);
 
         for (int i = 1; i < trackPoints.size(); i++) {
@@ -21,17 +21,18 @@ public class SegmentSplits {
             if (altitudeGainLoss.shouldStartNewSegment(trackPoints, i)) {
                 if (!segments.get("Skiing").isEmpty() && altitudeGainLoss.isSkiing()) {
                     segments.get("Skiing").add(cPoint);
-                }
-                else if (!segments.get("Chairlift").isEmpty() && altitudeGainLoss.isChairlift()) {
+                } else if (!segments.get("Chairlift").isEmpty() && altitudeGainLoss.isChairlift()) {
                     segments.get("Chairlift").add(cPoint);
+                } else {
+                    segments.get("Waiting").add(cPoint);
                 }
-            }
-            else {
+            } else {
                 if (altitudeGainLoss.isSkiing()) {
                     segments.get("Skiing").add(cPoint);
-                }
-                else if (altitudeGainLoss.isChairlift()) {
+                } else if (altitudeGainLoss.isChairlift()) {
                     segments.get("Chairlift").add(cPoint);
+                } else {
+                    segments.get("Waiting").add(cPoint);
                 }
             }
         }

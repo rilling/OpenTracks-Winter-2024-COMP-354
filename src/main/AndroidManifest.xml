@@ -63,7 +63,15 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/OpenTracksTheme" >
+        android:theme="@style/OpenTracksTheme">
+        <activity
+            android:name=".ui.friends.FriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.leaderboard.LeaderboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_leaderboard"
+            android:theme="@style/OpenTracksTheme.NoActionBar" />
         <activity
             android:name=".settings.MaintenanceInfo"
             android:exported="true" />
@@ -105,7 +113,7 @@
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ImportDirectoryChooserActivity" />
         <activity
             android:name=".io.file.importer.ImportActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
