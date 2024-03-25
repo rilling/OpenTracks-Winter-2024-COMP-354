@@ -93,10 +93,14 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             SpeedFormatter formatter = SpeedFormatter.Builder().setUnit(unitSystem).setReportSpeedOrPace(reportSpeed).build(context);
             {
                 //TODO Fill in the infomation here
-//                Pair<String, String> parts = formatter.getSpeedParts(aggregatedStatistic.getTrackStatistics().getAverageMovingSpeed());
+                Pair<String, String> parts = formatter.getSpeedParts(aggregatedStatistic.getTrackStatistics().getAverageMovingSpeed());
 //                viewBinding.aggregatedStatsAvgRate.setText(parts.first);
 //                viewBinding.aggregatedStatsAvgRateUnit.setText(parts.second);
 //                viewBinding.aggregatedStatsAvgRateLabel.setText(context.getString(R.string.stats_average_moving_speed));
+                // Average Run Speed
+                viewBinding.dailyRunAvgSpeed.setText(parts.first);
+                viewBinding.dailyRunAvgSpeedUnit.setText(parts.second);
+                viewBinding.dailyRunAvgSpeedLabel.setText(context.getString(R.string.daily_run_avg_speed_label));
             }
 
             {

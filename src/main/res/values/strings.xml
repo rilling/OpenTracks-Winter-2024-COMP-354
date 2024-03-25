@@ -729,4 +729,5 @@ limitations under the License.
     <string name="daily_total_distance_label">TOTAL DISTANCE</string>
     <string name="daily_total_distance_number">0</string>
     <string name="daily_total_distance_unit">km</string>
+    <string name="daily_run_avg_speed_label">AVERAGE SPEED</string>
 </resources>
