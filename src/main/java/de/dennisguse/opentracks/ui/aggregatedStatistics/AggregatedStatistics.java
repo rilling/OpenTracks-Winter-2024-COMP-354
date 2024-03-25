@@ -76,12 +76,14 @@ public class AggregatedStatistics {
 
     @VisibleForTesting
     public void aggregateDays(@NonNull Track track) {
+        String activityTypeLocalized = track.getActivityTypeLocalized();
         SimpleDateFormat formatter = new SimpleDateFormat("MM dd yyy");
         String day = formatter.format(Date.from(track.getTrackStatistics().getStopTime()));
-        if (dataMap.containsKey(day)) {
-            dataMap.get(day).add(track.getTrackStatistics());
+        String combinedKey = day + " - " + activityTypeLocalized;
+        if (dataMap.containsKey(combinedKey)) {
+            dataMap.get(combinedKey).add(track.getTrackStatistics());
         } else {
-            dataMap.put(day, new AggregatedStatistic(track.getActivityTypeLocalized(), track.getTrackStatistics(), day));
+            dataMap.put(combinedKey, new AggregatedStatistic(track.getActivityTypeLocalized(), track.getTrackStatistics(), day));
         }
     }
 
