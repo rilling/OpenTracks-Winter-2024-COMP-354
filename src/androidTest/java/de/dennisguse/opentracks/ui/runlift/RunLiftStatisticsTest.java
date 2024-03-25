@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider;
 
 import de.dennisguse.opentracks.data.ContentProviderUtils;
 import de.dennisguse.opentracks.data.models.Track;
+import de.dennisguse.opentracks.stats.TrackStatisticsUpdater;
 import de.dennisguse.opentracks.ui.intervals.IntervalStatisticsTest;
 
 import org.junit.Before;
@@ -33,6 +34,10 @@ public class RunLiftStatisticsTest {
     public void testLiftOnlyTrackPoints() {
         Track dummyTrack = new Track();
         dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+
         assertTrue(true);
     }
 
