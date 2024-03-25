@@ -35,16 +35,14 @@ public class SkiProfileFragment extends PreferenceFragmentCompat {
         // Inflate the layout.
         View formView = LayoutInflater.from(getContext()).inflate(R.layout.sharing_preferences_form, null);
 
-        // Get references to the radio buttons
         RadioGroup radioGroup = formView.findViewById(R.id.radioGroup); // Assuming your RadioGroup has the ID 'radioGroup'
 
-        // Pre-select the current sharing option (if applicable)
         String currentSharingOption = PreferencesUtils.getString(R.string.sharing_location_key, "no_one"); // Get this from your settings
         switch (currentSharingOption) {
             case "friends":
                 radioGroup.check(R.id.radio_friends);
                 break;
-            case "family":
+            case "share with":
                 radioGroup.check(R.id.radio_share_with);
                 break;
             case "public":
