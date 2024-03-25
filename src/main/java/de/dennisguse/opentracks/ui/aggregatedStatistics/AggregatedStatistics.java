@@ -81,7 +81,7 @@ public class AggregatedStatistics {
         if (dataMap.containsKey(day)) {
             dataMap.get(day).add(track.getTrackStatistics());
         } else {
-            dataMap.put(day, new AggregatedStatistic(track.getTrackStatistics(), day));
+            dataMap.put(day, new AggregatedStatistic(track.getActivityTypeLocalized(), track.getTrackStatistics(), day));
         }
     }
 
@@ -109,9 +109,9 @@ public class AggregatedStatistics {
             this.trackStatistics = trackStatistics;
         }
 
-        public AggregatedStatistic(TrackStatistics trackStatistics, String day) {
+        public AggregatedStatistic(String activityTypeLocalized, TrackStatistics trackStatistics, String day) {
             this.day = day;
-            this.activityTypeLocalized = "skiing";
+            this.activityTypeLocalized = activityTypeLocalized;
             this.trackStatistics = trackStatistics;
         }
 

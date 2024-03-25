@@ -257,12 +257,25 @@
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/activity_icon"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="@string/stats_day" />
+
+    <TextView
+        android:id="@+id/activity_type_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_icon"
         app:layout_constraintTop_toTopOf="@+id/activity_icon"
         app:layout_constraintVertical_bias="1.0"
-        tools:text="@string/stats_day" />
+        tools:text="@string/activity_type_label" />
 
     <View
         android:id="@+id/aggregated_stats_horizontal_line"
