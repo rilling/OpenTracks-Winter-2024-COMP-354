@@ -144,10 +144,14 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
         for (int i = 0; i < textViewIds.length; i++) {
 
             TextView textView = getView().findViewById(textViewIds[i]);
-            userInfo[i] = textView.getText().toString();
 
-            // Construct custom message
-            alertMessageBuilder.append(detailNames[i]).append(": ").append(userInfo[i]).append("\n");
+            if(textView!=null) {
+                userInfo[i] = textView.getText().toString();
+
+                // Construct custom message
+                alertMessageBuilder.append(detailNames[i]).append(": ").append(userInfo[i]).append("\n");
+
+            }
         }
 
         String alertMessage = alertMessageBuilder.toString();
