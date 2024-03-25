@@ -123,7 +123,7 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
 
         // Array to store user information
         String[] userInfo = new String[5];
-        int[] textViewIds = {R.id.nickname, R.id.dateOfBirth, R.id.userLocation, R.id.userHeight, R.id.userWeight};
+        int[] textViewIds = {R.id.nickname, R.id.userLocation, R.id.dateOfBirth, R.id.userHeight, R.id.userWeight};
 
         // Array to store detail labels
         String[] detailNames = {"Nickname", "Location", "Date of Birth", "Height", "Weight"};
