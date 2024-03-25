@@ -50,9 +50,6 @@ public class RunLiftStatistics {
         while (trackPointIterator.hasNext()) {
             trackPoint = trackPointIterator.next();
 
-            // check if you are already in a lift then don't count them as wait (it might be the chairlift stopped
-            // check if you are in a run if the next point is not a lift then skier could have just taken a break on the slope
-
             if (isWaiting(trackPoint)) {
                 waitQueue.add(trackPoint);
             } else {
