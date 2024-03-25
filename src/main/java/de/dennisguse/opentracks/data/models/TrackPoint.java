@@ -51,6 +51,17 @@ public class TrackPoint {
     private Float bearing;
     private Distance sensorDistance;
 
+    //===============================
+    private boolean isChairliftSegment;
+
+    public boolean isChairliftSegment() {
+        return isChairliftSegment;
+    }
+
+    public void setChairliftSegment(boolean chairliftSegment) {
+        isChairliftSegment = chairliftSegment;
+    }
+    //==================================================
     public enum Type {
         SEGMENT_START_MANUAL(-2), //Start of a segment due to user interaction (start, resume)
 

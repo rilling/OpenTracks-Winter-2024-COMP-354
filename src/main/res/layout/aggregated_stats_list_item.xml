@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingStart="8dp"
     android:paddingTop="8dp"
     android:paddingEnd="8dp"
-    android:paddingStart="8dp"
     android:paddingBottom="8dp">
 
     <!-- Guidelines -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="0dp"
@@ -40,27 +41,27 @@
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?android:textColorPrimary"
-        tools:srcCompat="@drawable/ic_activity_bike_24dp" />
+        tools:srcCompat="@drawable/ic_activity_skiing_24dp" />
 
     <TextView
         android:id="@+id/aggregated_stats_type_label"
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_icon"
         app:layout_constraintTop_toTopOf="@+id/activity_icon"
-        tools:text="@string/activity_type_cycling" />
+        tools:text="@string/activity_type_skiing" />
 
     <TextView
         android:id="@+id/aggregated_stats_num_tracks"
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/aggregated_stats_type_label"
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_type_label"
         app:layout_constraintTop_toTopOf="@+id/aggregated_stats_type_label"
@@ -79,6 +80,8 @@
         tools:layout_editor_absoluteX="52dp"
         tools:text="100000" />
 
+    <!-- Time -->
+
     <TextView
         android:id="@+id/aggregated_stats_distance_unit"
         style="@style/TextAppearance.OpenTracks.PrimaryUnit"
@@ -89,7 +92,6 @@
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_distance"
         tools:text="km" />
 
-    <!-- Time -->
     <TextView
         android:id="@+id/aggregated_stats_time"
         style="@style/TextAppearance.OpenTracks.PrimaryValue"
@@ -122,11 +124,13 @@
         app:layout_constraintStart_toEndOf="@+id/aggregated_stats_avg_rate"
         tools:text="km/h" />
 
+<!--  avg moving speed  -->
     <TextView
         android:id="@+id/aggregated_stats_avg_rate_label"
         style="@style/TextAppearance.OpenTracks.SecondaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toEndOf="@id/guideline1"
@@ -160,6 +164,7 @@
         style="@style/TextAppearance.OpenTracks.SecondaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="10sp"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
         app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -167,11 +172,150 @@
         tools:text="@string/stats_max_speed" />
 
     <View
+        android:id="@+id/aggregated_stats_horizontal_line_1"
+        style="@style/HorizontalLine"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
+
+    <!-- Sharpening Section -->
+
+    <View
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@id/guideline1"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/km_since_last_waxing_label" />
+
+    <TextView
+        android:id="@+id/sharpening_percentage_value"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="10%"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
+
+    <!-- Waxing Section -->
+
+    <TextView
+        android:id="@+id/sharpening_percentage_label"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/sharpening_percentage_value"
+        android:text="@string/sharpening_percentage"/>
+
+    <TextView
+        android:id="@+id/km_since_last_sharpening_value"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/aggregated_stats_max_rate_label" />
+
+    <View
+        android:id="@+id/aggregated_stats_horizontal_line_2"
+        style="@style/HorizontalLine"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/km_since_last_sharpening_label" />
+
+    <TextView
+        android:id="@+id/waxing_percentage_value"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="10%"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/sharpening_percentage_label" />
+
+    <TextView
+        android:id="@+id/aggregated_stats_sharpening_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/km_since_last_sharpening_value"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/km_since_last_sharpening_value"
+        tools:text="km" />
+
+    <TextView
+        android:id="@+id/km_since_last_sharpening_label"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/km_since_last_sharpening_value"
+        android:text="@string/sharpening_distance" />
+
+    <TextView
+        android:id="@+id/waxing_percentage_label"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/waxing_percentage_value"
+        android:text="@string/waxing_percentage"/>
+
+
+    <TextView
+        android:id="@+id/km_since_last_waxing_value"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/km_since_last_sharpening_label" />
+
+
+    <TextView
+        android:id="@+id/aggregated_stats_waxing_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/km_since_last_waxing_value"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/km_since_last_waxing_value"
+        tools:text="km" />
+
+    <TextView
+        android:id="@+id/km_since_last_waxing_label"
+        style="@style/TextAppearance.OpenTracks.SecondaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/km_since_last_waxing_value"
+        android:text="@string/waxing_distance"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
