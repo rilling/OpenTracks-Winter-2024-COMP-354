@@ -293,6 +293,9 @@ limitations under the License.
     <string name="marker_list_empty_message">You don\'t have any markers</string>
     <!-- Menu -->
     <string name="menu_aggregated_statistics">Aggregated stats</string>
+    <string name="menu_friends">Friends</string>
+    <string name="search">Search</string>
+    <string name="invite">Invite</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_edit">Edit</string>
     <string name="menu_export_all">Export all (one file per track)</string>
@@ -709,4 +712,7 @@ limitations under the License.
     <string name="always">Always</string>
 
     <string name="introduction_osm_dashboard">OpenTracks itself does not provide a map. Please install OSMDashboard to view your recordings on a map.</string>
+    <string name="title_activity_leaderboard">LeaderboardActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
