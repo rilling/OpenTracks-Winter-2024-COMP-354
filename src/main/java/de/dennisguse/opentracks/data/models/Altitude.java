@@ -50,6 +50,19 @@ public abstract class Altitude {
         }
     }
 
+    // returns an int based on this altitude and the right-hand side.
+    // returns 1 if this altitude is greater
+    // returns 0 if both altitudes are equal
+    // returns -1 if this altitude is smaller
+    public int compare(Altitude rhs) {
+        if (this.altitude_m > rhs.altitude_m) {
+            return 1;
+        } else if (this.altitude_m > rhs.altitude_m) {
+            return 0;
+        }
+        return -1;
+    }
+
     @NonNull
     @Override
     public String toString() {
