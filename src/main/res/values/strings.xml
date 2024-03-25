@@ -724,6 +724,6 @@ limitations under the License.
     <string name="daily_run_number_label">NUMBER OF RUNS</string>
     <string name="daily_run_number_unit">Run(s)</string>
     <string name="daily_run_max_vertical_label">RUN MAX VERTICAL</string>
-    <string name="daily_run_max_vertical_unit">Meters</string>
+    <string name="daily_run_max_vertical_unit">m</string>
     <string name="activity_type_label">Skiing</string>
 </resources>

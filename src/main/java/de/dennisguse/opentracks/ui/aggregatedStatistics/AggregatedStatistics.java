@@ -1,8 +1,13 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics;
 
+import static java.lang.Math.round;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -156,7 +161,17 @@ public class AggregatedStatistics {
         }
 
         public double getMaxVertical() {
-            return trackStatistics.getMaxAltitude();
+            double value = trackStatistics.getMaxAltitude();
+            double roundedValue = round(value, 2);
+            return roundedValue;
+        }
+
+        public static double round(double value, int places) {
+            if (places < 0) throw new IllegalArgumentException();
+
+            BigDecimal bd = BigDecimal.valueOf(value);
+            bd = bd.setScale(places, RoundingMode.HALF_UP);
+            return bd.doubleValue();
         }
 
         private String formatDuration(Duration duration) {
