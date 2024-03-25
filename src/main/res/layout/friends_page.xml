@@ -28,14 +28,30 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <!--Search icon from https://www.pngall.com/wp-content/uploads/13/Search-Button-White-PNG.png -->
-        <Button
-            android:id="@+id/searchButton"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:insetLeft="10dp"
-            android:text="@string/search"
-            app:icon="@drawable/search_button" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:insetLeft="10dp"
+                android:text="@string/search"
+                app:icon="@drawable/search_button" />
+
+            <Button
+                android:id="@+id/inviteButton"
+                android:layout_width="132dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/invite"
+                app:icon="@drawable/add_user" />
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/aggregated_stats_list"
