@@ -65,6 +65,9 @@
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
         <activity
+            android:name=".SeasonalActivityPerSeason"
+            android:exported="false" />
+        <activity
             android:name=".SeasonalActivity"
             android:exported="false" />
         <activity
