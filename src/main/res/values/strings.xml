@@ -711,4 +711,16 @@ limitations under the License.
     <string name="always">Always</string>
 
     <string name="introduction_osm_dashboard">OpenTracks itself does not provide a map. Please install OSMDashboard to view your recordings on a map.</string>
+    <string name="daily_stats_moving_speed_label">average lift moving speed</string>
+    <string name="daily_lift_moving_time_label">LIFT MOVING TIME</string>
+    <string name="daily_lift_total_time_label">Lift Total Time</string>
+    <string name="daily_lift_number_unit">Lift(s)</string>
+    <string name="daily_lift_moving_speed_unit">km/h</string>
+    <string name="daily_lift_time_unit">h</string>
+    <string name="daily_lift_number_label">NUMBER OF LIFTS</string>
+    <string name="daily_lift_waiting_time_label">LIFT WAITING TIME</string>
+    <string name="daily_stats_max_speed_label">LIFT MAX SPEED</string>
+    <string name="daily_lift_max_speed_unit">km/h</string>
+    <string name="daily_run_number_label">NUMBER OF RUNS</string>
+    <string name="daily_run_number_unit">Run(s)</string>
 </resources>
