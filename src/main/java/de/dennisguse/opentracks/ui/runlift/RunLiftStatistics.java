@@ -15,7 +15,7 @@ import java.util.Queue;
 
 public class RunLiftStatistics {
     private TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
-    private final List<SkiSubActivity> skiActivityList;
+    private final List<SkiSubActivity> skiSubActivityList;
 
     private double waitThreshold = 1.5;
     private int thresholdCount = 3;
@@ -28,8 +28,8 @@ public class RunLiftStatistics {
         skiSubActivity = new SkiSubActivity();
         lastSkiSubActivity = new SkiSubActivity();
 
-        skiActivityList = new ArrayList<>();
-        skiActivityList.add(lastSkiSubActivity);
+        skiSubActivityList = new ArrayList<>();
+        skiSubActivityList.add(lastSkiSubActivity);
     }
 
     public TrackPoint.Id addTrackPoints(TrackPointIterator trackPointIterator) {
@@ -39,37 +39,39 @@ public class RunLiftStatistics {
         while (trackPointIterator.hasNext()) {
             trackPoint = trackPointIterator.next();
 
+            if (!lastSkiSubActivity.getTrackPoints().isEmpty() && lastSkiSubActivity.lastTrackPoint().getAltitudeLoss() != trackPoint.getAltitudeLoss()) {
+                skiSubActivity = new SkiSubActivity();
 
+                trackStatisticsUpdater = new TrackStatisticsUpdater();
 
-            trackStatisticsUpdater = new TrackStatisticsUpdater();
+                lastSkiSubActivity = new SkiSubActivity(skiSubActivity);
+                skiSubActivityList.add(lastSkiSubActivity);
+            }
             trackStatisticsUpdater.addTrackPoint(trackPoint);
 
             lastSkiSubActivity.add(trackStatisticsUpdater.getTrackStatistics(), trackPoint);
-
-
         }
 
         return trackPoint != null ? trackPoint.getId() : null;
     }
 
-    public List<SkiSubActivity> getSkiActivityList() { return skiActivityList; }
+    public List<SkiSubActivity> getSkiSubActivityList() { return skiSubActivityList; }
 
     public SkiSubActivity getLastSkiSubActivity() {
-        if (!skiActivityList.isEmpty()) {
-            return skiActivityList.get(skiActivityList.size() - 1);
+        if (!skiSubActivityList.isEmpty()) {
+            return skiSubActivityList.get(skiSubActivityList.size() - 1);
         }
         return null;
     }
 
     public static class SkiSubActivity {
         private TrackStatistics trackStatistics;
-        private List<TrackPoint> trackPoints;
+        private List<TrackPoint> trackPoints = new ArrayList<>();
 
         private Duration waitTime = Duration.ofSeconds(0);
 
         public SkiSubActivity() {
             trackStatistics = new TrackStatistics();
-            trackPoints = new ArrayList<>();
         }
 
         public SkiSubActivity(SkiSubActivity s) {
@@ -106,6 +108,11 @@ public class RunLiftStatistics {
 
         public List<TrackPoint> getTrackPoints() {
             return trackPoints;
+        }
+
+        public TrackPoint lastTrackPoint() {
+            if (trackPoints.isEmpty()) return null;
+            return trackPoints.get(trackPoints.size() - 1);
         }
     }
 }
