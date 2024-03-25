@@ -132,7 +132,7 @@ limitations under the License.
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image_record"
-        android:src="@drawable/ic_baseline_record_24"
+        android:src="@drawable/ic_button_start_arrow"
         app:layout_anchor="@id/bottom_app_bar" />
-
+<!--If you want tio revert back to old, it was @drawable/ic_baseline_record_24 -->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
