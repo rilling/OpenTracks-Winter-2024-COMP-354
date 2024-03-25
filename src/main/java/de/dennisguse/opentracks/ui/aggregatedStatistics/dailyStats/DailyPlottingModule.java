@@ -75,7 +75,7 @@ public class DailyPlottingModule {
      * @return A list containing Entry objects representing the moving averages.
      */
     protected List<Entry> getMovingAverage(List<Entry> entries, int frequency) {
-        ArrayList<Entry> toReturn = new ArrayList<Entry>();
+        ArrayList<Entry> toReturn = new ArrayList<>();
         for (int e = 0; e <= entries.size() - frequency; e++) {
             //System.out.println("start idx = " + e );
             float x_sum = 0;
