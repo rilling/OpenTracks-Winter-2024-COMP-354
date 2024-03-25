@@ -158,6 +158,14 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
         viewBinding.aggregatedStatsButton.setOnClickListener((view) -> startActivity(IntentUtils.newIntent(this, AggregatedStatisticsActivity.class)));
         viewBinding.sensorStartButton.setOnClickListener((view) -> {
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+            //Check if location is actually null
+/*            if (locationManager == null) {
+                // Handle the scenario where LocationManager is null
+                Toast.makeText(this, "Unable to access location services.", Toast.LENGTH_SHORT).show();
+                return;
+            }*/
+
             if (locationManager != null && !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
             } else {
