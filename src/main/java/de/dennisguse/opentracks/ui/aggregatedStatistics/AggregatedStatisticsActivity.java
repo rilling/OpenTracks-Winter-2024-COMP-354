@@ -27,7 +27,6 @@ import de.dennisguse.opentracks.databinding.AggregatedStatsBinding;
 import de.dennisguse.opentracks.util.IntentDashboardUtils;
 
 public class AggregatedStatisticsActivity extends AbstractActivity implements FilterDialogFragment.FilterDialogListener {
-    private static final String TAG = AggregatedStatisticsActivity.class.getSimpleName();
     public static final String EXTRA_TRACK_IDS = "track_ids";
 
     static final String STATE_ARE_FILTERS_APPLIED = "areFiltersApplied";
@@ -42,8 +41,6 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private boolean areFiltersApplied;
     private MenuItem filterItem;
     private MenuItem clearFilterItem;
-    private MenuItem mapItem;
-
     Button button1;
 
     @Override
@@ -111,7 +108,6 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         getMenuInflater().inflate(R.menu.aggregated_statistics, menu);
         clearFilterItem = menu.findItem(R.id.aggregated_statistics_clear_filter);
         filterItem = menu.findItem(R.id.aggregated_statistics_filter);
-        mapItem = menu.findItem(R.id.aggregated_statistics_map);
         setMenuVisibility(areFiltersApplied);
         return super.onCreateOptionsMenu(menu);
     }
@@ -129,18 +125,6 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
             setMenuVisibility(false);
             viewModel.clearSelection();
             return true;
-        }
-
-        if (item.getItemId() == R.id.aggregated_statistics_map) {
-            try {
-                IntentDashboardUtils.startOverallSeasonDashboard(this, "");
-                return true;
-            }
-            catch (JSONException exc) {
-                Log.e(TAG,
-                    "[AggregatedStatisticsActivity/onOptionsItemSelected] -- A handled error" +
-                        " occurred involving JSON: " + exc.getMessage());
-            }
         }
 
         return super.onOptionsItemSelected(item);
