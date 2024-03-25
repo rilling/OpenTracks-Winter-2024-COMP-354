@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,6 +29,7 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private AggregatedStatsBinding viewBinding;
 
     private AggregatedStatisticsAdapter adapter;
+    private AggregatedDayStatisticsAdapter dayAdapter;
 
     private AggregatedStatisticsModel viewModel;
     private final TrackSelection selection = new TrackSelection();
@@ -35,6 +37,8 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private boolean areFiltersApplied;
     private MenuItem filterItem;
     private MenuItem clearFilterItem;
+
+    private boolean isDailyView = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +53,40 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         adapter = new AggregatedStatisticsAdapter(this, null);
+        dayAdapter = new AggregatedDayStatisticsAdapter(this, null);
         viewBinding.aggregatedStatsList.setLayoutManager(layoutManager);
-        viewBinding.aggregatedStatsList.setAdapter(adapter);
 
         viewModel = new ViewModelProvider(this).get(AggregatedStatisticsModel.class);
-        viewModel.getAggregatedStats(selection).observe(this, aggregatedStatistics -> {
-            if ((aggregatedStatistics == null || aggregatedStatistics.getCount() == 0) && !selection.isEmpty()) {
-                viewBinding.aggregatedStatsEmptyView.setText(getString(R.string.aggregated_stats_filter_no_results));
-            }
-            if (aggregatedStatistics != null) {
-                adapter.swapData(aggregatedStatistics);
-            }
-            checkListEmpty();
+
+        Switch dailySwitch = findViewById(R.id.aggregated_stats_daily_switch);
+        dailySwitch.setOnCheckedChangeListener((compoundButton, switchState) -> {
+            isDailyView = switchState;
+            toggleAdapter();
         });
+        toggleAdapter();
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
+    }
+
+    private void toggleAdapter() {
+        if (isDailyView) {
+            viewBinding.aggregatedStatsList.setAdapter(dayAdapter);
+            viewModel.getAggregatedDailyStats(selection).observe(this, aggregatedStats -> {
+                if (aggregatedStats != null) {
+                    dayAdapter.swapData(aggregatedStats);
+                }
+                checkListEmpty();
+            });
+        } else {
+            viewBinding.aggregatedStatsList.setAdapter(adapter);
+            viewModel.getAggregatedStats(selection).observe(this, aggregatedStats -> {
+                if (aggregatedStats != null) {
+                    adapter.swapData(aggregatedStats);
+                }
+                checkListEmpty();
+            });
+        }
+
     }
 
     private void checkListEmpty() {
@@ -101,7 +124,11 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.aggregated_statistics_filter) {
             ArrayList<FilterDialogFragment.FilterItem> filterItems = new ArrayList<>();
-            adapter.getCategories().stream().forEach(activityType -> filterItems.add(new FilterDialogFragment.FilterItem(activityType, activityType, true)));
+            if(isDailyView) {
+                dayAdapter.getDays().stream().forEach(day -> filterItems.add(new FilterDialogFragment.FilterItem(day, day, true)));
+            } else {
+                adapter.getCategories().stream().forEach(activityType -> filterItems.add(new FilterDialogFragment.FilterItem(activityType, activityType, true)));
+            }
             FilterDialogFragment.showDialog(getSupportFragmentManager(), filterItems);
             return true;
         }

@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_statistics_24dp"
-            app:title="@string/menu_aggregated_statistics" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:navigationIcon="@drawable/ic_statistics_24dp"
+                app:title="@string/menu_aggregated_statistics" />
+
+            <Switch
+                android:id="@+id/aggregated_stats_daily_switch"
+                style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:text="@string/stats_daily_switch"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -40,8 +60,8 @@
             style="?attr/textAppearanceHeadline4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
             android:gravity="center_horizontal|center_vertical"
+            android:padding="16dp"
             android:text="@string/aggregated_stats_empty_message" />
 
     </LinearLayout>
