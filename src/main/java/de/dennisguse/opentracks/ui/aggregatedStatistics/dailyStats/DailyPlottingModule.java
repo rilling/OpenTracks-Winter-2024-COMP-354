@@ -1,5 +1,8 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics.dailyStats;
 
+import android.graphics.Color;
+import android.util.Log;
+
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -22,7 +25,10 @@ public class DailyPlottingModule {
         switch (metric) {
             case AVG_SLOPE -> {
                 dataEntries = getAvgSlopeEntries(DailyRunsProvider.getAllDailyRuns());
+
                 metricDataSet = new LineDataSet(dataEntries, "Average slope line data set");
+                metricDataSet.setColor(Color.parseColor("#2774AE"));
+
                 runningAverageDataSet = new LineDataSet(
                         getMovingAverage(dataEntries, frequency.getValue()),
                         "Running average line data set for average slope"
@@ -30,7 +36,10 @@ public class DailyPlottingModule {
             }
             case AVG_SPEED -> {
                 dataEntries = getAvgSpeedEntries(DailyRunsProvider.getAllDailyRuns());
+
                 metricDataSet = new LineDataSet(dataEntries, "Average speed line data set");
+                metricDataSet.setColor(Color.parseColor("#ED9121"));
+
                 runningAverageDataSet = new LineDataSet(
                         getMovingAverage(dataEntries, frequency.getValue()),
                         "Running average line data set for average speed"
@@ -38,7 +47,10 @@ public class DailyPlottingModule {
             }
             case TOTAL_DISTANCE -> {
                 dataEntries = getTotalDistanceEntries(DailyRunsProvider.getAllDailyRuns());
+
                 metricDataSet = new LineDataSet(dataEntries, "Total distance line data set");
+                metricDataSet.setColor(Color.parseColor("#F8DE7E"));
+
                 runningAverageDataSet = new LineDataSet(
                         getMovingAverage(dataEntries, frequency.getValue()),
                         "Running average line data set for total distance"
@@ -46,17 +58,24 @@ public class DailyPlottingModule {
             }
             case CHAIRLIFT_SPEED -> {
                 dataEntries = getAvgChairliftSpeedEntries(DailyRunsProvider.getAllDailyRuns());
+
                 metricDataSet = new LineDataSet(dataEntries, "Average chairlift speed line data set");
+                metricDataSet.setColor(Color.parseColor("#8DB600"));
+
                 runningAverageDataSet = new LineDataSet(
                         getMovingAverage(dataEntries, frequency.getValue()),
                         "Running average line data set for average chairlift speed"
                 );
             }
             default -> {
-                System.err.println("Unknown metric.");
+                Log.e("UNKNOWN_PLOT_GRAPH_METRIC", "plotGraph() called with an unknown metric parameter: " + metric);
                 return;
             }
         }
+
+        metricDataSet.setLineWidth(4);
+        runningAverageDataSet.setLineWidth(4);
+        runningAverageDataSet.setColor(Color.parseColor("#F2003C"));
 
         List<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(metricDataSet);
