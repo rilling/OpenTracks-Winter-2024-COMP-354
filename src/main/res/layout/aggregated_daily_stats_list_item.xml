@@ -246,7 +246,7 @@
 
 
     <TextView
-        android:id="@+id/daily_run_elevation"
+        android:id="@+id/daily_run_max_vertical"
         style="@style/TextAppearance.OpenTracks.PrimaryValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -260,26 +260,28 @@
 
 
     <TextView
-        android:id="@+id/daily_run_elevation_unit"
+        android:id="@+id/daily_run_max_vertical_unit"
         style="@style/TextAppearance.OpenTracks.PrimaryUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintStart_toEndOf="@+id/daily_run_elevation"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/daily_run_max_vertical"
         app:layout_constraintTop_toBottomOf="@+id/daily_lift_moving_time_label"
-        tools:text="@string/daily_run_elevation_unit" />
+        tools:text="@string/daily_run_max_vertical_unit" />
 
     <TextView
-        android:id="@+id/daily_run_elevation_label"
+        android:id="@+id/daily_run_max_vertical_label"
         style="@style/TextAppearance.OpenTracks.PrimaryUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/daily_run_elevation"
-        tools:text="@string/daily_run_elevation_label" />
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_max_vertical"
+        tools:text="@string/daily_run_max_vertical_label" />
 
     <!--  ************************* The End of Run Summary ************************************* -->
 
