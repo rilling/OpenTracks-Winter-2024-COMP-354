@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +49,27 @@ public class AggregatedStatisticsAdapter extends RecyclerView.Adapter<RecyclerVi
         } else {
             viewHolder.setPace(aggregatedStatistic);
         }
+
+        DummyDataGenerator dummyData = new DummyDataGenerator();
+
+        TextView sharpeningPercentageValue = holder.itemView.findViewById(R.id.sharpening_percentage_value);
+        sharpeningPercentageValue.setText(Double.toString(dummyData.getSharpeningPercentageValue()));
+
+        TextView waxingPercentageValue = holder.itemView.findViewById(R.id.waxing_percentage_value);
+        waxingPercentageValue.setText(Double.toString(dummyData.getWaxingPercentageValue()));
+
+        TextView kmSinceLastSharpeningValue = holder.itemView.findViewById(R.id.km_since_last_sharpening_value);
+        kmSinceLastSharpeningValue.setText(Double.toString(dummyData.getKmSinceLastSharpeningValue()));
+
+        TextView kmSinceLastWaxingValue = holder.itemView.findViewById(R.id.km_since_last_waxing_value);
+        kmSinceLastWaxingValue.setText(Double.toString(dummyData.getKmSinceLastWaxingValue()));
+
+        TextView unit = holder.itemView.findViewById(R.id.aggregated_stats_waxing_unit);
+        unit.setText(dummyData.getUnit());
+
+        TextView unit2 = holder.itemView.findViewById(R.id.aggregated_stats_sharpening_unit);
+        unit2.setText(dummyData.getUnit());
+
     }
 
     @Override
