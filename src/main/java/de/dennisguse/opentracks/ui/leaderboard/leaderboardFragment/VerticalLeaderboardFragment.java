@@ -7,10 +7,21 @@ import de.dennisguse.opentracks.data.models.Ranking;
 
 public class VerticalLeaderboardFragment extends LeaderboardFragment {
 
+    // Temporary boolean to confirm that refresh works when expected to; delete once Issue 67 is finished.
+    private boolean refresh;
+
     @Override
-    protected void refreshRankingsData() {
+    protected List<Ranking> getLatestRankingsData() {
         // TODO: Replace the test data with code that gathers the appropriate Ranking data
-        setLeaderboardAdapterRankingList(getTestData());
+        List<Ranking> latestRankingsData;
+        if (!refresh)
+            // Get a smaller data set if this is the first time the rankings data is being collected
+            latestRankingsData = getAltTestData();
+        else
+            latestRankingsData = getTestData();
+        // All future rankings data collections should be refreshes
+        refresh = true;
+        return latestRankingsData;
     }
 
     private List<Ranking> getTestData() {
@@ -40,6 +51,13 @@ public class VerticalLeaderboardFragment extends LeaderboardFragment {
         rankings.add(new Ranking(23,  "TwoThree", "Steamboat Springs",  3));
         rankings.add(new Ranking(24,  "The day", "Montreal",  2));
         rankings.add(new Ranking(25,  "The saved day", "Montreal",  1));
+        return rankings;
+    }
+
+    private List<Ranking> getAltTestData() {
+        List<Ranking> rankings = new ArrayList<>();
+        rankings.add(new Ranking(1, "Da bes", "Steamboat Springs",  25));
+        rankings.add(new Ranking(2,  "The saved day", "Montreal",  1));
         return rankings;
     }
 }
