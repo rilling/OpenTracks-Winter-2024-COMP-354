@@ -75,6 +75,8 @@ public class DailyStatsActivity extends AbstractActivity implements AdapterView.
             // Handle frequency selection
             selectedFrequency = null;
         }
+
+        line_chart.clear();
     }
 
     @Override
