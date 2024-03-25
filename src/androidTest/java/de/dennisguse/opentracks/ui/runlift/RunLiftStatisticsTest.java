@@ -169,8 +169,71 @@ public class RunLiftStatisticsTest {
     @Test
     public void testLiftAndRunAndLiftTrackPoints() {
         Track dummyTrack = new Track();
+        int numberOfPoints = 20;
         dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
-        assertTrue(true);
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+        createLift(dummyTrack, trackStatisticsUpdater, numberOfPoints, 0);
+        createRun(dummyTrack, trackStatisticsUpdater, numberOfPoints, numberOfPoints);
+        createLift(dummyTrack, trackStatisticsUpdater, numberOfPoints, numberOfPoints * 2);
+        dummyTrack.setTrackStatistics(trackStatisticsUpdater.getTrackStatistics());
+        contentProviderUtils.updateTrack(dummyTrack);
+
+        RunLiftStatistics runLiftStatistics = new RunLiftStatistics();
+
+        try (TrackPointIterator trackPointIterator = contentProviderUtils.getTrackPointLocationIterator(dummyTrack.getId(), null)) {
+            assertEquals(numberOfPoints * 3, trackPointIterator.getCount());
+            runLiftStatistics.addTrackPoints(trackPointIterator);
+        }
+
+        List<RunLiftStatistics.SkiSubActivity> skiSubActivities = runLiftStatistics.getSkiSubActivityList();
+
+        assertEquals(3, skiSubActivities.size());
+        assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertEquals(0.0, skiSubActivities.get(1).getWaitTime().toSeconds(), 0.01);
+        assertEquals(0.0, skiSubActivities.get(2).getWaitTime().toSeconds(), 0.01);
+        assertTrue(skiSubActivities.get(0).isLift());
+        assertFalse(skiSubActivities.get(1).isLift());
+        assertTrue(skiSubActivities.get(2).isLift());
+        assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
+        assertEquals(numberOfPoints, skiSubActivities.get(1).getTrackPoints().size());
+        assertEquals(numberOfPoints, skiSubActivities.get(2).getTrackPoints().size());
+    }
+
+    @Test
+    public void testRunAndLiftAndRunTrackPoints() {
+        Track dummyTrack = new Track();
+        int numberOfPoints = 20;
+        dummyTrack.setId(new Track.Id(System.currentTimeMillis()));
+        contentProviderUtils.insertTrack(dummyTrack);
+        TrackStatisticsUpdater trackStatisticsUpdater = new TrackStatisticsUpdater();
+
+        createRun(dummyTrack, trackStatisticsUpdater, numberOfPoints, 0);
+        createLift(dummyTrack, trackStatisticsUpdater, numberOfPoints, numberOfPoints);
+        createRun(dummyTrack, trackStatisticsUpdater, numberOfPoints, numberOfPoints * 2);
+        dummyTrack.setTrackStatistics(trackStatisticsUpdater.getTrackStatistics());
+        contentProviderUtils.updateTrack(dummyTrack);
+
+        RunLiftStatistics runLiftStatistics = new RunLiftStatistics();
+
+        try (TrackPointIterator trackPointIterator = contentProviderUtils.getTrackPointLocationIterator(dummyTrack.getId(), null)) {
+            assertEquals(numberOfPoints * 3, trackPointIterator.getCount());
+            runLiftStatistics.addTrackPoints(trackPointIterator);
+        }
+
+        List<RunLiftStatistics.SkiSubActivity> skiSubActivities = runLiftStatistics.getSkiSubActivityList();
+
+        assertEquals(3, skiSubActivities.size());
+        assertEquals(0.0, skiSubActivities.get(0).getWaitTime().toSeconds(), 0.01);
+        assertEquals(0.0, skiSubActivities.get(1).getWaitTime().toSeconds(), 0.01);
+        assertEquals(0.0, skiSubActivities.get(2).getWaitTime().toSeconds(), 0.01);
+        assertFalse(skiSubActivities.get(0).isLift());
+        assertTrue(skiSubActivities.get(1).isLift());
+        assertFalse(skiSubActivities.get(2).isLift());
+        assertEquals(numberOfPoints, skiSubActivities.get(0).getTrackPoints().size());
+        assertEquals(numberOfPoints, skiSubActivities.get(1).getTrackPoints().size());
+        assertEquals(numberOfPoints, skiSubActivities.get(2).getTrackPoints().size());
     }
 
     @Test
