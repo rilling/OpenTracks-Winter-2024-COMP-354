@@ -214,6 +214,8 @@
         app:layout_constraintVertical_bias="0.0"
         tools:text="@string/daily_run_number_label" />
 
+
+
     <TextView
         android:id="@+id/daily_run_number"
         style="@style/TextAppearance.OpenTracks.PrimaryValue"
@@ -225,6 +227,8 @@
         app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
         tools:text="0" />
+
+
 
     <TextView
         android:id="@+id/daily_run_number_unit"
@@ -241,7 +245,46 @@
         tools:text="@string/daily_run_number_unit" />
 
 
+    <TextView
+        android:id="@+id/daily_run_elevation"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/daily_lift_moving_time_label"
+        tools:text="0" />
+
+
+    <TextView
+        android:id="@+id/daily_run_elevation_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/daily_run_elevation"
+        app:layout_constraintTop_toBottomOf="@+id/daily_lift_moving_time_label"
+        tools:text="@string/daily_run_elevation_unit" />
+
+    <TextView
+        android:id="@+id/daily_run_elevation_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_elevation"
+        tools:text="@string/daily_run_elevation_label" />
+
     <!--  ************************* The End of Run Summary ************************************* -->
+
+
+
 
     <!-- Distance -->
 
@@ -250,6 +293,7 @@
     <!-- Avg. rate -->
 
     <!-- Max. rate -->
+
 
 
     <TextView

@@ -723,5 +723,7 @@ limitations under the License.
     <string name="daily_lift_max_speed_unit">km/h</string>
     <string name="daily_run_number_label">NUMBER OF RUNS</string>
     <string name="daily_run_number_unit">Run(s)</string>
+    <string name="daily_run_elevation_label">RUN ELEVATION</string>
+    <string name="daily_run_elevation_unit">Meters</string>
     <string name="activity_type_label">Skiing</string>
 </resources>
