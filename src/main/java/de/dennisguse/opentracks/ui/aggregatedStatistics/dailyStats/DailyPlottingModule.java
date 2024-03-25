@@ -39,4 +39,42 @@ public class DailyPlottingModule {
         return toReturn;
     }
 
+    private List<Entry> getAvgSpeedEntries(List<RunVM> runs)
+    {
+        ArrayList<Entry> toReturn = new ArrayList<>();
+
+        if(runs == null || runs.isEmpty())
+        {
+            return toReturn;
+        }
+
+        for(int i=0; i<runs.size();i++)
+        {
+            int runEntryNumber = i + 1;
+            toReturn.add(new Entry(runEntryNumber,runs.get(i).getAvgSpeed()));
+        }
+
+        return toReturn;
+    }
+
+    private List<Entry> getAvgChairliftSpeedEntries(List<RunVM> runs)
+    {
+        ArrayList<Entry> toReturn = new ArrayList<>();
+
+        if(runs == null || runs.isEmpty())
+        {
+            return toReturn;
+        }
+
+        for(int i=0; i<runs.size();i++)
+        {
+            int runEntryNumber = i + 1;
+            toReturn.add(new Entry(runEntryNumber,runs.get(i).getChairliftSpeed()));
+        }
+
+        return toReturn;
+    }
+
+
+
 }
