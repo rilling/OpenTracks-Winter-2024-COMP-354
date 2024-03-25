@@ -1,6 +1,16 @@
 package de.dennisguse.opentracks.services;
 
-import de.dennisguse.opentracks.data.models;
+import android.content.Context;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import de.dennisguse.opentracks.data.ContentProviderUtils;
+import de.dennisguse.opentracks.data.TrackPointIterator;
+import de.dennisguse.opentracks.data.models.SkiLiftPoint;
+import de.dennisguse.opentracks.data.models.SkiRunPoint;
+import de.dennisguse.opentracks.data.models.Track;
+import de.dennisguse.opentracks.data.models.TrackPoint;
 
 /**
  * The TrackDifferentiate class is responsible for differentiating ski lift and ski run segments from a track.
@@ -16,54 +26,59 @@ public class TrackDifferentiate {
     private int liftCount, runCount;
     private TrackPoint.Type prevType;
     private boolean down;
+    private ArrayList<TrackPoint> liftPoints;
+    private ArrayList<TrackPoint> runPoints;
 
-    public TrackDifferentiate() {
+    public TrackDifferentiate(Track.Id tid, Context c) {
+        trackId = tid;
+        contentProviderUtils = new ContentProviderUtils(c);
+
         // list of trackpoints grouped per run (index 0 is first run, 1 second run,
         // etc...)
-        ArrayList<SkiLiftPoint<TrackPoint>> liftPoints = new ArrayList<SkiLiftPoint<TrackPoint>>();
-        ArrayList<SkiLiftPoint<TrackPoint>> runPoints = new ArrayList<SkiRunPoint<TrackPoint>>();
+        liftPoints = new ArrayList<>();
+        runPoints = new ArrayList<>();
 
         liftCount = 0;
         runCount = 0;
-        prevType = Type.IDLE;
+        prevType = TrackPoint.Type.IDLE;
 
     }
 
-    private void differentiate(Track.Id currentTrack) {
+    public void differentiate() {
         // iterate through all trackpoints and store them in arraylists
-        try (TrackPointIterator tpi = contentProviderUtils.getTrackPointLocationIterator(currentTrack, null)) {
+        try (TrackPointIterator tpi = contentProviderUtils.getTrackPointLocationIterator(trackId, null)) {
             ArrayList<TrackPoint> track = null;
             while (tpi.hasNext()) {
                 TrackPoint trackpoint = tpi.next();
 
                 // if idle point do nothing
-                if (trackpoint.getType() == Type.IDLE) {
+                if (trackpoint.getType() == TrackPoint.Type.IDLE) {
                     prevType = trackpoint.getType();
 
                     // if trackpoint starts going up after being idle
-                } else if (prevType == Type.IDLE
-                        && (trackpoint.getaltitude() < (TrackPoint) tpi.next().getAltitude())) {
+                } else if (prevType == TrackPoint.Type.IDLE
+                        && (trackpoint.getAltitude().compare(tpi.next().getAltitude()) < 0)) {
                     track = new ArrayList<TrackPoint>();
                     track.add(trackpoint);
                     down = false;
 
                     // if trackpoint is not idle but next trackpoint does not move in altitude
-                } else if (trackpoint.getType() != Type.IDLE
-                        && trackpoint.getaltitude() == (TrackPoint) tpi.next().getAltitude()) {
+                } else if (trackpoint.getType() != TrackPoint.Type.IDLE
+                        && (trackpoint.getAltitude().compare(tpi.next().getAltitude()) == 0)) {
                     track.add(trackpoint);
                     if (down == true) {
                         // if it was marked down add to run list
-                        runPoints.set(runCount, track);
+                        runPoints.set(runCount, trackpoint);
                         runCount++;
-                    } else if (down == false) {
+                    } else {
                         // if marked up add to lift list
-                        liftPoints.add(liftCount, track);
+                        liftPoints.add(liftCount, trackpoint);
                         liftCount++;
                     }
 
                     // if trackpoint starts going down after being idle
-                } else if (prevType == Type.IDLE
-                        && (trackpoint.getaltitude() > (TrackPoint) tpi.next().getAltitude())) {
+                } else if (prevType == TrackPoint.Type.IDLE
+                        && (trackpoint.getAltitude().compare(tpi.next().getAltitude()) > 0)) {
                     track = new ArrayList<TrackPoint>();
                     track.add(trackpoint);
                     down = true;
@@ -71,5 +86,9 @@ public class TrackDifferentiate {
                 }
             }
         }
+    }
+
+    public List<TrackPoint> getLiftPoints() {
+        return liftPoints;
     }
 }

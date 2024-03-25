@@ -1,6 +1,9 @@
 package de.dennisguse.opentracks.data.models;
 
+import android.content.Context;
+
 import java.util.List;
+import de.dennisguse.opentracks.services.TrackDifferentiate;
 
 /**
  * Represents a ski lift object at a ski spot/resort.
@@ -16,6 +19,7 @@ import java.util.List;
  * 
  * TODO :
  * - Implement some GPX reference for the SkiLift's location, as it's a physical object it should be placed in the map
+ *
  */
 public class SkiLift {
     private String name;
@@ -81,3 +85,4 @@ public class SkiLift {
         return false;
     }
 }
+
