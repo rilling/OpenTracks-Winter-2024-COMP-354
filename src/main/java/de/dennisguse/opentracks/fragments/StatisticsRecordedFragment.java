@@ -25,6 +25,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -173,6 +175,19 @@ public class StatisticsRecordedFragment extends Fragment {
     }
 
     private void updateUI() {
+        //see if track is null
+        assert track != null;
+
+        // Check if track is null
+        if (track == null) {
+            Log.e(TAG, "track cannot be null");
+            Toast.makeText(getContext(), "Error: Track cannot be null. Please retry.", Toast.LENGTH_SHORT).show();
+
+            getActivity().finish();
+            return;
+        }
+
+
         TrackStatistics trackStatistics = track.getTrackStatistics();
         // Set total distance
         {
