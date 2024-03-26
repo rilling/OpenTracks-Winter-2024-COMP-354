@@ -1,0 +1,14 @@
+
+<resources>
+    <array name="sharing_location_values">
+        <item>friends</item>
+        <item>family</item>
+        <item>public</item>
+    </array>
+
+    <array name="sharing_location_entries">
+        <item>@string/sharing_option_friends</item>
+        <item>@string/sharing_option_share_with</item>
+        <item>@string/sharing_option_public</item>
+    </array>
+</resources>
