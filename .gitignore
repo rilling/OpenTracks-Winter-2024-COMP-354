@@ -43,7 +43,7 @@ captures/
 .idea/libraries
 .idea/caches
 .idea/misc.xml
-
+.idea/migrations.xml
 
 # IntelliJ IDEA
 *.iws

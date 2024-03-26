@@ -64,7 +64,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
-        <activity
+      <activity
+            android:name=".ui.aggregatedStatistics.dailyStats.DailyStatsActivity"
+            android:exported="false" />
+      <activity
             android:name=".ui.friends.FriendsActivity"
             android:exported="false" />
         <activity
