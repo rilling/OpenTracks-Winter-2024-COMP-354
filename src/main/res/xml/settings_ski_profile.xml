@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <SwitchPreferenceCompat
+        android:key="live_location_sharing"
+        android:title="Share Live Location"
+        android:summary="Toggle location being shared"
+        android:defaultValue="false" />
+
+    <ListPreference
+        android:key="sharing_location"
+        android:title="@string/sharing_location_title"
+        android:summary="@string/sharing_location_summary"
+        android:entryValues="@array/sharing_location_values"
+        android:entries="@array/sharing_location_entries" />
+
+</androidx.preference.PreferenceScreen>

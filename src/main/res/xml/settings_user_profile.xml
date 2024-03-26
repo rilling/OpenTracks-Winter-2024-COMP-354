@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Profile Picture Preference -->
+    <Preference
+        android:key="@string/profile_picture_menu"
+        android:title="Profile Picture"
+        android:summary=" "
+        android:layout="@layout/laprofile_picture_preference_layout"/>
+
+
+    <!-- User Details Section -->
+    <PreferenceCategory
+        android:title="Profile Settings">
+
+        <Preference
+            android:key="@string/edit_profile_key"
+            android:title="@string/edit_profile_title"
+            android:summary="@string/edit_profile_summary"
+            android:icon="@android:drawable/ic_menu_edit" />
+
+        <SwitchPreference
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:defaultValue="false"
+            android:summaryOff="Share your details with other users"
+            android:summaryOn="Sharing"
+            android:title="Allow to Share on Leaderboard"
+            app:key="leaderboard_switch"
+            app:switchTextOff="No" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
