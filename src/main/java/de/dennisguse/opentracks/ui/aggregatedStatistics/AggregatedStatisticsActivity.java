@@ -1,13 +1,18 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import org.json.JSONException;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -19,9 +24,9 @@ import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.TrackSelection;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.databinding.AggregatedStatsBinding;
+import de.dennisguse.opentracks.util.IntentDashboardUtils;
 
 public class AggregatedStatisticsActivity extends AbstractActivity implements FilterDialogFragment.FilterDialogListener {
-
     public static final String EXTRA_TRACK_IDS = "track_ids";
 
     static final String STATE_ARE_FILTERS_APPLIED = "areFiltersApplied";
@@ -36,6 +41,7 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private boolean areFiltersApplied;
     private MenuItem filterItem;
     private MenuItem clearFilterItem;
+    Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,14 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         });
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
+
+        // add button to redirect to Overall statistics page.
+        button1 = (Button) (findViewById(R.id.StatsButtonId));
+
+        button1.setOnClickListener(view -> {
+            Intent intent = new Intent(AggregatedStatisticsActivity.this, StatisticsActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void checkListEmpty() {
