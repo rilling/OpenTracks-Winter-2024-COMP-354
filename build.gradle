@@ -26,7 +26,7 @@ def getVersionName = { ->
         }
         return stdout.toString().trim()
     } catch (ignored) {
-        return "1.0.0" // Default version name
+        return null
     }
 }
 
@@ -39,7 +39,7 @@ def getVersionCode = { ->
         }
         return Integer.valueOf(stdout.toString().trim())
     } catch (ignored) {
-        return 1 // Default version code
+        return null
     }
 }
 
@@ -75,7 +75,6 @@ android {
         testInstrumentationRunner "de.dennisguse.opentracks.TestRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
-
     signingConfigs {
         nightly {
             if (System.getProperty("nightly_store_file") != null) {
@@ -150,4 +149,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'org.mockito:mockito-android:5.8.0'
 
-    androidTestUtil 'androidx.test:orchestrator:1.4.2'}
+    androidTestUtil 'androidx.test:orchestrator:1.4.2'
+}
