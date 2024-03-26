@@ -48,8 +48,6 @@ public class SkiProfileFragment extends PreferenceFragmentCompat {
             case "public":
                 radioGroup.check(R.id.radio_public);
                 break;
-            default:
-                radioGroup.check(R.id.radio_no_one);
         }
     }
 
