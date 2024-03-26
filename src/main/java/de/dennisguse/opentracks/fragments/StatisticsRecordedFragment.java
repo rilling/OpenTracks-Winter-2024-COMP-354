@@ -25,10 +25,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import java.util.Objects;
 
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.TrackRecordedActivity;
@@ -138,7 +142,7 @@ public class StatisticsRecordedFragment extends Fragment {
     }
 
     public void loadStatistics() {
-        if (isResumed()) {
+        if (isResumed() && getActivity() != null) {
             getActivity().runOnUiThread(() -> {
                 if (isResumed()) {
                     Track track = contentProviderUtils.getTrack(trackId);
@@ -164,6 +168,10 @@ public class StatisticsRecordedFragment extends Fragment {
                 }
             });
         }
+        //add logs
+        else {
+            Log.w(TAG, "Activity is null when loading statistics");
+        }
     }
 
     private void loadTrackDescription(@NonNull Track track) {
@@ -173,6 +181,17 @@ public class StatisticsRecordedFragment extends Fragment {
     }
 
     private void updateUI() {
+
+        // Check if track is null
+        if (track == null) {
+            Log.e(TAG, "track cannot be null");
+            Toast.makeText(getContext(), "Error: Track cannot be null. Please retry.", Toast.LENGTH_SHORT).show();
+
+            requireActivity().finish();
+            return;
+        }
+
+
         TrackStatistics trackStatistics = track.getTrackStatistics();
         // Set total distance
         {

@@ -41,11 +41,37 @@
         app:menu="@menu/track_record" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/track_recording_resume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="120dp"
+        android:contentDescription="@string/image_resume"
+        android:foreground="@drawable/ic_button_resume"
+        android:src="@drawable/ic_button_resume"
+        app:elevation="0dp"
+        app:layout_anchor="@+id/track_recording_fab_action" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/track_recording_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="120dp"
+        android:contentDescription="@string/image_pause"
+        android:foreground="@drawable/ic_button_pause"
+        android:src="@drawable/ic_button_pause"
+        app:elevation="0dp"
+        app:layout_anchor="@+id/track_recording_fab_action" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/track_recording_fab_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_record_24"
+        android:foreground="@drawable/ic_button_stop"
+        android:src="@drawable/ic_button_stop"
         android:contentDescription="@string/image_stop"
         app:layout_anchor="@id/bottom_app_bar" />
-
+    <!--If you want tio revert back to old, it was @drawable/ic_baseline_record_24 -->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

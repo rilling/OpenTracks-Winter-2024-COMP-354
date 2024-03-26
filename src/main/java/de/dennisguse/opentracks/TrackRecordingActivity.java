@@ -104,7 +104,7 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
         }
         if (key == null) return;
 
-        runOnUiThread(TrackRecordingActivity.this::invalidateOptionsMenu); //TODO Should not be necessary
+//        runOnUiThread(TrackRecordingActivity.this::invalidateOptionsMenu); //TODO Should not be necessary
     };
 
     @Override
@@ -132,22 +132,39 @@ public class TrackRecordingActivity extends AbstractActivity implements ChooseAc
             viewBinding.trackDetailActivityViewPager.setCurrentItem(savedInstanceState.getInt(CURRENT_TAB_TAG_KEY));
         }
 
-        viewBinding.trackRecordingFabAction.setImageResource(R.drawable.ic_baseline_stop_24);
+/*        viewBinding.trackRecordingFabAction.setImageResource(R.drawable.ic_baseline_stop_24);
         viewBinding.trackRecordingFabAction.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.opentracks));
-        viewBinding.trackRecordingFabAction.setBackgroundColor(ContextCompat.getColor(this, R.color.opentracks));
-        viewBinding.trackRecordingFabAction.setOnLongClickListener((view) -> {
-            ActivityUtils.vibrate(this, 1000);
+        viewBinding.trackRecordingFabAction.setBackgroundColor(ContextCompat.getColor(this, R.color.opentracks));*/
+
+
+        viewBinding.trackRecordingFabAction.setImageResource(R.drawable.ic_button_stop);
+
+        viewBinding.trackRecordingFabAction.setOnClickListener((view) -> {
+            ActivityUtils.vibrate(this, 200);
             trackRecordingServiceConnection.stopRecording(TrackRecordingActivity.this);
             Intent newIntent = IntentUtils.newIntent(TrackRecordingActivity.this, TrackStoppedActivity.class)
                     .putExtra(TrackStoppedActivity.EXTRA_TRACK_ID, trackId);
             startActivity(newIntent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
-            return true;
         });
-        viewBinding.trackRecordingFabAction.setOnClickListener((view) -> Toast.makeText(TrackRecordingActivity.this, getString(R.string.hold_to_stop), Toast.LENGTH_LONG).show());
 
-        setSupportActionBar(viewBinding.bottomAppBar);
+        viewBinding.trackRecordingPause.setImageResource(R.drawable.ic_baseline_record_pause);
+        viewBinding.trackRecordingPause.setOnClickListener((view) -> {
+            ActivityUtils.vibrate(this, 200);
+            trackRecordingServiceConnection.pauseRecording(TrackRecordingActivity.this);
+            view.setVisibility(View.GONE);
+        });
+
+        viewBinding.trackRecordingResume.setImageResource(R.drawable.ic_button_resume);
+        viewBinding.trackRecordingResume.setOnClickListener((view) -> {
+            ActivityUtils.vibrate(this, 200);
+            trackRecordingServiceConnection.resumeRecording(TrackRecordingActivity.this);
+            viewBinding.trackRecordingPause.setVisibility(View.VISIBLE);
+        });
+
+
+                setSupportActionBar(viewBinding.bottomAppBar);
     }
 
     @Override

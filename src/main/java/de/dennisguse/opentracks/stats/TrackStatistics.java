@@ -16,6 +16,9 @@
 
 package de.dennisguse.opentracks.stats;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
@@ -32,6 +35,7 @@ import de.dennisguse.opentracks.data.models.HeartRate;
 import de.dennisguse.opentracks.data.models.Speed;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.data.models.TrackPoint;
+import de.dennisguse.opentracks.viewmodels.GenericStatisticsViewHolder;
 
 /**
  * Statistical data about a {@link Track}.
@@ -46,6 +50,8 @@ public class TrackStatistics {
 
     // The min and max altitude (meters) seen on this track.
     private final ExtremityMonitor altitudeExtremities = new ExtremityMonitor();
+
+    public static boolean pause = false;
 
     // The total number of runs in a season.
     private int totalRunsSeason;
@@ -64,6 +70,7 @@ public class TrackStatistics {
 
     // The slope percentage in a season.
     private double slopePercentageSeason;
+
     // The track start time.
     private Instant startTime;
     // The track stop time.
@@ -83,7 +90,9 @@ public class TrackStatistics {
 
     private boolean isIdle;
 
-    //==========================================================================//
+
+    public boolean resumed = false;
+
     private Duration chairliftWaitingTime;
     private Distance chairliftElevationGain;
     private Speed chairliftConstantSpeed;
@@ -148,9 +157,6 @@ public class TrackStatistics {
     private boolean waiting;
     private boolean skiing;
     private boolean chairlift;
-
-    //===========================================================================//
-
 
     public TrackStatistics() {
         reset();
@@ -334,7 +340,26 @@ public class TrackStatistics {
     }
 
     public void addMovingTime(TrackPoint trackPoint, TrackPoint lastTrackPoint) {
-        addMovingTime(Duration.between(lastTrackPoint.getTime(), trackPoint.getTime()));
+        if (pause) {
+            return;
+        }
+        if (resumed) {
+            // Calculate the elapsed time since the pause
+            Duration elapsedTimeSincePause = Duration.between(lastTrackPoint.getTime(), trackPoint.getTime());
+
+            // Update the moving time with the elapsed pause time
+            movingTime = movingTime.plus(elapsedTimeSincePause);
+
+            // Reset the resumed flag
+            resumed = false;
+        } else {
+            // Standard moving time update logic (add the time between track points)
+            Duration time = Duration.between(lastTrackPoint.getTime(), trackPoint.getTime());
+            if (time.isNegative()) {
+                throw new RuntimeException("Moving time cannot be negative");
+            }
+            movingTime = movingTime.plus(time);
+        }
     }
 
     //================================================================================//
@@ -361,7 +386,7 @@ public class TrackStatistics {
         if (time.isNegative()) {
             throw new RuntimeException("Moving time cannot be negative");
         }
-        movingTime = movingTime.plus(time);
+            movingTime = movingTime.plus(time);
     }
 
     public Duration getStoppedTime() {

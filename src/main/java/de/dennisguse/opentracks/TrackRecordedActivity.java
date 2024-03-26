@@ -147,7 +147,6 @@ public class TrackRecordedActivity extends AbstractTrackDeleteActivity implement
     @Override
     protected void onStart() {
         super.onStart();
-
         trackDataHub.start();
     }
 

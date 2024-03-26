@@ -204,6 +204,7 @@
                     android:contentDescription="@string/image_record"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/buttons_guideline"
+                    app:layout_constraintHorizontal_bias="0.515"
                     app:layout_constraintStart_toEndOf="@id/buttons_guideline"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_button_resume" />

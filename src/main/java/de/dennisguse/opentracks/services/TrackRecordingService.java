@@ -16,6 +16,8 @@
 
 package de.dennisguse.opentracks.services;
 
+import static java.security.AccessController.getContext;
+
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +28,7 @@ import android.os.Looper;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.util.Pair;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
@@ -37,6 +40,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.Duration;
 
+import de.dennisguse.opentracks.TrackListActivity;
 import de.dennisguse.opentracks.data.models.Distance;
 import de.dennisguse.opentracks.data.models.Marker;
 import de.dennisguse.opentracks.data.models.Track;
@@ -48,6 +52,7 @@ import de.dennisguse.opentracks.services.handlers.TrackPointCreator;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
 import de.dennisguse.opentracks.util.PermissionRequester;
 import de.dennisguse.opentracks.util.SystemUtils;
+import de.dennisguse.opentracks.viewmodels.GenericStatisticsViewHolder;
 
 public class TrackRecordingService extends Service implements TrackPointCreator.Callback, SharedPreferences.OnSharedPreferenceChangeListener, TrackRecordingManager.IdleObserver {
 
@@ -186,6 +191,32 @@ public class TrackRecordingService extends Service implements TrackPointCreator.
 
         startRecording();
     }
+
+    public void pauseRecording() {
+//        stopUpdateRecordingData();
+        GenericStatisticsViewHolder.MovingTime.pause();
+        GenericStatisticsViewHolder.Distance.pause();
+        GenericStatisticsViewHolder.SpeedOrPace.pause();
+
+//        handler.postDelayed(updateRecordingData, RECORDING_DATA_UPDATE_INTERVAL.toMillis());
+
+//        stopSensors();
+
+//        voiceAnnouncementManager.start(trackRecordingManager.getTrackStatistics());
+    }
+
+    public void resumeRecording() {
+        GenericStatisticsViewHolder.MovingTime.resume();
+//        GenericStatisticsViewHolder.Distance.pause();
+//        GenericStatisticsViewHolder.SpeedOrPace.pause();
+
+//        handler.postDelayed(updateRecordingData, RECORDING_DATA_UPDATE_INTERVAL.toMillis());
+
+//        stopSensors();
+
+//        voiceAnnouncementManager.start(trackRecordingManager.getTrackStatistics());
+    }
+
 
     private void startRecording() {
         // Update instance variables

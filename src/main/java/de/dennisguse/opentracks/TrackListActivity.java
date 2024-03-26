@@ -47,6 +47,7 @@ import java.util.Objects;
 import de.dennisguse.opentracks.data.ContentProviderUtils;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.databinding.TrackListBinding;
+import de.dennisguse.opentracks.databinding.TrackRecordingBinding;
 import de.dennisguse.opentracks.services.RecordingStatus;
 import de.dennisguse.opentracks.services.TrackRecordingService;
 import de.dennisguse.opentracks.services.TrackRecordingServiceConnection;
@@ -80,6 +81,8 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
     private TrackListAdapter adapter;
 
     private TrackListBinding viewBinding;
+
+    private TrackRecordingBinding recordingBinding;
 
     // Preferences
     private UnitSystem unitSystem = UnitSystem.defaultUnitSystem();
@@ -150,6 +153,8 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
 
         requestRequiredPermissions();
 
+        recordingBinding = TrackRecordingBinding.inflate(getLayoutInflater());
+
         recordingStatusConnection = new TrackRecordingServiceConnection(bindChangedCallback);
 
         viewBinding.friendsButton.setOnClickListener((view)->startActivity(IntentUtils.newIntent(this, FriendsActivity.class)));
@@ -158,6 +163,14 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
         viewBinding.leaderboardButton.setOnClickListener((view) -> startActivity(IntentUtils.newIntent(this, LeaderboardActivity.class)));
         viewBinding.sensorStartButton.setOnClickListener((view) -> {
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+            //Check if location is actually null
+/*            if (locationManager == null) {
+                // Handle the scenario where LocationManager is null
+                Toast.makeText(this, "Unable to access location services.", Toast.LENGTH_SHORT).show();
+                return;
+            }*/
+
             if (locationManager != null && !locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
             } else {
@@ -191,6 +204,19 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
                 startActivity(newIntent);
             });
         });
+
+        recordingBinding.trackRecordingPause.setOnLongClickListener((view) -> {
+            if (!recordingStatus.isRecording()) {
+                return false;
+            }
+
+            // Recording -> Pause
+            ActivityUtils.vibrate(this, 1000);
+            updateGpsMenuItem(true, false);
+            recordingBinding.trackRecordingPause.setImageResource(R.drawable.ic_baseline_record_pause);
+            return true;
+        });
+
         viewBinding.trackListFabAction.setOnLongClickListener((view) -> {
             if (!recordingStatus.isRecording()) {
                 return false;
@@ -200,8 +226,9 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
             ActivityUtils.vibrate(this, 1000);
             updateGpsMenuItem(false, false);
             recordingStatusConnection.stopRecording(TrackListActivity.this);
-            viewBinding.trackListFabAction.setImageResource(R.drawable.ic_baseline_record_24);
-            viewBinding.trackListFabAction.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.red_dark));
+/*            viewBinding.trackListFabAction.setImageResource(R.drawable.ic_baseline_record_24);
+            viewBinding.trackListFabAction.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.red_dark));*/
+            viewBinding.trackListFabAction.setImageResource(R.drawable.ic_button_start_arrow);
             return true;
         });
 
@@ -441,8 +468,9 @@ public class TrackListActivity extends AbstractTrackDeleteActivity implements Co
     }
 
     private void setFloatButton() {
-        viewBinding.trackListFabAction.setImageResource(recordingStatus.isRecording() ? R.drawable.ic_baseline_stop_24 : R.drawable.ic_baseline_record_24);
-        viewBinding.trackListFabAction.setBackgroundTintList(ContextCompat.getColorStateList(this, recordingStatus.isRecording() ? R.color.opentracks : R.color.red_dark));
+//        viewBinding.trackListFabAction.setImageResource(recordingStatus.isRecording() ? R.drawable.ic_baseline_stop_24 : R.drawable.ic_baseline_record_24);
+        viewBinding.trackListFabAction.setImageResource(recordingStatus.isRecording() ? R.drawable.ic_button_stop : R.drawable.ic_button_start_arrow);
+//        viewBinding.trackListFabAction.setBackgroundTintList(ContextCompat.getColorStateList(this, recordingStatus.isRecording() ? R.color.opentracks : R.color.red_dark));
     }
 
     private void onRecordingStatusChanged(RecordingStatus status) {

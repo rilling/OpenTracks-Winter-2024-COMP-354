@@ -209,7 +209,8 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             boolean isRecordingThisTrackRecording = trackId.equals(recordingStatus.trackId());
             if (isRecordingThisTrackRecording) {
-                iconId = R.drawable.ic_track_recording;
+                //iconId = R.drawable.ic_track_recording;
+                iconId = R.drawable.ic_button_start_arrow;
                 iconDesc = R.string.image_record;
             }
 
