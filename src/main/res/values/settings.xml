@@ -274,6 +274,10 @@
     <string name="publicapi_dashboard_enabled_key" translatable="false">apiDashboardEnabledKey</string>
     <bool name="publicapi_dashboard_enabled_default">false</bool>
 
+    <!--Group 2 -->
+    <string name="settings_maintenance_info_key" translatable="false">maintenance_info_key</string>
+
+
     <string name="show_introduction_screen_key" translatable="false">showIntroduction</string>
     <bool name="show_introduction_screen_default">true</bool>
 
