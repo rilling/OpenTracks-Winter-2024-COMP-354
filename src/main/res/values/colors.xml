@@ -30,6 +30,10 @@ limitations under the License.
     <color name="chart_pace_fill">#40C8E0FF</color> <!-- transparent blue -->
     <color name="chart_speed_border">#FF0066FF</color> <!-- blue -->
     <color name="chart_speed_fill">#40C8E0FF</color> <!-- transparent blue -->
+    <color name="chart_moving_avg_border">#FF69B4</color> <!-- hot pink -->
+    <color name="chart_moving_avg_fill">#3BFF69B4</color> <!-- transparent hot pink -->
+    <color name="chart_slope_avg_border">#4992FF</color> <!-- light blue -->
+    <color name="chart_slope_avg_fill">#4F4992FF</color> <!-- transparent light blue -->
     <color name="chart_power_border">#FF7A26C0</color> <!-- purple -->
     <color name="chart_power_fill">#407A26C0</color> <!-- transparent purple -->
 

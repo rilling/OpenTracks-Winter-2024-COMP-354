@@ -15,6 +15,6 @@ limitations under the License.
 -->
 
 <de.dennisguse.opentracks.chart.ChartViewMovingAvg xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/chart_view"
+    android:id="@+id/chart_view_moving_avg"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
