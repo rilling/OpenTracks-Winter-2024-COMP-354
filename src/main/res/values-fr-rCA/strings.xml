@@ -87,6 +87,8 @@
     <string name="description_sensor_power">Puissance (W)</string>
     <string name="description_speed_imperial">Vitesse (mi/h)</string>
     <string name="description_speed_metric">Vitesse (km/h)</string>
+    <string name="description_moving_average_metric">Moyenne mobile (moyenne/course)</string>
+    <string name="description_slope_average_metric">Pente moyenne (moyenne/course)</string>
     <string name="description_time">Durée</string>
     <string name="description_total_distance">Distance totale : %1$.2f km (%2$.1f mi)</string>
     <string name="description_total_time">Durée totale : %1$s</string>

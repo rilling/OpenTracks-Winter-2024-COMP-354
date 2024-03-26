@@ -56,13 +56,14 @@ import de.dennisguse.opentracks.util.IntentUtils;
 import de.dennisguse.opentracks.util.StringUtils;
 
 /**
+ * ChartViewMovingAvg
  * Visualization of the chart.
  * Provides support for zooming (via pinch), scrolling, flinging, and selecting shown markers (single touch).
  *
  * @author Sandor Dornbush
  * @author Leif Hendrik Wilden
  */
-public class ChartView extends View {
+public class ChartViewMovingAvg extends View {
 
     static final int Y_AXIS_INTERVALS = 5;
 
@@ -86,8 +87,9 @@ public class ChartView extends View {
     }
 
     private final List<ChartValueSeries> seriesList = new LinkedList<>();
-    private final ChartValueSeries speedSeries;
-    private final ChartValueSeries paceSeries;
+    private final ChartValueSeries movingAvgSeries;
+
+    private final ChartValueSeries slopeAvgSeries;
 
     private final LinkedList<ChartPoint> chartPoints = new LinkedList<>();
     private final List<Marker> markers = new LinkedList<>();
@@ -193,43 +195,21 @@ public class ChartView extends View {
         }
     });
 
-    public ChartView(Context context, AttributeSet attributeSet) {
+    public ChartViewMovingAvg(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
         int fontSizeSmall = ThemeUtils.getFontSizeSmallInPx(context);
         int fontSizeMedium = ThemeUtils.getFontSizeMediumInPx(context);
 
-        seriesList.add(new ChartValueSeries(context,
-                Integer.MIN_VALUE,
-                Integer.MAX_VALUE,
-                new int[]{5, 10, 15, 20, 25, 30, 35, 40},
-                R.string.description_altitude_metric,
-                R.string.description_altitude_imperial,
-                R.string.description_altitude_imperial,
-                R.color.chart_altitude_fill,
-                R.color.chart_altitude_border,
-                fontSizeSmall,
-                fontSizeMedium) {
-            @Override
-            protected Double extractDataFromChartPoint(@NonNull ChartPoint chartPoint) {
-                return chartPoint.altitude();
-            }
-
-            @Override
-            protected boolean drawIfChartPointHasNoData() {
-                return false;
-            }
-        });
-
-        speedSeries = new ChartValueSeries(context,
+        movingAvgSeries = new ChartValueSeries(context,
                 0,
                 Integer.MAX_VALUE,
                 new int[]{1, 5, 10, 20, 50, 100},
-                R.string.description_speed_metric,
-                R.string.description_speed_imperial,
-                R.string.description_speed_nautical,
-                R.color.chart_speed_fill,
-                R.color.chart_speed_border,
+                R.string.description_moving_average_metric,
+                R.string.description_moving_average_metric,
+                R.string.description_moving_average_metric,
+                R.color.chart_moving_avg_fill,
+                R.color.chart_moving_avg_border,
                 fontSizeSmall,
                 fontSizeMedium) {
             @Override
@@ -242,95 +222,30 @@ public class ChartView extends View {
                 return reportSpeed;
             }
         };
-        seriesList.add(speedSeries);
+        seriesList.add(movingAvgSeries);
 
-        paceSeries = new ChartValueSeries(context,
-                0,
+        slopeAvgSeries = new ChartValueSeries(context,
+                Integer.MIN_VALUE,
                 Integer.MAX_VALUE,
-                new int[]{1, 2, 5, 10, 15, 20, 30, 60, 120},
-                R.string.description_pace_metric,
-                R.string.description_pace_imperial,
-                R.string.description_pace_nautical,
-                R.color.chart_pace_fill,
-                R.color.chart_pace_border,
+                new int[]{5, 10, 15, 20, 25, 30, 35, 40},
+                R.string.description_slope_average_metric,
+                R.string.description_slope_average_metric,
+                R.string.description_slope_average_metric,
+                R.color.chart_slope_avg_fill,
+                R.color.chart_slope_avg_border,
                 fontSizeSmall,
                 fontSizeMedium) {
             @Override
             protected Double extractDataFromChartPoint(@NonNull ChartPoint chartPoint) {
-                return chartPoint.pace();
+                return chartPoint.altitude();
             }
 
             @Override
             protected boolean drawIfChartPointHasNoData() {
-                return !reportSpeed;
+                return true;
             }
         };
-        seriesList.add(paceSeries);
-
-        seriesList.add(new ChartValueSeries(context,
-                0,
-                Integer.MAX_VALUE,
-                new int[]{25, 50},
-                R.string.description_sensor_heart_rate,
-                R.string.description_sensor_heart_rate,
-                R.string.description_sensor_heart_rate,
-                R.color.chart_heart_rate_fill,
-                R.color.chart_heart_rate_border,
-                fontSizeSmall,
-                fontSizeMedium) {
-            @Override
-            protected Double extractDataFromChartPoint(@NonNull ChartPoint chartPoint) {
-                return chartPoint.heartRate();
-            }
-
-            @Override
-            protected boolean drawIfChartPointHasNoData() {
-                return false;
-            }
-        });
-
-        seriesList.add(new ChartValueSeries(context,
-                0,
-                Integer.MAX_VALUE,
-                new int[]{5, 10, 25, 50},
-                R.string.description_sensor_cadence,
-                R.string.description_sensor_cadence,
-                R.string.description_sensor_cadence,
-                R.color.chart_cadence_fill,
-                R.color.chart_cadence_border,
-                fontSizeSmall,
-                fontSizeMedium) {
-            @Override
-            protected Double extractDataFromChartPoint(@NonNull ChartPoint chartPoint) {
-                return chartPoint.cadence();
-            }
-
-            @Override
-            protected boolean drawIfChartPointHasNoData() {
-                return false;
-            }
-        });
-        seriesList.add(new ChartValueSeries(context,
-                0,
-                1000,
-                new int[]{5, 50, 100, 200},
-                R.string.description_sensor_power,
-                R.string.description_sensor_power,
-                R.string.description_sensor_power,
-                R.color.chart_power_fill,
-                R.color.chart_power_border,
-                fontSizeSmall,
-                fontSizeMedium) {
-            @Override
-            protected Double extractDataFromChartPoint(@NonNull ChartPoint chartPoint) {
-                return chartPoint.power();
-            }
-
-            @Override
-            protected boolean drawIfChartPointHasNoData() {
-                return false;
-            }
-        });
+        seriesList.add(slopeAvgSeries);
 
         backgroundColor = ThemeUtils.getBackgroundColor(context);
 
@@ -367,8 +282,7 @@ public class ChartView extends View {
         updateDimensions();
 
         // either speedSeries or paceSeries should be enabled.
-        speedSeries.setEnabled(reportSpeed);
-        paceSeries.setEnabled(!reportSpeed);
+        movingAvgSeries.setEnabled(reportSpeed);
     }
 
     @Override
@@ -403,15 +317,8 @@ public class ChartView extends View {
 
     public boolean applyReportSpeed() {
         if (reportSpeed) {
-            if (!speedSeries.isEnabled()) {
-                speedSeries.setEnabled(true);
-                paceSeries.setEnabled(false);
-                return true;
-            }
-        } else {
-            if (!paceSeries.isEnabled()) {
-                speedSeries.setEnabled(false);
-                paceSeries.setEnabled(true);
+            if (!movingAvgSeries.isEnabled()) {
+                movingAvgSeries.setEnabled(true);
                 return true;
             }
         }
@@ -623,7 +530,7 @@ public class ChartView extends View {
     private void drawDataSeries(Canvas canvas) {
         for (ChartValueSeries chartValueSeries : seriesList) {
             if (chartValueSeries.isEnabled() && chartValueSeries.hasData()) {
-                chartValueSeries.drawPath(canvas, titleDimensions.titlePositions.size() < 3 );
+                chartValueSeries.drawPath(canvas, titleDimensions.titlePositions.size() < 3);
             }
         }
     }
@@ -632,15 +539,15 @@ public class ChartView extends View {
         synchronized (markers) {
             for (Marker marker : markers) {
                 double xValue = getMarkerXValue(marker);
-                double markerIconSizeInXaxisUnits = maxX*markerWidth/effectiveWidth / zoomLevel;
-                if (xValue > maxX + markerIconSizeInXaxisUnits * (1-MARKER_X_ANCHOR)) {
+                double markerIconSizeInXaxisUnits = maxX * markerWidth / effectiveWidth / zoomLevel;
+                if (xValue > maxX + markerIconSizeInXaxisUnits * (1 - MARKER_X_ANCHOR)) {
                     continue; // there is no chance that this marker will be visible
                 }
                 canvas.save();
                 float x = getX(getMarkerXValue(marker));
                 canvas.drawLine(x, topBorder + spacer + markerHeight / 2, x, topBorder + effectiveHeight, markerPaint);
                 // if marker is not near the end of the track then draw it normally
-                if (xValue < maxX - markerIconSizeInXaxisUnits*(1-MARKER_X_ANCHOR)) {
+                if (xValue < maxX - markerIconSizeInXaxisUnits * (1 - MARKER_X_ANCHOR)) {
                     canvas.translate(x - (markerWidth * MARKER_X_ANCHOR), topBorder + spacer);
                 } else { // marker at the end needs to be drawn mirrored so that it is more visible
                     canvas.translate(x + (markerWidth * MARKER_X_ANCHOR), topBorder + spacer);
@@ -677,12 +584,20 @@ public class ChartView extends View {
     private record TitlePosition(
             int line, // line number (starts at 1, top to bottom numbering)
             int xPos // x position in points (starts at 0, left to right indexing)
-    ) {};
+    ) {
+    }
+
+    ;
+
     private record TitleDimensions(
             int lineCount, // number of lines the titles will take
             int lineHeight, // height of a line (all lines have the same height)
-            List<TitlePosition> titlePositions // positions of visible titles (the order corresponds to seriesList)
-    ) {};
+            List<TitlePosition> titlePositions
+            // positions of visible titles (the order corresponds to seriesList)
+    ) {
+    }
+
+    ;
 
     /**
      * Draws series titles.
@@ -716,14 +631,14 @@ public class ChartView extends View {
                 String title = getContext().getString(chartValueSeries.getTitleId(unitSystem));
                 Rect rect = getRect(chartValueSeries.getTitlePaint(), title);
                 if (rect.height() > lineHeight) lineHeight = rect.height();
-                int xNextPosInLine = xPosInLine + rect.width() + 2*spacer;
+                int xNextPosInLine = xPosInLine + rect.width() + 2 * spacer;
                 // if second or later title does not fully fit on this line then print it on the next line
-                if (xPosInLine > spacer && xNextPosInLine-spacer > width) {
+                if (xPosInLine > spacer && xNextPosInLine - spacer > width) {
                     lineCnt++;
                     xPosInLine = spacer;
                 }
                 tps.add(new TitlePosition(lineCnt, xPosInLine));
-                xPosInLine += rect.width() + 2*spacer;
+                xPosInLine += rect.width() + 2 * spacer;
             }
         }
         return new TitleDimensions(lineCnt, lineHeight, tps);
@@ -777,7 +692,7 @@ public class ChartView extends View {
         String marker = chartByDistance ? numberFormat.format(value) : StringUtils.formatElapsedTime((Duration.ofMillis((long) value)));
         Rect rect = getRect(xAxisMarkerPaint, marker);
         int markerXPos = getX(value);
-        int markerEndXPos = markerXPos + rect.width()/2;
+        int markerEndXPos = markerXPos + rect.width() / 2;
         if (markerEndXPos > getScrollX() + leftBorder + effectiveWidth - xRightSpace) return;
         canvas.drawText(marker, markerXPos, topBorder + effectiveHeight + yBottomSpace + rect.height(), xAxisMarkerPaint);
     }
