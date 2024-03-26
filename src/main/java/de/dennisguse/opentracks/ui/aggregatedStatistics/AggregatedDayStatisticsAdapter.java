@@ -174,6 +174,11 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             viewBinding.dailyRunMaxVerticalUnit.setText(context.getString(R.string.daily_run_max_vertical_unit));
             viewBinding.dailyRunMaxVerticalLabel.setText(context.getString(R.string.daily_run_max_vertical_label));
 
+            // Max Speed
+            viewBinding.dailyTotalDistanceNumber.setText(parts.first);
+            viewBinding.dailyTotalDistanceUnit.setText(context.getString(R.string.daily_max_speed_unit));
+            viewBinding.dailyTotalDistanceLabel.setText(context.getString(R.string.daily_max_speed_label));
+
             //Activity type
             viewBinding.activityTypeLabel.setText(String.valueOf(aggregatedStatistic.getActivityTypeLocalized()));
         }

@@ -730,4 +730,7 @@ limitations under the License.
     <string name="daily_total_distance_number">0</string>
     <string name="daily_total_distance_unit">km</string>
     <string name="daily_run_avg_speed_label">AVERAGE SPEED</string>
+    <string name="daily_max_speed_label">MAX SPEED</string>
+    <string name="daily_max_speed_number">0</string>
+    <string name="daily_max_speed_unit">km/h</string>
 </resources>
