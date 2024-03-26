@@ -14,6 +14,12 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_statistics_24dp"
             app:title="@string/menu_aggregated_statistics" />
+
+        <Button
+            android:id="@+id/StatsButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Overall Stats" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -25,6 +31,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/aggregated_stats_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/aggregated_stats_list_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />
