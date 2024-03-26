@@ -202,7 +202,7 @@ public class ChartView extends View {
         seriesList.add(new ChartValueSeries(context,
                 Integer.MIN_VALUE,
                 Integer.MAX_VALUE,
-                new int[]{5, 10, 15, 20, 25, 30, 35, 40},
+                new int[]{5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000},
                 R.string.description_altitude_metric,
                 R.string.description_altitude_imperial,
                 R.string.description_altitude_imperial,
