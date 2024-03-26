@@ -28,7 +28,7 @@ public class OverallStatistics {
     // Static field that stores singleton instance
     private static OverallStatistics instance;
 
-    protected OverallStatistics() {
+    public OverallStatistics() {
         this.totalRunsOverall = 50;
         this.totalSkiDaysOverall = 25;
         this.totalTrackDistanceOverall = Distance.ofKilometer(500);

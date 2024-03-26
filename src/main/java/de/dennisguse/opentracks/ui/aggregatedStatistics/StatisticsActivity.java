@@ -1,18 +1,15 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-import de.dennisguse.opentracks.AbstractActivity;
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.stats.MockupData;
 import de.dennisguse.opentracks.stats.TrackStatistics;
-import de.dennisguse.opentracks.databinding.StatsBinding;
 
 public class StatisticsActivity extends AppCompatActivity {
 
@@ -22,7 +19,7 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stats);
 
-        MockupData mockupData = new MockupData();
+        MockupData mockupData =  (MockupData) getIntent().getSerializableExtra("data");
         List<TrackStatistics> trackStatistics = mockupData.getTrackStatistics();
         TrackStatistics summary = TrackStatistics.sumOfTotalStats(trackStatistics);
         TextView totalDistance = findViewById(R.id.totalTrackDistId);

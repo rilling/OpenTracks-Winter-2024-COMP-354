@@ -77,10 +77,11 @@ limitations under the License.
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
 
-        <activity android:name=".ui.aggregatedStatistics.Stats"
+        <!-- If you want this to be the start activity, add the following intent-filter -->
+        <!--<activity android:name=".ui.aggregatedStatistics.Statistics"
             android:exported="true">
-            <!-- If you want this to be the start activity, add the following intent-filter -->
-        </activity>
+
+        </activity> -->
 
 
 
@@ -375,6 +376,8 @@ limitations under the License.
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".settings.SettingsCustomLayoutListActivity" />
         <activity android:name=".settings.SettingsCustomLayoutEditActivity" />
+        <activity android:name=".ui.aggregatedStatistics.StatisticsPreviewActivity"
+            android:exported="true"/>
         <activity android:name=".ui.aggregatedStatistics.StatisticsActivity"
             android:exported="true">
 <!--        <intent-filter>-->

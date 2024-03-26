@@ -4,10 +4,23 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 import de.dennisguse.opentracks.data.models.*;
 
-public class MockupData {
+public class MockupData implements Serializable {
+    private int season;
+    public MockupData(int season){
+        this.season = season;
+    }
+
+    public MockupData(){
+        this.season = 0;
+    }
+
+    public int getSeason() {
+        return season;
+    }
 
     public List<TrackStatistics> getTrackStatistics() {
         List<TrackStatistics> trackStatisticsArray = new ArrayList<>();
