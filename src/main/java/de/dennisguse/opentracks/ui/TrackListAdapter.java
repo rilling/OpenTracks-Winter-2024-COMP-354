@@ -200,6 +200,10 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             String description = cursor.getString(descriptionIndex);
             trackId = new Track.Id(cursor.getLong(idIndex));
 
+            // This would have displayed on the list of runs alongside the total time and distance.
+            // ...but then I realised that "moving average" is displayed somewhere else lmao
+            // String avgSpeed = "\nAvg Speed: " + String.format("%.2f", totalDistance.toMI() / totalTime.toHours()) + " mph";
+
             int iconId = activityType.getIconDrawableId();
             int iconDesc = R.string.image_track;
 

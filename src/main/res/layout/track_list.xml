@@ -117,11 +117,45 @@ limitations under the License.
             app:iconTint="?attr/colorOnBackground" />
 
         <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.IconButton"
+            android:id="@+id/aggregated__seasonal_stats_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_seasonal_activity_24dp"
+            app:iconTint="?attr/colorOnBackground" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/sensor_start_button"
             style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_gps_off_24dp"
+            app:iconTint="?attr/colorOnBackground" />
+
+        <!--podium icon from https://www.flaticon.com/free-icon/podium_548440?term=leaderboard&related_id=548440 : <a href="https://www.flaticon.com/free-icons/podium" title="podium icons">Podium icons created by Freepik - Flaticon</a> -->
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.IconButton"
+            android:id="@+id/leaderboard_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_podium"
+            app:iconTint="?attr/colorOnBackground" />
+
+        <!--friends icon from "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F352633%2Fuser-friends&psig=AOvVaw1ZZtprp64Z3kJxaiz01CkM&ust=1711404038462000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDs5f7yjYUDFQAAAAAdAAAAABAE" modified to a vector drawable .xml using shapeshifter.design -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/friends_button"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/friends_icon"
+            app:iconTint="?attr/colorOnBackground" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_button"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/profile_icon"
             app:iconTint="?attr/colorOnBackground" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <!-- Rank TextView -->
+    <TextView
+        android:id="@+id/rankText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/avatar"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar"
+        tools:text="1" />
+
+    <!-- User's avatar -->
+    <!-- profile icon taken from: https://www.flaticon.com/free-icon/user_149071?term=profile&page=1&position=11&origin=search&related_id=149071 <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Smashicons - Flaticon</a>-->
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/user"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/rankText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Username TextView -->
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintEnd_toStartOf="@+id/scoreText"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        android:layout_marginStart="8dp"
+        tools:text="Steve H" />
+
+    <!-- Location TextView -->
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintEnd_toStartOf="@+id/scoreText"
+        app:layout_constraintTop_toBottomOf="@+id/usernameText"
+        android:layout_marginStart="8dp"
+        tools:text="Steamboat Springs" />
+
+    <!-- Value (Vertical Meters) TextView -->
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar"
+        tools:text="614.1K" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

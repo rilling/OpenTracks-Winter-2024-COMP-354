@@ -20,6 +20,11 @@
         android:key="@string/settings_gps_key"
         android:summary="@string/settings_gps_summary"
         android:title="@string/settings_gps_title" />
+    <Preference
+        android:icon="@drawable/ic_activity_skiing_24dp"
+        android:key="@string/settings_maintenance_info_key"
+        android:summary="@string/settings_maintenance_info_title"
+        android:title="@string/settings_maintenance_info" />
 
     <Preference
         android:icon="@drawable/ic_baseline_sensors_24"
@@ -55,6 +60,18 @@
         android:key="@string/settings_api_key"
         android:summary="@string/settings_api_summary"
         android:title="@string/settings_api_title" />
+
+    <Preference
+        android:icon="@drawable/ic_user_profile_24dp"
+        android:key="@string/settings_user_profile_key"
+        android:summary="@string/settings_user_profile_summary"
+        android:title="@string/settings_user_profile_title" />
+
+    <Preference
+        android:icon="@drawable/ic_activity_skiing_24dp"
+        android:key="settingsSkiProfile"
+        android:summary="Personalized ski profile"
+        android:title="Ski Profile" />
 
     <Preference
         android:icon="@drawable/ic_baseline_info_24"

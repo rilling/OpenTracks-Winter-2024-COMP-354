@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editNickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/nickname"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/height"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/editNickname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/weight"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/editHeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editDateOfBirth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/date_of_birth"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/editWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editGender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/gender"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/editDateOfBirth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/location"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/editGender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageProfilePicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_picture"
+        app:layout_constraintTop_toBottomOf="@id/editLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

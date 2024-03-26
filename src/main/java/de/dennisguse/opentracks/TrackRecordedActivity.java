@@ -29,6 +29,10 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.app.AlertDialog;
+import android.content.SharedPreferences;
+
 
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -85,6 +89,7 @@ public class TrackRecordedActivity extends AbstractTrackDeleteActivity implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         contentProviderUtils = new ContentProviderUtils(this);
 
         handleIntent(getIntent());
@@ -106,6 +111,37 @@ public class TrackRecordedActivity extends AbstractTrackDeleteActivity implement
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
 
         postponeEnterTransition();
+
+        FloatingActionButton fabCalculateMovingAverage = findViewById(R.id.fab_calculate_moving_average_2);
+        fabCalculateMovingAverage.setOnClickListener(view -> {
+            // Code to show the menu and handle the selection.
+            showSelectionMenu();
+        });
+
+    }
+
+    private void showSelectionMenu() {
+        final CharSequence[] items = {"5", "10", "15"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select value");
+        builder.setItems(items, (dialog, which) -> {
+            // 'which' is the index of the selected item
+            int selectedValue = Integer.parseInt(items[which].toString());
+
+            // Save the selected value
+            saveSelectedValue(selectedValue);
+            // Do something with the selectedValue, like storing it for later use
+            Log.d(TAG, "Selected value: " + selectedValue);
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void saveSelectedValue(int value) {
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("SelectedValue", value);
+        editor.apply(); // Using apply() to save asynchronously
     }
 
     @Override
