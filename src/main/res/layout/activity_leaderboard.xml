@@ -94,21 +94,31 @@
         <!-- Refresh Icon source -->
         <!-- <a href="https://www.flaticon.com/free-icons/refresh" title="refresh icons">Refresh icons created by Arkinasi - Flaticon</a> -->
 
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_gravity="bottom"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
+
         <Button
             android:id="@+id/button5"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:text="Average Score"
+            android:text="Average"
             app:cornerRadius="8dp" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            android:text="Best Score"
+            android:text="Best"
             app:cornerRadius="8dp" />
 
         <ImageButton
@@ -117,6 +127,7 @@
             android:layout_height="50dp"
             android:scaleType="fitCenter"
             android:src="@drawable/refresh" />
+
     </LinearLayout>
 
 </RelativeLayout>
