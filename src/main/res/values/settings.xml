@@ -15,6 +15,10 @@
 
     <string name="settings_ui_key" translatable="false">settingsUI</string>
 
+    <string name="settings_user_profile_key" translateable="false">settingsUserProfile</string>
+
+    <string name="settings_ski_profile_key" translatable="false">settingsSkiProfile</string>
+
     <string name="settings_gps_key" translatable="false">settingsGps</string>
 
     <string name="settings_sensors_key" translatable="false">settingsSensorsGps</string>
