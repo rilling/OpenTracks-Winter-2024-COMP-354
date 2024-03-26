@@ -49,6 +49,24 @@ public class MainSettingsFragment extends PreferenceFragmentCompat {
             ((SettingsActivity) getActivity()).openScreen(getString(R.string.settings_api_key));
             return true;
         });
+
+        findPreference(getString(R.string.settings_user_profile_key)).setOnPreferenceClickListener(preference -> {
+            ((SettingsActivity) getActivity()).openScreen(getString(R.string.settings_user_profile_key));
+            return true;
+        });
+
+        findPreference(getString(R.string.settings_ski_profile_key)).setOnPreferenceClickListener(preference -> {
+            ((SettingsActivity) getActivity()).openScreen(getString(R.string.settings_ski_profile_key));
+            return true;
+        });
+
+        // Group2
+        findPreference(getString(R.string.settings_maintenance_info_key)).setOnPreferenceClickListener(preference -> {
+            // Open the MaintenanceActivity which contains your MaintenancePreferenceFragment
+            ((SettingsActivity) getActivity()).openScreen(getString(R.string.settings_maintenance_info_key));
+            return true;
+        });
+
     }
 
     @Override

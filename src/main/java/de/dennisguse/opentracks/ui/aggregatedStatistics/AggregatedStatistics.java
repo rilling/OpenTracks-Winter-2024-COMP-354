@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.dennisguse.opentracks.data.models.Speed;
 import de.dennisguse.opentracks.data.models.Track;
+import de.dennisguse.opentracks.stats.MockupData;
 import de.dennisguse.opentracks.stats.TrackStatistics;
 
 public class AggregatedStatistics {
@@ -21,7 +23,10 @@ public class AggregatedStatistics {
         for (Track track : tracks) {
             aggregate(track);
         }
-
+        MockupData mockupData = new MockupData();
+        List<TrackStatistics> trackStatistics = mockupData.getTrackStatistics();
+        //int getTotalRuns = trackStatistics.get(0).getTotalRunsSeason();
+        //int getTotalRuns2 = trackStatistics.get(1).getTotalRunsSeason();
         dataList.addAll(dataMap.values());
         dataList.sort((o1, o2) -> {
             if (o1.getCountTracks() == o2.getCountTracks()) {

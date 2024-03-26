@@ -15,6 +15,10 @@
 
     <string name="settings_ui_key" translatable="false">settingsUI</string>
 
+    <string name="settings_user_profile_key" translateable="false">settingsUserProfile</string>
+
+    <string name="settings_ski_profile_key" translatable="false">settingsSkiProfile</string>
+
     <string name="settings_gps_key" translatable="false">settingsGps</string>
 
     <string name="settings_sensors_key" translatable="false">settingsSensorsGps</string>
@@ -269,6 +273,10 @@
     <bool name="publicapi_enabled_default">false</bool>
     <string name="publicapi_dashboard_enabled_key" translatable="false">apiDashboardEnabledKey</string>
     <bool name="publicapi_dashboard_enabled_default">false</bool>
+
+    <!--Group 2 -->
+    <string name="settings_maintenance_info_key" translatable="false">maintenance_info_key</string>
+
 
     <string name="show_introduction_screen_key" translatable="false">showIntroduction</string>
     <bool name="show_introduction_screen_default">true</bool>

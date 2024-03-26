@@ -1,0 +1,16 @@
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="vector"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="640"
+    android:viewportHeight="640">
+    <path
+        android:name="path"
+        android:pathData="M 192 320 C 253.9 320 304 269.9 304 208 C 304 146.1 253.9 96 192 96 C 130.1 96 80 146.1 80 208 C 80 269.9 130.1 320 192 320 Z M 268.8 352 L 260.5 352 C 239.7 362 216.6 368 192 368 C 167.4 368 144.4 362 123.5 352 L 115.2 352 C 51.6 352 0 403.6 0 467.2 L 0 496 C 0 522.5 21.5 544 48 544 L 336 544 C 362.5 544 384 522.5 384 496 L 384 467.2 C 384 403.6 332.4 352 268.8 352 Z M 480 320 C 533 320 576 277 576 224 C 576 171 533 128 480 128 C 427 128 384 171 384 224 C 384 277 427 320 480 320 Z M 528 352 L 524.2 352 C 510.3 356.8 495.6 360 480 360 C 464.4 360 449.7 356.8 435.8 352 L 432 352 C 411.6 352 392.8 357.9 376.3 367.4 C 400.7 393.7 416 428.6 416 467.2 L 416 505.6 C 416 507.8 415.5 509.9 415.4 512 L 592 512 C 618.5 512 640 490.5 640 464 C 640 402.1 589.9 352 528 352 Z"
+        android:fillColor="#000"
+        android:strokeWidth="1"/>
+</vector>
+
+    <!--friends icon from "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F352633%2Fuser-friends&psig=AOvVaw1ZZtprp64Z3kJxaiz01CkM&ust=1711404038462000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDs5f7yjYUDFQAAAAAdAAAAABAE" modified to a vector drawable .xml using shapeshifter.design-->
+
