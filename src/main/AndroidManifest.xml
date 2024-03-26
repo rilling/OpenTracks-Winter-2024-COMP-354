@@ -354,8 +354,20 @@
             android:finishOnTaskLaunch="true"
             android:launchMode="singleInstance"
             android:process=":crash" />
+        <activity android:name=".ui.aggregatedStatistics.StatisticsActivity"
+            android:exported="true">
+            <!--        <intent-filter>-->
+            <!--            <action android:name="android.intent.action.MAIN" />-->
 
-
+            <!--            <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--        </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".SeasonalActivityPerSeason"
+            android:exported="false" />
+        <activity
+            android:name=".SeasonalActivity"
+            android:exported="false" />
         <provider
             android:name=".data.ShareContentProvider"
             android:authorities="${applicationId}.content"
@@ -389,7 +401,12 @@
         <service
             android:name=".services.TrackDeleteService"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-    </application>
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
+    </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 </manifest>

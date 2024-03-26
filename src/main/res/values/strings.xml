@@ -31,8 +31,22 @@ limitations under the License.
         * create markers (incl. pictures)\n
         * works completely offline\n
         * show tracks on a map (see below)
-    </string>
+        </string>
+    <string name="edit_sharing_preferences_title"> Edit Sharing Location </string>
 
+    <string name="sharing_option_share_with">Share With</string>
+    <string name="sharing_option_public">Public</string>
+    <string name="sharing_option_friends">Friends</string>
+    <string name="sharing_option_no_one">No One</string>
+    <string name="sharing_location_key">sharing_location</string>
+    <string name="sharing_location_title">Sharing Location</string>
+    <string name="sharing_location_summary">Choose who can see your location</string>
+    <string-array name="sharing_options">
+        <item>No one</item>
+        <item>Friends</item>
+        <item>Family</item>
+        <item>Public</item>
+    </string-array>
     <string name="help_track_map_title">How to show a track on a map?</string>
     <string name="help_track_map_content">
         Use the small map icon.\n
@@ -294,6 +308,7 @@ limitations under the License.
     <!-- Menu -->
     <string name="menu_aggregated_statistics">Aggregated stats</string>
     <string name="menu_friends">Friends</string>
+    <string name="menu_profile">Profile</string>
     <string name="search">Search</string>
     <string name="invite">Invite</string>
     <string name="menu_delete">Delete</string>
@@ -370,6 +385,12 @@ limitations under the License.
     <string name="settings_activity_defaults_category">Activity\'s Defaults</string>
 
     <string name="settings_reset_summary">Reset Settings to Default Values</string>
+
+    <string name="settings_user_profile_title">User Profile</string>
+    <string name="settings_user_profile_summary">Personalized digital identity</string>
+
+    <string name="settings_ski_profile_title">Ski Profile</string>
+    <string name="settings_ski_profile_summary">Personalized ski profile</string>
 
     <!-- Settings Advanced -->
     <string name="settings_advanced">Advanced</string>
@@ -605,9 +626,12 @@ limitations under the License.
     <string name="interval_list_empty_message">There are not any interval yet</string>
     <!-- Unit -->
     <string name="unit_feet">ft</string>
+    <string name="unit_feet_symbol">\'</string>
+    <string name="unit_inches_symbol">\"</string>
     <string name="unit_kilometer">km</string>
     <string name="unit_kilometer_per_hour">km/h</string>
     <string name="unit_meter">m</string>
+    <string name="unit_centimeter">cm</string>
     <string name="unit_mile">mi</string>
     <string name="unit_mile_per_hour">mph</string>
     <string name="unit_nautical_mile">NM</string>
@@ -615,6 +639,8 @@ limitations under the License.
     <string name="unit_minute_per_kilometer">min/km</string>
     <string name="unit_minute_per_mile">min/mi</string>
     <string name="unit_minute_per_nautical_mile">min/NM</string>
+    <string name="unit_kilograms">kg</string>
+    <string name="unit_pounds">lb</string>
     <!-- Location Coordinates -->
     <string name="location_coordinate">%1$s°</string>
     <string name="location_latitude_longitude">%1$s, %2$s</string>
@@ -794,6 +820,25 @@ limitations under the License.
     <string name="always">Always</string>
 
     <string name="introduction_osm_dashboard">OpenTracks itself does not provide a map. Please install OSMDashboard to view your recordings on a map.</string>
+
+    <string name="profile_picture_menu">profile_picture_menu</string>
+
+    <!-- Edit button - Haithm-->
+    <string name="edit_profile_key">edit_profile</string>
+    <string name="edit_profile_title">Edit Profile</string>
+    <string name="edit_profile_summary">Modify your profile details</string>
+
+    <string name="edit_profile">Edit profile</string>
+
+    <string name="nickname">Nickname</string>
+    <string name="height">Height (cm)</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="location">Location/Country</string>
+    <string name="profile_picture">Profile Picture</string>
+    <!-- HA -->
+
     <string name="title_activity_leaderboard">LeaderboardActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

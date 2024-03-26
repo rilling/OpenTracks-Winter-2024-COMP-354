@@ -22,6 +22,7 @@ import androidx.annotation.VisibleForTesting;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 import de.dennisguse.opentracks.data.models.ActivityType;
 import de.dennisguse.opentracks.data.models.Altitude;
@@ -46,6 +47,23 @@ public class TrackStatistics {
     // The min and max altitude (meters) seen on this track.
     private final ExtremityMonitor altitudeExtremities = new ExtremityMonitor();
 
+    // The total number of runs in a season.
+    private int totalRunsSeason;
+
+    // The total number of days skied in a season.
+    private int totalSkiDaysSeason;
+
+    // The total distance skied (consider all tracks) in a season.
+    private Distance totalTrackDistanceSeason;
+
+    // The total distance covered while in vertical descents in a season.
+    private Distance totalVerticalDescentSeason;
+
+    // The average speed in a season.
+    private Speed avgSpeedSeason;
+
+    // The slope percentage in a season.
+    private double slopePercentageSeason;
     // The track start time.
     private Instant startTime;
     // The track stop time.
@@ -463,6 +481,58 @@ public class TrackStatistics {
     public void setTotalAltitudeLoss(Float totalAltitudeLoss_m) {
         this.totalAltitudeLoss_m = totalAltitudeLoss_m;
     }
+    public int getTotalRunsSeason(){
+        return this.totalRunsSeason;
+    }
+
+    public void setTotalRunsSeason(int totalRunsSeason){
+        this.totalRunsSeason = totalRunsSeason;
+    }
+
+
+    public int getTotalSkiDaysSeason(){
+        return this.totalSkiDaysSeason;
+    }
+
+    public void setTotalSkiDaysSeason(int totalSkiDaysSeason){
+        this.totalSkiDaysSeason = totalSkiDaysSeason;
+    }
+
+
+    public Distance getTotalTrackDistanceSeason(){
+        return this.totalTrackDistanceSeason;
+    }
+
+    public void setTotalTrackDistanceSeason(Distance totalTrackDistanceSeason){
+        this.totalTrackDistanceSeason = totalTrackDistanceSeason;
+    }
+
+
+    public Distance getTotalVerticalDescentSeasonSeason(){
+        return this.totalVerticalDescentSeason;
+    }
+
+    public void setTotalVerticalDescentSeason(Distance totalVerticalDescentSeason){
+        this.totalVerticalDescentSeason = totalVerticalDescentSeason;
+    }
+
+
+    public Speed getAvgSpeedSeason(){
+        return this.avgSpeedSeason;
+    }
+
+    public void setAvgSpeedSeason(Speed avgSpeedSeason){
+        this.avgSpeedSeason = avgSpeedSeason;
+    }
+
+
+    public double getSlopePercentageSeason(){
+        return this.slopePercentageSeason;
+    }
+
+    public void setSlopePercentageSeason(double slopePercentageSeason){
+        this.slopePercentageSeason = slopePercentageSeason;
+    }
 
     @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
     public void addTotalAltitudeLoss(float loss_m) {
@@ -470,6 +540,41 @@ public class TrackStatistics {
             totalAltitudeLoss_m = 0f;
         }
         totalAltitudeLoss_m += loss_m;
+    }
+
+    public static TrackStatistics sumOfTotalStats(List<TrackStatistics> trackStatistics)
+    {
+        TrackStatistics sum = new TrackStatistics();
+
+        int totalRuns = 0;
+        int totalSkiDays = 0;
+        Distance totalTrackDistance = Distance.of(0);
+        Distance totalVerticalDescent = Distance.of(0);
+        double totalAvgSpeed = 0;
+        double totalSlopePercentage = 0;
+
+        for(TrackStatistics trackStat : trackStatistics)
+        {
+            totalRuns += trackStat.getTotalRunsSeason();
+            totalSkiDays += trackStat.getTotalSkiDaysSeason();
+            totalTrackDistance = totalTrackDistance.plus(trackStat.getTotalTrackDistanceSeason());
+            totalVerticalDescent = totalVerticalDescent.plus(trackStat.getTotalVerticalDescentSeasonSeason());
+            totalAvgSpeed += trackStat.getAvgSpeedSeason().speed_mps();
+            totalSlopePercentage += trackStat.getSlopePercentageSeason();
+        }
+
+        int numTracks = trackStatistics.size();
+        totalAvgSpeed /= numTracks;
+        totalSlopePercentage /= numTracks;
+
+        sum.setTotalRunsSeason(totalRuns);
+        sum.setTotalSkiDaysSeason(totalSkiDays);
+        sum.setTotalTrackDistanceSeason(totalTrackDistance);
+        sum.setTotalVerticalDescentSeason(totalVerticalDescent);
+        sum.setAvgSpeedSeason(Speed.of(totalAvgSpeed));
+        sum.setSlopePercentageSeason(totalSlopePercentage);
+
+        return sum;
     }
 
     @Override
