@@ -7,10 +7,7 @@ import java.util.List;
 
 import de.dennisguse.opentracks.data.ContentProviderUtils;
 import de.dennisguse.opentracks.data.TrackPointIterator;
-import de.dennisguse.opentracks.data.models.SkiLiftPoint;
-import de.dennisguse.opentracks.data.models.SkiRunPoint;
-import de.dennisguse.opentracks.data.models.Track;
-import de.dennisguse.opentracks.data.models.TrackPoint;
+import de.dennisguse.opentracks.data.models.*;
 
 /**
  * The TrackDifferentiate class is responsible for differentiating ski lift and ski run segments from a track.
