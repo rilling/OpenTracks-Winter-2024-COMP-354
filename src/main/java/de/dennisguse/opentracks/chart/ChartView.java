@@ -1045,4 +1045,70 @@ public class ChartView extends View {
 
         return chartValueSeries.drawIfChartPointHasNoData();
     }
+
+    /**
+    * Code partially generated in conjunction with ChatGPT-3
+    */
+    public void createMovingAverageGraph(int windowSize) {
+        if (chartPoints.isEmpty() || windowSize <= 0) {
+            return; // No data points or invalid window size
+        }
+
+        // Calculate moving average speeds
+        List<Double> movingAverageSpeeds = calculateMovingAverageSpeeds(windowSize);
+
+        // Add moving average speed data points to the chart
+        addChartPointsForMovingAverage(movingAverageSpeeds, windowSize);
+
+        // Update the series with the new data points
+        updateSeries();
+    }
+
+    /**
+     * Calculate moving average speeds based on the existing chart points.
+     *
+     * @param windowSize The size of the moving average window.
+     * @return A list of moving average speeds.
+     */
+    private List<Double> calculateMovingAverageSpeeds(int windowSize) {
+        List<Double> movingAverageSpeeds = new ArrayList<>();
+
+        for (int i = 0; i <= chartPoints.size() - windowSize; i++) {
+            double sum = 0;
+            for (int j = i; j < i + windowSize; j++) {
+                sum += chartPoints.get(j).getSpeed();
+            }
+            double movingAverage = sum / windowSize;
+            movingAverageSpeeds.add(movingAverage);
+        }
+
+        return movingAverageSpeeds;
+    }
+
+    /**
+     * Add moving average speed data points to the chart.
+     *
+     * @param movingAverageSpeeds A list of moving average speeds.
+     * @param windowSize          The size of the moving average window.
+     */
+    private void addChartPointsForMovingAverage(List<Double> movingAverageSpeeds, int windowSize) {
+        for (int i = 0; i < movingAverageSpeeds.size(); i++) {
+            private void addChartPointsForMovingAverage(List<Double> movingAverageSpeeds, int windowSize) {
+                for (int i = 0; i < movingAverageSpeeds.size(); i++) {
+                    double xValue = chartPoints.get(i + windowSize / 2).timeOrDistance();
+                    Double speedValue = movingAverageSpeeds.get(i);
+                    Double altitudeValue = chartPoints.get(i + windowSize / 2).altitude();
+                    Double paceValue = chartPoints.get(i + windowSize / 2).pace();
+                    Double heartRateValue = chartPoints.get(i + windowSize / 2).heartRate();
+                    Double cadenceValue = chartPoints.get(i + windowSize / 2).cadence();
+                    Double powerValue = chartPoints.get(i + windowSize / 2).power();
+
+                    // Create a new ChartPoint and add it to the chartPoints list
+                    ChartPoint movingAveragePoint = new ChartPoint(xValue, altitudeValue, speedValue, paceValue, heartRateValue, cadenceValue, powerValue);
+                    chartPoints.add(movingAveragePoint);
+                }
+            }
+
+        }
+    }
 }
