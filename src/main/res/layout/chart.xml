@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<de.dennisguse.opentracks.chart.ChartView xmlns:android="http://schemas.android.com/apk/res/android"
+<de.dennisguse.opentracks.chart.ChartViewMovingAvg xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/chart_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

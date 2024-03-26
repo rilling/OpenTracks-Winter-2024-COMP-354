@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+   <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sharing_location_title" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sharing_option_no_one" />
+
+
+        <RadioButton
+            android:id="@+id/radio_public"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sharing_option_no_one" />
+        <RadioButton
+            android:id="@+id/radio_no_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sharing_option_no_one" />
+        <RadioButton
+            android:id="@+id/radio_share_with"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sharing_option_no_one" />
+
+
+        </RadioGroup>
+</LinearLayout>

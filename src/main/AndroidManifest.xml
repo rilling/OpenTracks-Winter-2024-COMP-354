@@ -63,7 +63,18 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/OpenTracksTheme" >
+        android:theme="@style/OpenTracksTheme">
+      <activity
+            android:name=".ui.aggregatedStatistics.dailyStats.DailyStatsActivity"
+            android:exported="false" />
+      <activity
+            android:name=".ui.friends.FriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.leaderboard.LeaderboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_leaderboard"
+            android:theme="@style/OpenTracksTheme.NoActionBar" />
         <activity
             android:name=".settings.MaintenanceInfo"
             android:exported="true" />
@@ -105,7 +116,7 @@
         <activity android:name=".io.file.importer.DirectoryChooserActivity$ImportDirectoryChooserActivity" />
         <activity
             android:name=".io.file.importer.ImportActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
@@ -346,8 +357,20 @@
             android:finishOnTaskLaunch="true"
             android:launchMode="singleInstance"
             android:process=":crash" />
+        <activity android:name=".ui.aggregatedStatistics.StatisticsActivity"
+            android:exported="true">
+            <!--        <intent-filter>-->
+            <!--            <action android:name="android.intent.action.MAIN" />-->
 
-
+            <!--            <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--        </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".SeasonalActivityPerSeason"
+            android:exported="false" />
+        <activity
+            android:name=".SeasonalActivity"
+            android:exported="false" />
         <provider
             android:name=".data.ShareContentProvider"
             android:authorities="${applicationId}.content"
@@ -381,7 +404,12 @@
         <service
             android:name=".services.TrackDeleteService"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-    </application>
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
+    </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 </manifest>
