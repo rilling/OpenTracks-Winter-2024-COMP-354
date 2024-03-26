@@ -37,11 +37,21 @@ public class LeaderboardActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
         findViewById(R.id.btnRefresh).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 leaderboardPagerAdapter.refreshCurrentLeaderboardFragment();
             }
         });
+
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onBackPressed();
+            }
+        });
+
+
     }
 }
