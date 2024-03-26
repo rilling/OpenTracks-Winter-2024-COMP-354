@@ -214,6 +214,19 @@
         app:layout_constraintVertical_bias="0.0"
         tools:text="@string/daily_run_number_label" />
 
+
+    <TextView
+        android:id="@+id/daily_total_distance_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/daily_total_distance_label" />
+
     <TextView
         android:id="@+id/daily_run_number"
         style="@style/TextAppearance.OpenTracks.PrimaryValue"
@@ -225,6 +238,19 @@
         app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
         tools:text="0" />
+
+
+    <TextView
+        android:id="@+id/daily_total_distance_number"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_number_label"
+        tools:text="@string/daily_total_distance_number" />
 
     <TextView
         android:id="@+id/daily_run_number_unit"
@@ -240,8 +266,113 @@
         app:layout_constraintTop_toBottomOf="@+id/daily_stats_max_speed_label"
         tools:text="@string/daily_run_number_unit" />
 
+    <TextView
+        android:id="@+id/daily_total_distance_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/daily_total_distance_number"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_number"
+        tools:text="@string/daily_total_distance_unit" />
+
+    <TextView
+        android:id="@+id/daily_run_max_vertical"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/daily_lift_moving_time_label"
+        tools:text="0" />
+
+
+    <TextView
+        android:id="@+id/daily_run_max_vertical_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/daily_run_max_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/daily_lift_moving_time_label"
+        tools:text="@string/daily_run_max_vertical_unit" />
+
+    <TextView
+        android:id="@+id/daily_run_max_vertical_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_max_vertical"
+        tools:text="@string/daily_run_max_vertical_label" />
+
+    <TextView
+        android:id="@+id/daily_run_avg_speed"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_max_vertical_label"
+        tools:text="15" />
+
+    <TextView
+        android:id="@+id/daily_max_speed_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/daily_max_speed_label" />
+
+    <TextView
+        android:id="@+id/daily_max_speed_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/daily_total_distance_number"
+        app:layout_constraintTop_toBottomOf="@+id/daily_lift_number_label"
+        tools:text="@string/daily_max_speed_unit" />
+
+    <TextView
+        android:id="@+id/daily_max_speed_number"
+        style="@style/TextAppearance.OpenTracks.PrimaryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_number_label"
+        tools:text="@string/daily_max_speed_number" />
+
+
 
     <!--  ************************* The End of Run Summary ************************************* -->
+
+
+
 
     <!-- Distance -->
 
@@ -253,21 +384,60 @@
 
 
     <TextView
+        android:id="@+id/daily_run_avg_speed_unit"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/daily_run_avg_speed"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_max_vertical_label" />
+
+    <TextView
+        android:id="@+id/daily_run_avg_speed_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/daily_run_max_vertical"
+        tools:text="@string/daily_run_avg_speed_label" />
+
+    <TextView
         android:id="@+id/aggregated_stats_day_label"
         style="@style/TextAppearance.OpenTracks.PrimaryHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
-        app:layout_constraintStart_toEndOf="@+id/activity_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/activity_icon"
         app:layout_constraintVertical_bias="1.0"
         tools:text="@string/stats_day" />
 
+    <TextView
+        android:id="@+id/activity_type_label"
+        style="@style/TextAppearance.OpenTracks.PrimaryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_icon"
+        app:layout_constraintStart_toEndOf="@+id/activity_icon"
+        app:layout_constraintTop_toTopOf="@+id/activity_icon"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="@string/activity_type_label" />
+
     <View
         android:id="@+id/aggregated_stats_horizontal_line"
         style="@style/HorizontalLine"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="348dp"
         app:layout_constraintEnd_toStartOf="@id/guideline3"
         app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@+id/aggregated_stats_num_day_tracks" />

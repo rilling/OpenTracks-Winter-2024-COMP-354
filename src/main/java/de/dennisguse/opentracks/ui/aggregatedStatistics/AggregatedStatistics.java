@@ -1,8 +1,13 @@
 package de.dennisguse.opentracks.ui.aggregatedStatistics;
 
+import static java.lang.Math.round;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.dennisguse.opentracks.data.models.Distance;
 import de.dennisguse.opentracks.data.models.Speed;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.stats.TrackStatistics;
@@ -76,12 +82,14 @@ public class AggregatedStatistics {
 
     @VisibleForTesting
     public void aggregateDays(@NonNull Track track) {
+        String activityTypeLocalized = track.getActivityTypeLocalized();
         SimpleDateFormat formatter = new SimpleDateFormat("MM dd yyy");
         String day = formatter.format(Date.from(track.getTrackStatistics().getStopTime()));
-        if (dataMap.containsKey(day)) {
-            dataMap.get(day).add(track.getTrackStatistics());
+        String combinedKey = day + " - " + activityTypeLocalized;
+        if (dataMap.containsKey(combinedKey)) {
+            dataMap.get(combinedKey).add(track.getTrackStatistics());
         } else {
-            dataMap.put(day, new AggregatedStatistic(track.getTrackStatistics(), day));
+            dataMap.put(combinedKey, new AggregatedStatistic(track.getActivityTypeLocalized(), track.getTrackStatistics(), day));
         }
     }
 
@@ -109,9 +117,9 @@ public class AggregatedStatistics {
             this.trackStatistics = trackStatistics;
         }
 
-        public AggregatedStatistic(TrackStatistics trackStatistics, String day) {
+        public AggregatedStatistic(String activityTypeLocalized, TrackStatistics trackStatistics, String day) {
             this.day = day;
-            this.activityTypeLocalized = "skiing";
+            this.activityTypeLocalized = activityTypeLocalized;
             this.trackStatistics = trackStatistics;
         }
 
@@ -148,9 +156,27 @@ public class AggregatedStatistics {
             return formattedTime;
         }
 
+        public Distance getTotalDistance() {
+            return trackStatistics.getTotalDistance();
+        }
+
         public Speed getMaxSpeed() {
             return trackStatistics.getMaxSpeed();
 
+        }
+
+        public double getMaxVertical() {
+            double value = trackStatistics.getMaxAltitude();
+            double roundedValue = round(value, 2);
+            return roundedValue;
+        }
+
+        public static double round(double value, int places) {
+            if (places < 0) throw new IllegalArgumentException();
+
+            BigDecimal bd = BigDecimal.valueOf(value);
+            bd = bd.setScale(places, RoundingMode.HALF_UP);
+            return bd.doubleValue();
         }
 
         private String formatDuration(Duration duration) {

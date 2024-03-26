@@ -93,10 +93,14 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             SpeedFormatter formatter = SpeedFormatter.Builder().setUnit(unitSystem).setReportSpeedOrPace(reportSpeed).build(context);
             {
                 //TODO Fill in the infomation here
-//                Pair<String, String> parts = formatter.getSpeedParts(aggregatedStatistic.getTrackStatistics().getAverageMovingSpeed());
+                Pair<String, String> parts = formatter.getSpeedParts(aggregatedStatistic.getTrackStatistics().getAverageMovingSpeed());
 //                viewBinding.aggregatedStatsAvgRate.setText(parts.first);
 //                viewBinding.aggregatedStatsAvgRateUnit.setText(parts.second);
 //                viewBinding.aggregatedStatsAvgRateLabel.setText(context.getString(R.string.stats_average_moving_speed));
+                // Average Run Speed
+                viewBinding.dailyRunAvgSpeed.setText(parts.first);
+                viewBinding.dailyRunAvgSpeedUnit.setText(parts.second);
+                viewBinding.dailyRunAvgSpeedLabel.setText(context.getString(R.string.daily_run_avg_speed_label));
             }
 
             {
@@ -144,18 +148,19 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             Pair<String, String> parts = DistanceFormatter.Builder()
                     .setUnit(unitSystem)
                     .build(context).getDistanceParts(aggregatedStatistic.getTrackStatistics().getTotalDistance());
-//            viewBinding.aggregatedStatsDistance.setText(parts.first);
-//            viewBinding.aggregatedStatsDistanceUnit.setText(parts.second);
-//
-//            viewBinding.aggregatedStatsTime.setText(StringUtils.formatElapsedTime(aggregatedStatistic.getTrackStatistics().getMovingTime()));
+            viewBinding.dailyTotalDistanceNumber.setText(parts.first);
+            viewBinding.dailyTotalDistanceUnit.setText(context.getString(R.string.daily_total_distance_unit));
+            viewBinding.dailyTotalDistanceLabel.setText(context.getString(R.string.daily_total_distance_label));
 
+//           viewBinding.aggregatedStatsTime.setText(StringUtils.formatElapsedTime(aggregatedStatistic.getTrackStatistics().getMovingTime()));
+            // Number of Lifts
             viewBinding.dailyLiftNumber.setText(String.valueOf(aggregatedStatistic.getCountTracks()));
             viewBinding.dailyLiftNumberUnit.setText(context.getString(R.string.daily_lift_number_unit));
             viewBinding.dailyLiftNumberLabel.setText(context.getString(R.string.daily_lift_number_label));
-
+            // Lift Total Time
             viewBinding.dailyLiftTotalTime.setText(String.valueOf(aggregatedStatistic.getTotalTime()));
             viewBinding.dailyLiftTotalTimeLabel.setText(context.getString(R.string.daily_lift_total_time_label));
-
+            // Lift Moving Time
             viewBinding.dailyLiftMovingTime.setText(String.valueOf(aggregatedStatistic.getMovingTime()));
             viewBinding.dailyLiftMovingTimeLabel.setText(context.getString(R.string.daily_lift_moving_time_label));
 
@@ -164,6 +169,18 @@ public class AggregatedDayStatisticsAdapter extends RecyclerView.Adapter<Recycle
             viewBinding.dailyRunNumberUnit.setText(context.getString(R.string.daily_run_number_unit));
             viewBinding.dailyRunNumberLabel.setText(context.getString(R.string.daily_run_number_label));
 
+            // Run Elevation
+            viewBinding.dailyRunMaxVertical.setText(String.valueOf(aggregatedStatistic.getMaxVertical()));
+            viewBinding.dailyRunMaxVerticalUnit.setText(context.getString(R.string.daily_run_max_vertical_unit));
+            viewBinding.dailyRunMaxVerticalLabel.setText(context.getString(R.string.daily_run_max_vertical_label));
+
+            // Max Speed
+            viewBinding.dailyTotalDistanceNumber.setText(parts.first);
+            viewBinding.dailyTotalDistanceUnit.setText(context.getString(R.string.daily_max_speed_unit));
+            viewBinding.dailyTotalDistanceLabel.setText(context.getString(R.string.daily_max_speed_label));
+
+            //Activity type
+            viewBinding.activityTypeLabel.setText(String.valueOf(aggregatedStatistic.getActivityTypeLocalized()));
         }
 
         private int getIcon(AggregatedStatistics.AggregatedStatistic aggregatedStatistic) {
