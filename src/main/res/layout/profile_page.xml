@@ -12,12 +12,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/friends_icon"
-            app:title="@string/menu_friends" />
+            app:navigationIcon="@drawable/profile_icon"
+            app:title="@string/menu_profile" />
 
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -28,7 +26,6 @@
         android:paddingBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!--Search icon from https://www.pngall.com/wp-content/uploads/13/Search-Button-White-PNG.png -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,18 +34,6 @@
 
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/aggregated_stats_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/aggregated_stats_list_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/aggregated_stats_empty_view"
