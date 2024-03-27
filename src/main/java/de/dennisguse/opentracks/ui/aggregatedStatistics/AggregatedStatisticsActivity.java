@@ -43,7 +43,6 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
     private boolean areFiltersApplied;
     private MenuItem filterItem;
     private MenuItem clearFilterItem;
-    Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +72,6 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         });
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
-
-        // add button to redirect to Overall statistics page.
-        button1 = (Button) (findViewById(R.id.StatsButtonId));
-
-        button1.setOnClickListener(view -> {
-            Intent intent = new Intent(AggregatedStatisticsActivity.this, StatisticsActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void checkListEmpty() {
