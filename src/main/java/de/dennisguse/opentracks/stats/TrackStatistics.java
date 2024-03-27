@@ -24,7 +24,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
+import de.dennisguse.opentracks.data.models.ActivityType;
 import de.dennisguse.opentracks.data.models.Altitude;
+import de.dennisguse.opentracks.data.models.AltitudeGainLoss;
 import de.dennisguse.opentracks.data.models.Distance;
 import de.dennisguse.opentracks.data.models.HeartRate;
 import de.dennisguse.opentracks.data.models.Speed;
@@ -81,6 +83,75 @@ public class TrackStatistics {
 
     private boolean isIdle;
 
+    //==========================================================================//
+    private Duration chairliftWaitingTime;
+    private Distance chairliftElevationGain;
+    private Speed chairliftConstantSpeed;
+
+    private Duration skiingWaitingTime;
+    private Distance skiingDistance;
+    private Speed skiingSpeed;
+
+    public Duration getSkiingWaitingTime() {
+        return skiingWaitingTime;
+    }
+
+    public void setSkiingWaitingTime(Duration skiingWaitingTime) {
+        this.skiingWaitingTime = skiingWaitingTime;
+    }
+
+    public Distance getSkiingDistance() {
+        return skiingDistance;
+    }
+
+    public void setSkiingDistance(Distance skiingDistance) {
+        this.skiingDistance = skiingDistance;
+    }
+
+    public Speed getSkiingSpeed() {
+        return skiingSpeed;
+    }
+
+    public void setSkiingSpeed(Speed skiingSpeed) {
+        this.skiingSpeed = skiingSpeed;
+    }
+
+    public Duration getWaitingTime() {
+        return waitingTime;
+    }
+
+    public void setWaitingTime(Duration waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
+    public Distance getWaitingTimeDistance() {
+        return waitingTimeDistance;
+    }
+
+    public void setWaitingTimeDistance(Distance waitingTimeDistance) {
+        this.waitingTimeDistance = waitingTimeDistance;
+    }
+
+    public Speed getWaitingTimeSpeed() {
+        return waitingTimeSpeed;
+    }
+
+    public void setWaitingTimeSpeed(Speed waitingTimeSpeed) {
+        this.waitingTimeSpeed = waitingTimeSpeed;
+    }
+
+    private Duration waitingTime;
+    private Distance waitingTimeDistance;
+    private Speed waitingTimeSpeed;
+
+
+    private boolean waiting;
+    private boolean skiing;
+    private boolean chairlift;
+
+    //===========================================================================//
+
+
     public TrackStatistics() {
         reset();
     }
@@ -102,6 +173,11 @@ public class TrackStatistics {
         totalAltitudeLoss_m = other.totalAltitudeLoss_m;
         avgHeartRate = other.avgHeartRate;
         isIdle = other.isIdle;
+        //===========================================//
+        chairliftConstantSpeed = other.chairliftConstantSpeed;
+        chairliftElevationGain = other.chairliftElevationGain;
+        chairliftWaitingTime = other.chairliftWaitingTime;
+        //===========================================//
     }
 
     @VisibleForTesting
@@ -191,6 +267,8 @@ public class TrackStatistics {
         setTotalAltitudeLoss(null);
 
         isIdle = false;
+
+
     }
 
     public void reset(Instant startTime) {
@@ -259,6 +337,25 @@ public class TrackStatistics {
         addMovingTime(Duration.between(lastTrackPoint.getTime(), trackPoint.getTime()));
     }
 
+    //================================================================================//
+    public Duration getChairliftWaitingTime(){
+        return chairliftWaitingTime;
+    }
+    public void setChairliftWaitingTime(Duration chairliftWaitingTime){
+        this.chairliftWaitingTime = chairliftWaitingTime;
+    }
+    public Distance getChairliftElevationGain(){
+        return chairliftElevationGain;
+    }
+    public void setChairliftElevationGain(Distance chairliftElevationGain){
+        this.chairliftElevationGain = chairliftElevationGain;
+    }
+    public Speed getChairliftConstantSpeed(){
+        return chairliftConstantSpeed;
+    }
+    public void setChairliftConstantSpeed(Speed chairliftConstantSpeed){
+        this.chairliftConstantSpeed = chairliftConstantSpeed;
+    }
     @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
     public void addMovingTime(Duration time) {
         if (time.isNegative()) {
@@ -496,6 +593,9 @@ public class TrackStatistics {
                 + "; Moving Time: " + getMovingTime() + "; Max Speed: " + getMaxSpeed()
                 + "; Min Altitude: " + getMinAltitude() + "; Max Altitude: " + getMaxAltitude()
                 + "; Altitude Gain: " + getTotalAltitudeGain()
-                + "; Altitude Loss: " + getTotalAltitudeLoss() + "}";
+                + "; Altitude Loss: " + getTotalAltitudeLoss()
+                + "; Chairlift Waiting Time: " + getChairliftWaitingTime()
+                + "; Chairlift Elevation Gain: " + getChairliftElevationGain()
+                + "; Chairlift Constant Speed: " + getChairliftConstantSpeed()+ "}";
     }
 }
