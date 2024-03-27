@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
+import de.dennisguse.opentracks.ui.aggregatedStatistics.StatisticsActivity;
 
 
 /**
@@ -32,7 +33,7 @@ public class SeasonalActivity extends AbstractActivity {
 
         GoToIndividualSite(findViewById(R.id.activity_game_answer1_btn));
         GoToIndividualSite(findViewById(R.id.activity_game_answer2_btn));
-        GoToIndividualSite(findViewById(R.id.activity_game_answer3_btn));
+        GoToAllTimeStats(findViewById(R.id.activity_game_answer3_btn));
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
@@ -42,6 +43,15 @@ public class SeasonalActivity extends AbstractActivity {
         button.setOnClickListener(view ->
         {
             Intent intent = new Intent(SeasonalActivity.this, SeasonalActivityPerSeason.class);
+            intent.putExtra("seasonTitle", button.getText());
+            startActivity(intent);
+        });
+    }
+
+    private void GoToAllTimeStats(Button button) {
+        button.setOnClickListener(view ->
+        {
+            Intent intent = new Intent(SeasonalActivity.this, StatisticsActivity.class);
             intent.putExtra("seasonTitle", button.getText());
             startActivity(intent);
         });
