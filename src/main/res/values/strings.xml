@@ -846,4 +846,5 @@ limitations under the License.
     <string name="title_activity_leaderboard">LeaderboardActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="calculate_moving_average">Moving Average</string>
 </resources>

@@ -1,7 +1,9 @@
-import java.time.Duration;
-	import java.util.List;
+package de.dennisguse.opentracks.data.models;
 
-	public class SkiRun {
+import java.time.Duration;
+import java.util.List;
+
+public class SkiRun {
 	    private String name;
 	    private List<TrackPoint> trackPoints;
 
