@@ -78,7 +78,7 @@ public class AggregatedStatisticsActivity extends AbstractActivity implements Fi
         button1 = (Button) (findViewById(R.id.StatsButtonId));
 
         button1.setOnClickListener(view -> {
-            Intent intent = new Intent(AggregatedStatisticsActivity.this, StatisticsActivity.class);
+            Intent intent = new Intent(AggregatedStatisticsActivity.this, StatisticsPreviewActivity.class);
             startActivity(intent);
         });
     }

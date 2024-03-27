@@ -32,7 +32,7 @@ public class StatisticsActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MockupData mockupData = new MockupData();
+        MockupData mockupData = (MockupData) getIntent().getSerializableExtra("data");
         List<TrackStatistics> trackStatistics = mockupData.getTrackStatistics();
 
         TextView totalDistance = findViewById(R.id.totalTrackDistId);
